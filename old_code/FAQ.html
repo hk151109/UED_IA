@@ -1,0 +1,266 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>
+	Somaiya Vidyavihar: Library Online Catalogue
+</title><link href="style.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+		.clickList
+		{
+			padding: 5px 0 20px 5px;
+			list-style-position: outside;
+			list-style-type: square;
+			font: normal 13px/16px Verdana;
+			cursor: pointer;
+			margin-left: 20px;
+		}
+		
+		.clickList:hover, .clickList.active
+		{
+			font-style: italic;
+		}
+		
+		/*background: url(Images/arrow-down.jpg) no-repeat left 7px;*/
+		.displaynone
+		{
+			display: none;
+		}
+		.clickText
+		{
+			color: #5A5A5A;
+			font: normal 12px/16px Verdana;
+			padding: 5px 0;
+		}
+	</style>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28288822-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+	<script src="search_files/jquery.js" type="text/javascript"></script>
+	<script type="text/javascript">
+
+		$(document).ready(function () {
+
+			$('.clickList').click(function () {
+
+				$('.clickList').removeClass('active');
+				$(this).addClass('active');
+
+				parentIndex = $(this).index();
+
+				$('.clickList').each(function (index, domele) {
+					mypi = $(this).index();
+					if (parentIndex == mypi) {
+						if ($(this).find('div').css('display') == "none") {
+							$(this).find('div').show('slow');
+						} else {
+							$(this).removeClass('active');
+							$(this).find('div').hide('slow');
+						}
+					} else {
+						$(this).find('div').hide();
+					}
+				});
+			});
+
+		});
+	</script>
+</head>
+<body>
+	<form name="form1" method="post" action="./FAQ.html" id="form1">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJLTY3ODc4ODYwD2QWAgIDD2QWAmYPFCsAAg8WBB4LXyFEYXRhQm91bmRnHgtfIUl0ZW1Db3VudAIIZGQWAmYPZBYQAgEPZBYCAgEPZBYCZg8VAjpDYW4gSSBib3Jyb3cgYm9va3Mgb25saW5lIHRocm91Z2ggU29tYWl5YSBWaWR5YXZpaGFyIE9QQUM/mQFPUEFDIGRvIG5vdCBhbGxvdyBvbmxpbmUgY2lyY3VsYXRpb25zIGJ5IHRoZSBtZW1iZXJzIHRoZW1zZWx2ZXMgYXQgdGhlIG1vbWVudC4gWW91IGhhdmUgdG8gb2J0YWluIHlvdXIgYm9va3MgYW5kIG90aGVyIHJlc291cmNlcyBmcm9tIHRoZSBsaWJyYXJ5IGl0c2VsZi5kAgIPZBYCAgEPZBYCZg8VAi9DYW4gSSBkbyByZXNlcnZhdGlvbnMgb25saW5lPyBIb3cgZG8gSSBkbyB0aGF0P5oGPHA+DQoJUmVzZXJ2YXRpb25zIGNhbiBiZSBtYWRlIG9ubGluZSBvbiByZXNvdXJjZXMgdGhhdCBhcmUgbm90IGN1cnJlbnRseSBhdmFpbGFibGUgaW4gdGhlIGxpYnJhcnkgeW91IGFyZSBsb29raW5nIGludG8uIFRvIGRvIHRoYXQsIENsaWNrIG9uIE15IEFjY291bnQgbGluayBhdmFpbGFibGUgaW4gdGhlIE9QQUMgSG9tZSBwYWdlIElmIHlvdSBhcmUgbG9nZ2luZyBpbiBmaXJzdCB0aW1lLCBzeXN0ZW0gd2lsbCBwcm9tcHRzIHlvdSB0byBjaGFuZ2UgdGhlIHBhc3N3b3JkLiBVc2UgeW91ciBNZW1iZXIgSUQgYXMgVXNlcm5hbWUgYW5kIHBhc3N3b3JkIHRvIGxvZ2luLiBTZWxlY3QgeW91ciBsaWJyYXJ5IG5hbWUgZnJvbSB0aGUgbGlzdC4gQ29tcGxldGUgdGhlIENoYW5nZSBQYXNzd29yZCB0cmFuc2FjdGlvbi48L3A+DQo8cD4NCglNeSBBY2NvdW50IEhvbWUgcGFnZSB3aWxsIGFwcGVhci4gU2VhcmNoIHRoZSByZXF1aXJlZCBib29rLiBJZiBhIHJlcXVpcmVkIGJvb2sgaXMgbm90IGN1cnJlbnRseSBhdmFpbGFibGUgaW4gdGhlIGxpYnJhcnksIFJlc2VydmUgb3B0aW9uIHdpbGwgZ2V0IGVuYWJsZWQuIENsaWNrIFJlc2VydmUgbGluayB0byByZXNlcnZlIHRoZSBib29rL3RpdGxlLiBTeXN0ZW0gd2lsbCBnZW5lcmF0ZSBSZXNlcnZhdGlvbiBudW1iZXIuIE5leHQsIGFzIHNvb24gYXMgcmVzZXJ2ZWQgdGl0bGUgZ2V0IHJldHVybmVkLCB5b3Ugd2lsbCBiZSBpbnRpbWF0ZWQgdGhyb3VnaCBhbiBhdXRvbWF0aWMgZW1haWwuIE9yIGdldCBpbiB0b3VjaCB3aXRoIGxpYnJhcmlhbi48L3A+DQpkAgMPZBYCAgEPZBYCZg8VAl1JIHdhbnQgdG8gc2VhcmNoIHJlc291cmNlcyB0aGF0IGFyZSBhdmFpbGFibGUgd2l0aGluIG15IGxpYnJhcnkgb25seS4gSG93IGRvIEkgZ28gYWJvdXQgdGhhdD/VAUluIE9QQUMgaG9tZSBwYWdlIHNlYXJjaCBmb3IgcmVxdWlyZWQgYm9va3MsIHRoZW4gc2VhcmNoIHJlc3VsdCB3aWxsIGRpc3BsYXkgYXZhaWxhYmxlIGJvb2tzIGluIGFsbCBsaWJyYXJpZXMgb2YgVmlkeWF2aWhhci4gTGVmdCBzaWRlIG9mIHRoZSBwYWdlIGNsaWNrIG9uIHlvdXIgbGlicmFyeSBuYW1lIHRvIHJlZmluZSB5b3VyIHNlYXJjaCBmcm9tIG9uZSBsaWJyYXJ5LmQCBA9kFgICAQ9kFgJmDxUCL0hvdyBjYW4gSSBrbm93IHdoYXQgYXJlIHRoZSBib29rcyBpc3N1ZWQgdG8gbWU/PEJ5IGxvZ2dpbmcgaW4gTXkgQWNjb3VudCBvcHRpb24gYXZhaWxhYmxlIGluIE9QQUMgaG9tZSBwYWdlLmQCBQ9kFgICAQ9kFgJmDxUCIldoYXQgYXJlIHNlcnZpY2VzIG9mZmVyZWQgaW4gT1BBQz9MQmFzaWMgU2VhcmNoLCBBZHZhbmNlZCBTZWFyY2gsIENhdGFsb2d1ZSBTZWFyY2gsIEFzayBBIExpYnJhcmlhbiwgTXkgQWNjb3VudGQCBg9kFgICAQ9kFgJmDxUCLUhvdyBjYW4gSSBrbm93IHdoYXQgYXJlIHRoZSBsaWJyYXJ5IHBvbGljaWVzPzZCeSBsb2dnaW5nIGluIE15IEFjY291bnQsIGF2YWlsYWJsZSBpbiBPUEFDIGhvbWUgcGFnZS5kAgcPZBYCAgEPZBYCZg8VAjVXaGF0IGluZm9ybWF0aW9uIG9yIHNlcnZpY2VzIGF2YWlsYWJsZSBpbiBNeSBBY2NvdW50P+MBPG9sPg0KCTxsaT4NCgkJTXkgQWNjb3VudCBjb25zaXN0cyBvZiB5b3VyIHBlcnNvbmFsIGluZm9ybWF0aW9uIGFib3V0IHlvdXIgQ291cnNlICZhbXA7IENsYXNzIHN0dWR5aW5nLiBQb2xpY3kgYWxsb3R0ZWQgdG8geW91LiBMaXN0IG9mIGJvb2tzIGlzc3VlZCB0byB5b3UuIEFuZCBmYWNpbGl0eSB0byByZXNlcnZlIHRoZSBib29rcyBpbiBjYXNlIG5vdCBhdmFpbGFibGUuPC9saT4NCjwvb2w+DQpkAggPZBYCAgEPZBYCZg8VAitDYW4gSSBzZWFyY2ggYm9va3MvcmVzb3VyY2VzIHdpdGhvdXQgbG9naW4/QzxwPg0KCVllcywgeW91IG1heSBzZWFyY2ggYm9va3MvcmVzb3VyY2VzIHdpdGhvdXQgbG9nZ2luZyBpbi48L3A+DQpkGAEFBWx2RkFRDxQrAA5kZGRkZGRkPCsACAACCGRkZGYC/////w9kkJ5EmIknbftASL7Om+YaJ0czeveB1dpfeH/dIbZlStI=" />
+</div>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="0F4F4B68" />
+</div>
+	<table width="901" border="0" align="center" cellpadding="0" cellspacing="0">
+		<tr>
+			<td colspan="3">
+				<img src="images/space.gif" width="10" height="8" />
+			</td>
+		</tr>
+		<tr>
+			<td width="736">
+				<img src="images/logo.gif" width="349" height="69" />
+			</td>
+			<td width="92">
+				&nbsp;
+			</td>
+			<td width="73">
+				<img src="images/somaiyalogo.gif" width="73" height="55" />
+			</td>
+		</tr>
+		<tr>
+			<td height="8" colspan="3">
+				<img src="images/space.gif" width="10" height="8" />
+			</td>
+		</tr>
+		<tr>
+			<td height="38" colspan="3">
+				<table width="891" border="0" cellpadding="0" cellspacing="0" id="menu">
+					<tr>
+						<td width="46" height="38">
+							<a href="Default.html">
+								<img src="images/home.png" width="46" height="38" /></a>
+						</td>
+						<td width="100%" valign="middle">
+							<!--<a href="#">About Us</a>-->
+							<!--<a href="UnderConstruction.html">About Us</a>-->
+							<a href="UnderConstruction.html">Hours &amp; Maps</a> <a href="MyAccount.html">My Account</a>
+							<a href="AskLibrarian.html">Ask A Librarian</a> <a href="FAQ.html">Help (FAQ)</a>
+							<a href="OpacSearchCatalogue.html">Catalogue Search</a>
+							
+							<a href="Logout.html">Logout</a>
+							
+						</td>
+						<td width="24">
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td height="7" colspan="3">
+				<img src="images/space.gif" width="10" height="5" />
+			</td>
+		</tr>
+		<tr>
+			<td height="129" colspan="3" valign="top" bgcolor="#FFFFFF">
+				<table width="100%" border="0" cellpadding="0" cellspacing="5" class="txt">
+					<tr>
+						<td height="45" bgcolor="#A82128">
+							<span class="head1">Frequently Asked Questions</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<table width="100%">
+								<tr>
+									<td colspan="2">
+									</td>
+								</tr>
+								<tr>
+									<td colspan="3">
+										
+												<ul>
+													
+												<li class="clickList svv_heading">
+													
+												Can I borrow books online through Somaiya Vidyavihar OPAC?
+												<div class="clickText displaynone">
+													OPAC do not allow online circulations by the members themselves at the moment. You have to obtain your books and other resources from the library itself.
+												</div>
+											
+												</li>
+											
+												<li class="clickList svv_heading">
+													
+												Can I do reservations online? How do I do that?
+												<div class="clickText displaynone">
+													<p>
+	Reservations can be made online on resources that are not currently available in the library you are looking into. To do that, Click on My Account link available in the OPAC Home page If you are logging in first time, system will prompts you to change the password. Use your Member ID as Username and password to login. Select your library name from the list. Complete the Change Password transaction.</p>
+<p>
+	My Account Home page will appear. Search the required book. If a required book is not currently available in the library, Reserve option will get enabled. Click Reserve link to reserve the book/title. System will generate Reservation number. Next, as soon as reserved title get returned, you will be intimated through an automatic email. Or get in touch with librarian.</p>
+
+												</div>
+											
+												</li>
+											
+												<li class="clickList svv_heading">
+													
+												I want to search resources that are available within my library only. How do I go about that?
+												<div class="clickText displaynone">
+													In OPAC home page search for required books, then search result will display available books in all libraries of Vidyavihar. Left side of the page click on your library name to refine your search from one library.
+												</div>
+											
+												</li>
+											
+												<li class="clickList svv_heading">
+													
+												How can I know what are the books issued to me?
+												<div class="clickText displaynone">
+													By logging in My Account option available in OPAC home page.
+												</div>
+											
+												</li>
+											
+												<li class="clickList svv_heading">
+													
+												What are services offered in OPAC?
+												<div class="clickText displaynone">
+													Basic Search, Advanced Search, Catalogue Search, Ask A Librarian, My Account
+												</div>
+											
+												</li>
+											
+												<li class="clickList svv_heading">
+													
+												How can I know what are the library policies?
+												<div class="clickText displaynone">
+													By logging in My Account, available in OPAC home page.
+												</div>
+											
+												</li>
+											
+												<li class="clickList svv_heading">
+													
+												What information or services available in My Account?
+												<div class="clickText displaynone">
+													<ol>
+	<li>
+		My Account consists of your personal information about your Course &amp; Class studying. Policy allotted to you. List of books issued to you. And facility to reserve the books in case not available.</li>
+</ol>
+
+												</div>
+											
+												</li>
+											
+												<li class="clickList svv_heading">
+													
+												Can I search books/resources without login?
+												<div class="clickText displaynone">
+													<p>
+	Yes, you may search books/resources without logging in.</p>
+
+												</div>
+											
+												</li>
+											
+												</ul>
+											
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td height="46" colspan="3" valign="top" bgcolor="#B3AA9E" id="footer">
+				<table border="0" cellpadding="5" cellspacing="5" id="footer">
+					<tr>
+						<td width="670">
+							Best viewed in screen size 1024 x 768 | <a href="#">legal notice</a> | <a href="#">usage
+								policy</a><br />
+							© 2010 Somaiya Vidyavihar
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	</form>
+</body>
+</html>

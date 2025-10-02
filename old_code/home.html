@@ -1,0 +1,366 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Somaiya Vidyavihar: Library Online Catalogue</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+<!--
+body {
+	background-image: url(images/homebg.jpg);
+	background-repeat: repeat-x;
+}
+-->
+.bx-wrapper {     margin: 0 0 0 30px; }
+</style>
+<!-- jQuery library (served from Google) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css" rel="stylesheet" />
+<script type="text/javascript">
+    $(function () {
+        $('.bxslider').bxSlider({
+            auto: true,
+                 pager:false,
+            slideWidth: 600
+        });
+    });
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-28288822-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+<body>
+    <form name="form1" method="post" action="./" id="form1">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="CA0B0334" />
+	<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="NSgQgWaxZ88prIi3srgzHJbEsWNKps4t4h2ybjMqdz46gnsYXTXSz1zz3Qx7WOIrjg+RXmnhr+dKU64ACqLO0s//Gl4H6GmLOCIZGz2BkuQJn+jnb0Mpp5iSmrIGhhNdpJdF3vEy/zMRdMGpxWIq0tU8lXDuNQJCnRQkCzOe4qFgn49y5KZyUPFtdvmt5pPV1u5HOgo8CACfO1WBzE4P1m7umjrGudh2ekOev3eHMycd2v1KUbb/SNwOfWJhUmjvAvyRgwEDj44dqFgERZIaclOxAn8A9JAdzWY9E9NurdIbL9GxWIDH2gvXvKZeLKYGcMVanbxhNQIjp+guz5Lai8Uus0YCcYpxi2GuIrXqcwS56UYBUxIKtfP8JtL0O4jB4u2DFbwS2TBQzfvNp6yANunit9W1O0bRl36qaXnj8x3W6+4XvXcRHhIjExbs5CcMXh+Uvhx7jF1o7ltAtJrHdB/9cpb1ww1hHl9irhZ8pOtU932t4MQaQDh/FuAU+nmwdY9nBbeaeqepHx0I22hHg/00lu8Md9aoakc02V7S10f/o3/jZ/Xy7oc4wq1rtoul4FwpYyO5ZyjcQX7/rwsrQ84Jn19NsdPWlfG8awxqd7+8ZmHg3WRyRP9lMgmNmHUkJpkuAHtGUH8PWqjmJ02HpuHZu47kv0aVYwcjTVikw48=" />
+</div>
+    <table width="901" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+            <td colspan="3">
+                <img src="images/space.gif" width="10" height="9" />
+            </td>
+        </tr>
+        <tr>
+            <td width="736">
+                <img src="images/logo.gif" width="349" height="69" />
+            </td>
+            <td width="92">
+                &nbsp;
+            </td>
+            <td width="73">
+                <img src="images/somaiyalogo.gif" width="73" height="55" />
+            </td>
+        </tr>
+        <tr>
+            <td height="7" colspan="3">
+                <img src="images/space.gif" width="10" height="7" />
+            </td>
+        </tr>
+        <tr>
+            <td height="38" colspan="3">
+                <table width="891" border="0" cellpadding="0" cellspacing="0" id="menu">
+                    <tr>
+                        <td width="46" height="38">
+                            <img src="images/home.png" width="46" height="38" />
+                        </td>
+                        <td width="599" valign="middle">
+                            <!--<a href="UnderConstruction.html">About Us</a>-->
+                            <a href="UnderConstruction.html">Hours &amp; Maps</a>
+                            <!--<a href="UnderConstruction.html">My Account</a>-->
+                            <a href="MyAccount.html">My Account</a> <a href="AskLibrarian.html">Ask A Librarian</a>
+                            <a href="FAQ.html">Help (FAQ)</a> <a href="OpacSearchCatalogue.html">Catalogue Search</a>
+                            
+                        </td>
+                        <td width="246">
+                            <!--  <table width="368" height="55" border="0" cellpadding="0" cellspacing="0" id="login">
+          <tr>
+            <td width="403"><table width="359" border="0" cellpadding="2" cellspacing="0">
+              <tr>
+                <td width="170" height="43">&nbsp;</td>
+                <td width="60"><label>
+                  <input name="textfield" type="text" id="textfield" size="10" />
+                </label></td>
+                <td width="87"><input name="textfield2" type="password" id="textfield2" size="10" /></td>
+                <td width="70"><a href="#"><img src="images/bt-login.gif" width="56" height="25" border="0" /></a></td>
+              </tr>
+            </table></td>
+          </tr>
+        </table>-->
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td height="10" colspan="3">
+                <img src="images/space.gif" width="10" height="10" />
+            </td>
+        </tr>
+        <tr>
+            <td height="500" colspan="3">
+                <table width="950" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="450" height="500" valign="top">
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td width="444">
+                                        <h1>
+                                            Welcome to Online Catalogue</h1>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="125" valign="top">
+                                        <p class="txt">
+                                            In a time of rapid change, Somaiya Vidyavihar Libraries continues to stand at the
+                                            center of intellectual life on campus. With world-class collections and services
+                                            online, and in person our Library serves as an indispensible partner in study, teaching,
+                                            and research at the university.
+                                        </p>
+                                        <p class="txt">
+                                            &nbsp;</p>
+                                        <p class="txt">
+                                            Somaiya Vidyavihar Libraries are designed to support research and instruction. There
+                                            are a number of libraries spread out across the spacious campus housing more than
+                                            a hundred thousand books!
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table border="0" cellpadding="2" cellspacing="2" id="search">
+                                            <tr>
+                                                <td colspan="2" class="head1">
+                                                    Search Library Catalogue
+                                                </td>
+                                                <td width="143" rowspan="5">
+                                                    <img src="images/bookworm1.png" width="120" height="120" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="100">
+                                                    Search for:
+                                                </td>
+                                                <td width="136">
+                                                    Search Type:<br />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input name="txtSearchText" type="text" id="txtSearchText" />
+                                                </td>
+                                                <td>
+                                                    <select name="ddlSearchType" id="ddlSearchType">
+	<option value="Title">Title</option>
+	<option value="Author">Author</option>
+	<option value="Keyword">Keyword</option>
+	<option value="Publisher">Publisher</option>
+	<option value="Publishing Year">Publishing Year</option>
+	<option value="Classification No">Classification No</option>
+	<option value="Classification Name">Classification Name</option>
+	<option value="Subject">Subject</option>
+	<option value="Accession No">Accession No</option>
+	<option value="ISBN">ISBN</option>
+
+</select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <!--<a href="#"><img src="images/bt-search.gif" width="100" height="25" border="0" /></a>-->
+                                                    <input type="image" name="imgBtnSearch" id="imgBtnSearch" border="0" src="images/bt-search.gif" style="height:25px;width:100px;border-width:0px;" />
+                                                </td>
+                                                <td>
+                                                    <input type="image" name="imgBtnAdvSearch" id="imgBtnAdvSearch" border="0" src="images/bt-adsearch.gif" style="height:25px;width:129px;border-width:0px;" />
+                                                    <!-- <a href="#">
+                  <img src="images/bt-adsearch.gif" width="129" height="25" border="0" /></a>-->
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    &nbsp;
+                                                </td>
+                                                <td>
+                                                    &nbsp;
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-top: 2px solid #981118">
+                                        <table border="0" cellpadding="1" cellspacing="1" id="Table1">
+                                            <tr>
+                                                <td class="head1">
+                                                    E-journals & Databases
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                     <iframe width="510" height="230" frameborder="0" src="https://opac.somaiya.edu/remotexs.html?v=1.0.2"
+                                                        scrolling="no"></iframe>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td width="440" valign="middle">
+                           <!-- <iframe height="500" width="446" border="0" frameborder="0" src="flash/imgbanner.html">
+                            </iframe>-->
+ <div class="bxslider">
+                                <div>
+                                    <img src="images/home-gallery/Artboard – 1.jpg" style="height:550px;width:450px"></div>
+                                <div>
+                                    <img src="images/home-gallery/Artboard – 2.jpg"  style="height:550px;width:450px"></div>
+                                <div>
+                                    <img src="images/home-gallery/Artboard – 3.jpg" style="height:550px;width:450px"></div>
+				<div>
+                                    <img src="images/home-gallery/Artboard – 4.jpg" style="height:550px;width:450px"></div>
+<div>
+                                    <img src="images/home-gallery/Artboard – 6.jpg" style="height:550px;width:450px"></div>
+<div>
+                                    <img src="images/home-gallery/Artboard – 7.jpg" style="height:550px;width:450px"></div>
+<div>
+                                    <img src="images/home-gallery/Artboard – 8.jpg" style="height:550px;width:450px"></div>
+<div>
+                                    <img src="images/home-gallery/Artboard – 9.jpg" style="height:550px;width:450px"></div>
+                            </div>
+
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="height: 10px">
+            </td>
+        </tr>
+        <tr>
+            <td height="120" bgcolor="#990000" colspan="3" class="books">
+                <table width="500" border="0"  cellpadding="5" cellspacing="5">
+                    <tr>
+                        <td width="500" class="head2">
+                            Latest Books on Stand
+                        </td>
+                    </tr>
+                   
+                    <tr>
+                        <td>
+                            <div>
+	<table cellspacing="0" border="0" id="grdvwLatestBooksOnStand" style="color:White;border-style:None;font-size:10pt;height:2px;border-collapse:collapse;">
+		<tr>
+			<td>
+                                            <input type="image" name="grdvwLatestBooksOnStand$ctl02$ImageButton2" id="grdvwLatestBooksOnStand_ctl02_ImageButton2" src="images/arrow3.gif" style="border-width:0px;" />
+                                            <a id="grdvwLatestBooksOnStand_ctl02_LinkbuttonDetail" class="whitetxt" href="javascript:__doPostBack(&#39;grdvwLatestBooksOnStand$ctl02$LinkbuttonDetail&#39;,&#39;&#39;)" style="font-weight:normal;text-decoration:none;">Abstracts Of The United Nations Day Of Vesak 2025 Conference</a>
+                                            <span id="grdvwLatestBooksOnStand_ctl02_Label2" class="whitetxt" style="font-weight:normal;text-decoration:underline;">by: </span>
+                                            <span id="grdvwLatestBooksOnStand_ctl02_Label1" class="whitetxt" style="font-weight:normal;text-decoration:underline;">Thien. Thich Duc</span>
+                                        </td>
+		</tr><tr>
+			<td>
+                                            <input type="image" name="grdvwLatestBooksOnStand$ctl03$ImageButton2" id="grdvwLatestBooksOnStand_ctl03_ImageButton2" src="images/arrow3.gif" style="border-width:0px;" />
+                                            <a id="grdvwLatestBooksOnStand_ctl03_LinkbuttonDetail" class="whitetxt" href="javascript:__doPostBack(&#39;grdvwLatestBooksOnStand$ctl03$LinkbuttonDetail&#39;,&#39;&#39;)" style="font-weight:normal;text-decoration:none;">Ack: Great Freedom Fighters (5  In 1)</a>
+                                            <span id="grdvwLatestBooksOnStand_ctl03_Label2" class="whitetxt" style="font-weight:normal;text-decoration:underline;">by: </span>
+                                            <span id="grdvwLatestBooksOnStand_ctl03_Label1" class="whitetxt" style="font-weight:normal;text-decoration:underline;">Ack</span>
+                                        </td>
+		</tr><tr>
+			<td>
+                                            <input type="image" name="grdvwLatestBooksOnStand$ctl04$ImageButton2" id="grdvwLatestBooksOnStand_ctl04_ImageButton2" src="images/arrow3.gif" style="border-width:0px;" />
+                                            <a id="grdvwLatestBooksOnStand_ctl04_LinkbuttonDetail" class="whitetxt" href="javascript:__doPostBack(&#39;grdvwLatestBooksOnStand$ctl04$LinkbuttonDetail&#39;,&#39;&#39;)" style="font-weight:normal;text-decoration:none;">Aicr :I Saw You In The Bathtub: And Other Folk Rhymes :Level 1</a>
+                                            <span id="grdvwLatestBooksOnStand_ctl04_Label2" class="whitetxt" style="font-weight:normal;text-decoration:underline;">by: </span>
+                                            <span id="grdvwLatestBooksOnStand_ctl04_Label1" class="whitetxt" style="font-weight:normal;text-decoration:underline;">Schwartz . Alvin</span>
+                                        </td>
+		</tr><tr>
+			<td>
+                                            <input type="image" name="grdvwLatestBooksOnStand$ctl05$ImageButton2" id="grdvwLatestBooksOnStand_ctl05_ImageButton2" src="images/arrow3.gif" style="border-width:0px;" />
+                                            <a id="grdvwLatestBooksOnStand_ctl05_LinkbuttonDetail" class="whitetxt" href="javascript:__doPostBack(&#39;grdvwLatestBooksOnStand$ctl05$LinkbuttonDetail&#39;,&#39;&#39;)" style="font-weight:normal;text-decoration:none;">Ali The Great: And The Eid Party Surprise</a>
+                                            <span id="grdvwLatestBooksOnStand_ctl05_Label2" class="whitetxt" style="font-weight:normal;text-decoration:underline;">by: </span>
+                                            <span id="grdvwLatestBooksOnStand_ctl05_Label1" class="whitetxt" style="font-weight:normal;text-decoration:underline;">Faruqi. Saadia</span>
+                                        </td>
+		</tr><tr>
+			<td>
+                                            <input type="image" name="grdvwLatestBooksOnStand$ctl06$ImageButton2" id="grdvwLatestBooksOnStand_ctl06_ImageButton2" src="images/arrow3.gif" style="border-width:0px;" />
+                                            <a id="grdvwLatestBooksOnStand_ctl06_LinkbuttonDetail" class="whitetxt" href="javascript:__doPostBack(&#39;grdvwLatestBooksOnStand$ctl06$LinkbuttonDetail&#39;,&#39;&#39;)" style="font-weight:normal;text-decoration:none;">An Introduction To Earth Science</a>
+                                            <span id="grdvwLatestBooksOnStand_ctl06_Label2" class="whitetxt" style="font-weight:normal;text-decoration:underline;">by: </span>
+                                            <span id="grdvwLatestBooksOnStand_ctl06_Label1" class="whitetxt" style="font-weight:normal;text-decoration:underline;">Dasgupta Amal</span>
+                                        </td>
+		</tr><tr>
+			<td>
+                                            <input type="image" name="grdvwLatestBooksOnStand$ctl07$ImageButton2" id="grdvwLatestBooksOnStand_ctl07_ImageButton2" src="images/arrow3.gif" style="border-width:0px;" />
+                                            <a id="grdvwLatestBooksOnStand_ctl07_LinkbuttonDetail" class="whitetxt" href="javascript:__doPostBack(&#39;grdvwLatestBooksOnStand$ctl07$LinkbuttonDetail&#39;,&#39;&#39;)" style="font-weight:normal;text-decoration:none;">An Introduction To Palaentology</a>
+                                            <span id="grdvwLatestBooksOnStand_ctl07_Label2" class="whitetxt" style="font-weight:normal;text-decoration:underline;">by: </span>
+                                            <span id="grdvwLatestBooksOnStand_ctl07_Label1" class="whitetxt" style="font-weight:normal;text-decoration:underline;">Dasgupta Amal</span>
+                                        </td>
+		</tr>
+	</table>
+</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="image" name="ImageButton2" id="ImageButton2" border="0" src="images/bt-more.gif" style="border-width:0px;height: 12px" />
+                        </td>
+                    </tr>
+ <tr>
+                        <td align="right">
+                         
+<img src='https://www.free-website-hit-counter.com/c.php?d=9&id=91723&s=2' border='0' title='free website hit counter'/>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="height: 10px">
+            </td>
+        </tr>
+        <tr>
+            <td height="30" id="footer">
+                Best viewed in screen size 1024 x 768 | <a href="#">legal notice</a> | <a href="#">Usage
+                    policy</a><br />
+                © 2010 Somaiya Vidyavihar
+            </td>
+        </tr>
+    </table>
+    <p>
+        &nbsp;</p>
+    </form>
+</body>
+</html>
