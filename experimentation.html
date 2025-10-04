@@ -43,106 +43,108 @@
 <body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-primary text-white px-4 py-2 rounded-md z-50">Skip to main content</a>
 <div id="root">
-<header class="bg-surface-light dark:bg-surface-dark shadow-md">
-<div class="container mx-auto px-4 sm:px-6 lg:px-8">
-<div class="flex items-center py-4 gap-4 lg:gap-8">
-  <!-- Left Logo -->
-  <div class="flex items-center space-x-4 shrink-0">
-    <img alt="Somaiya Vidyavihar logo" class="h-14 sm:h-16" src="./assets/svu_logo.svg"/>
-    <div class="hidden lg:block">
-      <!-- <h1 class="text-lg font-bold text-primary leading-tight">SOMAIYA VIDYAVIHAR</h1>
-      <p class="text-xs text-subtle-light dark:text-subtle-dark tracking-wide">Library Online Catalogue</p> -->
-    </div>
-  </div>
-  <!-- Primary Navigation -->
-  <nav aria-label="Primary" class="flex-1">
-    <ul class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm sm:text-base" role="menubar">
-      <li role="none">
-        <a role="menuitem" class="flex items-center gap-1 text-primary font-medium focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
-          <span class="material-icons text-base sm:text-lg" aria-hidden="true">home</span>
-          <span>Home</span>
-        </a>
-      </li>
-      <li role="none">
-        <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
-          <span class="material-icons text-base sm:text-lg" aria-hidden="true">person</span>
-          <span>My Account</span>
-        </a>
-      </li>
-      <li role="none">
-        <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
-          <span class="material-icons text-base sm:text-lg" aria-hidden="true">help_outline</span>
-          <span>Ask a Librarian</span>
-        </a>
-      </li>
-      <li role="none">
-        <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
-          <span class="material-icons text-base sm:text-lg" aria-hidden="true">info</span>
-          <span>Help (FAQ)</span>
-        </a>
-      </li>
-      <li role="none">
-        <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
-          <span class="material-icons text-base sm:text-lg" aria-hidden="true">search</span>
-          <span>Catalogue Search</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <!-- Accessibility / Utilities (condensed) -->
-  <div class="relative flex items-center gap-3">
-    <button id="accessibility-toggle" aria-haspopup="dialog" aria-expanded="false" aria-controls="accessibility-panel" class="flex items-center gap-1 px-3 h-10 rounded-full bg-gray-100 dark:bg-gray-800 text-subtle-light dark:text-subtle-dark hover:text-text-light dark:hover:text-text-dark hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
-      <span class="material-icons" aria-hidden="true">tune</span>
-      <span class="hidden xl:inline text-xs font-medium tracking-wide">Accessibility</span>
-    </button>
-    <img alt="Trust logo" class="h-12 sm:h-14 hidden md:block" src="./assets/svu_trust.svg"/>
-    <div id="accessibility-panel" role="dialog" aria-label="Accessibility settings" class="hidden absolute right-0 top-full mt-2 w-72 max-w-[90vw] bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 shadow-lg rounded-lg p-4 z-40">
-      <div class="flex items-center justify-between mb-2">
-        <h2 class="text-sm font-semibold tracking-wide text-text-light dark:text-text-dark">Accessibility</h2>
-        <button id="accessibility-close" aria-label="Close accessibility panel" class="p-1 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
-          <span class="material-icons text-base" aria-hidden="true">close</span>
+<header class="shadow-md">
+  <!-- Top accessibility bar with triangle notch and inline controls -->
+  <div class="relative bg-primary text-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-end py-2 gap-2 sm:gap-3">
+        <!-- Theme toggle -->
+        <button id="contrast-toggle" aria-label="Toggle dark or light theme" aria-pressed="false" class="flex items-center gap-1 px-3 h-9 rounded-full bg-white/90 text-text-light hover:bg-white focus:outline-none focus:ring-2 focus:ring-white/60 dark:bg-gray-800 dark:text-text-dark dark:hover:bg-gray-700">
+          <span class="material-icons text-base" aria-hidden="true">contrast</span>
+          <span class="hidden xl:inline text-xs font-medium tracking-wide">Theme</span>
         </button>
-      </div>
-      <div class="space-y-4 text-sm">
-        <div>
-          <p class="font-medium mb-1">Theme</p>
-          <button id="contrast-toggle" aria-pressed="false" class="flex items-center gap-2 w-full justify-start px-3 py-2 rounded-md bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
-            <span class="material-icons text-base" aria-hidden="true">contrast</span>
-            <span>Toggle Dark / Light</span>
+
+        <!-- Divider -->
+        <span class="hidden sm:block h-5 w-px bg-white/40" aria-hidden="true"></span>
+
+        <!-- Font size controls -->
+        <div class="flex items-center gap-1 sm:gap-2">
+          <button id="font-decrease" aria-label="Decrease font size" class="min-w-[2.25rem] h-9 px-2 flex items-center justify-center rounded-full bg-white/90 text-text-light hover:bg-white focus:outline-none focus:ring-2 focus:ring-white/60 dark:bg-gray-800 dark:text-text-dark dark:hover:bg-gray-700">
+            <span class="text-xs font-semibold tracking-wide">-A</span>
+          </button>
+          <div aria-live="polite" id="font-scale-indicator" class="text-[11px] font-medium opacity-90 select-none w-12 text-center">100%</div>
+          <button id="font-increase" aria-label="Increase font size" class="min-w-[2.25rem] h-9 px-2 flex items-center justify-center rounded-full bg-white/90 text-text-light hover:bg-white focus:outline-none focus:ring-2 focus:ring-white/60 dark:bg-gray-800 dark:text-text-dark dark:hover:bg-gray-700">
+            <span class="text-xs font-semibold tracking-wide">+A</span>
           </button>
         </div>
-        <div>
-          <p class="font-medium mb-1">Text Size</p>
-          <div class="flex items-center gap-2">
-            <button id="font-decrease" aria-label="Decrease font size" class="w-9 h-9 flex items-center justify-center rounded-md bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
-              <span class="material-icons text-base" aria-hidden="true">remove</span>
-            </button>
-            <div aria-live="polite" id="font-scale-indicator" class="text-xs text-subtle-light dark:text-subtle-dark select-none w-14 text-center">100%</div>
-            <button id="font-increase" aria-label="Increase font size" class="w-9 h-9 flex items-center justify-center rounded-md bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
-              <span class="material-icons text-base" aria-hidden="true">add</span>
-            </button>
+
+        <!-- Divider -->
+        <span class="hidden sm:block h-5 w-px bg-white/40" aria-hidden="true"></span>
+
+        <!-- Motion toggle -->
+        <button id="motion-toggle" aria-label="Toggle reduced motion" aria-pressed="false" class="flex items-center gap-1 px-3 h-9 rounded-full bg-white/90 text-text-light hover:bg-white focus:outline-none focus:ring-2 focus:ring-white/60 dark:bg-gray-800 dark:text-text-dark dark:hover:bg-gray-700">
+          <span class="material-icons text-base" aria-hidden="true">motion_photos_off</span>
+          <span class="hidden xl:inline text-xs font-medium tracking-wide">Motion</span>
+        </button>
+
+        <!-- Divider -->
+        <span class="hidden sm:block h-5 w-px bg-white/40" aria-hidden="true"></span>
+
+        <!-- Language switch -->
+        <label for="language-switch" class="sr-only">Change language</label>
+        <select id="language-switch" class="h-9 rounded-full border-0 bg-white/95 text-text-light text-xs px-3 pr-7 focus:ring-2 focus:ring-white/60 dark:bg-gray-800 dark:text-text-dark">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी</option>
+          <option value="mr">मराठी</option>
+        </select>
+      </div>
+    </div>
+    <!-- Triangle notch -->
+    <div class="pointer-events-none absolute right-0 top-full w-0 h-0 border-t-[32px] border-l-[32px] border-solid border-transparent" style="border-top-color:#A91D3A"></div>
+  </div>
+
+  <!-- Main navigation bar -->
+  <div class="bg-surface-light dark:bg-surface-dark">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center py-4 gap-4 lg:gap-8">
+        <!-- Left Logo (kept) -->
+        <div class="flex items-center space-x-4 shrink-0">
+          <img alt="Somaiya Vidyavihar logo" class="h-14 sm:h-16" src="./assets/svu_logo.svg"/>
+          <div class="hidden lg:block">
+            <!-- <h1 class="text-lg font-bold text-primary leading-tight">SOMAIYA VIDYAVIHAR</h1>
+            <p class="text-xs text-subtle-light dark:text-subtle-dark tracking-wide">Library Online Catalogue</p> -->
           </div>
         </div>
-        <div>
-          <p class="font-medium mb-1">Motion</p>
-          <button id="motion-toggle" aria-pressed="false" class="flex items-center gap-2 w-full justify-start px-3 py-2 rounded-md bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
-            <span class="material-icons text-base" aria-hidden="true">motion_photos_off</span>
-            <span>Reduce Motion</span>
-          </button>
-        </div>
-        <div>
-          <p class="font-medium mb-1">Language</p>
-          <select id="language-switch" aria-label="Change language" class="w-full rounded-md border-gray-300 dark:border-gray-600 bg-surface-light dark:bg-surface-dark text-text-light dark:text-text-dark focus:ring-primary focus:border-primary text-sm">
-            <option value="en">English</option>
-            <option value="hi">हिन्दी</option>
-            <option value="mr">मराठी</option>
-          </select>
-        </div>
+        <!-- Primary Navigation -->
+        <nav aria-label="Primary" class="flex-1">
+          <ul class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm sm:text-base" role="menubar">
+            <li role="none">
+              <a role="menuitem" class="flex items-center gap-1 text-primary font-medium focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
+                <span class="material-icons text-base sm:text-lg" aria-hidden="true">home</span>
+                <span>Home</span>
+              </a>
+            </li>
+            <li role="none">
+              <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
+                <span class="material-icons text-base sm:text-lg" aria-hidden="true">person</span>
+                <span>My Account</span>
+              </a>
+            </li>
+            <li role="none">
+              <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
+                <span class="material-icons text-base sm:text-lg" aria-hidden="true">help_outline</span>
+                <span>Ask a Librarian</span>
+              </a>
+            </li>
+            <li role="none">
+              <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
+                <span class="material-icons text-base sm:text-lg" aria-hidden="true">info</span>
+                <span>Help (FAQ)</span>
+              </a>
+            </li>
+            <li role="none">
+              <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
+                <span class="material-icons text-base sm:text-lg" aria-hidden="true">search</span>
+                <span>Catalogue Search</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- Right Logo (kept) -->
+        <img alt="Trust logo" class="h-12 sm:h-14 hidden md:block" src="./assets/svu_trust.svg"/>
       </div>
     </div>
   </div>
-</div>
-</div>
 </header>
 <main id="main-content" class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
 <div class="bg-surface-light dark:bg-surface-dark p-8 rounded-lg shadow-lg text-center">
@@ -254,49 +256,19 @@
     // Accessibility & Preference Utilities
     const root = document.documentElement;
     const storageKey = (k) => `somaiya_pref_${k}`;
-    const qs = (sel) => document.querySelector(sel);
-
-    // Accessibility panel
-    const accToggle = qs('#accessibility-toggle');
-    const accPanel = qs('#accessibility-panel');
-    const accClose = qs('#accessibility-close');
-    let accOpen = false;
-
-    const openPanel = () => {
-      if (accOpen) return; accOpen = true;
-      accPanel.classList.remove('hidden');
-      accToggle.setAttribute('aria-expanded', 'true');
-      // focus first interactive element inside panel
-      setTimeout(() => {
-        const first = accPanel.querySelector('button, select');
-        first && first.focus();
-      }, 0);
-      document.addEventListener('keydown', escHandler);
-      document.addEventListener('mousedown', outsideHandler);
-    };
-    const closePanel = () => {
-      if (!accOpen) return; accOpen = false;
-      accPanel.classList.add('hidden');
-      accToggle.setAttribute('aria-expanded', 'false');
-      accToggle.focus();
-      document.removeEventListener('keydown', escHandler);
-      document.removeEventListener('mousedown', outsideHandler);
-    };
-    const escHandler = (e) => { if (e.key === 'Escape') closePanel(); };
-    const outsideHandler = (e) => { if (!accPanel.contains(e.target) && !accToggle.contains(e.target)) closePanel(); };
-    accToggle?.addEventListener('click', () => accOpen ? closePanel() : openPanel());
-    accClose?.addEventListener('click', closePanel);
 
     // Dark / Contrast Mode Toggle
     const contrastToggle = document.getElementById('contrast-toggle');
     const savedTheme = localStorage.getItem(storageKey('theme'));
     if (savedTheme === 'dark') root.classList.add('dark');
-    contrastToggle.setAttribute('aria-pressed', root.classList.contains('dark'));
-    contrastToggle.addEventListener('click', () => {
-      const isDark = root.classList.toggle('dark');
-      localStorage.setItem(storageKey('theme'), isDark ? 'dark' : 'light');
-      contrastToggle.setAttribute('aria-pressed', isDark);
-    });
+    if (contrastToggle) {
+      contrastToggle.setAttribute('aria-pressed', root.classList.contains('dark'));
+      contrastToggle.addEventListener('click', () => {
+        const isDark = root.classList.toggle('dark');
+        localStorage.setItem(storageKey('theme'), isDark ? 'dark' : 'light');
+        contrastToggle.setAttribute('aria-pressed', isDark);
+      });
+    }
 
     // Font Size Controls
     const incBtn = document.getElementById('font-increase');
@@ -310,40 +282,44 @@
     };
     applyFontScale();
     const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
-    incBtn.addEventListener('click', () => {
-      currentScale = clamp((currentScale + 0.1), 0.8, 1.6);
-      localStorage.setItem(storageKey('fontScale'), currentScale.toFixed(2));
-      applyFontScale();
-    });
-    decBtn.addEventListener('click', () => {
-      currentScale = clamp((currentScale - 0.1), 0.8, 1.6);
-      localStorage.setItem(storageKey('fontScale'), currentScale.toFixed(2));
-      applyFontScale();
-    });
+    if (incBtn && decBtn) {
+      incBtn.addEventListener('click', () => {
+        currentScale = clamp((currentScale + 0.1), 0.8, 1.6);
+        localStorage.setItem(storageKey('fontScale'), currentScale.toFixed(2));
+        applyFontScale();
+      });
+      decBtn.addEventListener('click', () => {
+        currentScale = clamp((currentScale - 0.1), 0.8, 1.6);
+        localStorage.setItem(storageKey('fontScale'), currentScale.toFixed(2));
+        applyFontScale();
+      });
+    }
 
     // Reduced Motion Toggle
     const motionToggle = document.getElementById('motion-toggle');
     const savedMotion = localStorage.getItem(storageKey('reducedMotion')) === 'true';
     if (savedMotion) root.classList.add('reduce-motion');
-    motionToggle.setAttribute('aria-pressed', savedMotion);
-    motionToggle.addEventListener('click', () => {
-      const newState = !root.classList.contains('reduce-motion');
-      root.classList.toggle('reduce-motion');
-      localStorage.setItem(storageKey('reducedMotion'), newState);
-      motionToggle.setAttribute('aria-pressed', newState);
-    });
+    if (motionToggle) {
+      motionToggle.setAttribute('aria-pressed', savedMotion);
+      motionToggle.addEventListener('click', () => {
+        const newState = !root.classList.contains('reduce-motion');
+        root.classList.toggle('reduce-motion');
+        localStorage.setItem(storageKey('reducedMotion'), newState);
+        motionToggle.setAttribute('aria-pressed', newState);
+      });
+    }
 
     // Optional: respond to prefers-reduced-motion if no explicit preference stored
     if (!localStorage.getItem(storageKey('reducedMotion'))) {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         root.classList.add('reduce-motion');
-        motionToggle.setAttribute('aria-pressed', true);
+        if (motionToggle) motionToggle.setAttribute('aria-pressed', true);
       }
     }
 
     // Basic language switch placeholder (non-functional demo)
     const langSwitch = document.getElementById('language-switch');
-    langSwitch.addEventListener('change', (e) => {
+    langSwitch?.addEventListener('change', (e) => {
       // Future: implement localization logic
       console.log('Language changed to', e.target.value);
     });
