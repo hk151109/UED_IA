@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Library Online Catalogue - My Account</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#A91D3A",
+            "background-light": "#F8F9FA",
+            "background-dark": "#121212",
+            "surface-light": "#FFFFFF",
+            "surface-dark": "#1E1E1E",
+            "text-light": "#212529",
+            "text-dark": "#E9ECEF",
+            "subtle-light": "#6C757D",
+            "subtle-dark": "#ADB5BD",
+            "accent-light": "#007BFF",
+            "accent-dark": "#00BFFF",
+          },
+          fontFamily: {
+            display: ["Inter", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.5rem",
+          },
+        },
+      },
+    };
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .clip-path-diagonal {
+      clip-path: polygon(60% 0, 100% 0, 100% 100%, 68% 100%);
+      background-color: #b91c1c;
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-primary text-white px-4 py-2 rounded-md z-50">Skip to main content</a>
+<div id="root">
+<header class="relative shadow-md">
+  <!-- Top accessibility bar with diagonal cut -->
+  <div class="relative h-9">
+    <div class="absolute top-0 left-0 w-full h-9 clip-path-diagonal z-0"></div>
+    <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 h-full">
+      <div class="flex items-center justify-end h-full gap-1 sm:gap-1 text-white">
+        <!-- Theme toggle -->
+        <button id="contrast-toggle" aria-label="Toggle dark or light theme" aria-pressed="false" class="flex items-center gap-1 px-3 h-8 rounded-full bg-white/90 text-gray-800 hover:bg-white focus:outline-none focus:ring-2 focus:ring-white/60 dark:bg-gray-800 dark:text-text-dark dark:hover:bg-gray-700">
+          <span class="material-icons text-base" aria-hidden="true">contrast</span>
+          <span class="hidden xl:inline text-xs font-medium tracking-wide">Theme</span>
+        </button>
+
+        <!-- Divider -->
+        <span class="hidden sm:block h-4 w-px bg-white/40" aria-hidden="true"></span>
+
+        <!-- Font size controls -->
+        <div class="flex items-center gap-1 sm:gap-2">
+          <button id="font-decrease" aria-label="Decrease font size" class="min-w-[2rem] h-8 px-2 flex items-center justify-center rounded-full bg-white/90 text-gray-800 hover:bg-white focus:outline-none focus:ring-2 focus:ring-white/60 dark:bg-gray-800 dark:text-text-dark dark:hover:bg-gray-700">
+            <span class="text-xs font-semibold tracking-wide">-A</span>
+          </button>
+          <div aria-live="polite" id="font-scale-indicator" class="text-[11px] font-medium opacity-90 select-none w-12 text-center text-white">100%</div>
+          <button id="font-increase" aria-label="Increase font size" class="min-w-[2rem] h-8 px-2 flex items-center justify-center rounded-full bg-white/90 text-gray-800 hover:bg-white focus:outline-none focus:ring-2 focus:ring-white/60 dark:bg-gray-800 dark:text-text-dark dark:hover:bg-gray-700">
+            <span class="text-xs font-semibold tracking-wide">+A</span>
+          </button>
+        </div>
+
+        <!-- Divider -->
+        <span class="hidden sm:block h-4 w-px bg-white/40" aria-hidden="true"></span>
+
+        <!-- Motion toggle -->
+        <button id="motion-toggle" aria-label="Toggle reduced motion" aria-pressed="false" class="flex items-center gap-1 px-3 h-8 rounded-full bg-white/90 text-gray-800 hover:bg-white focus:outline-none focus:ring-2 focus:ring-white/60 dark:bg-gray-800 dark:text-text-dark dark:hover:bg-gray-700">
+          <span class="material-icons text-base" aria-hidden="true">motion_photos_off</span>
+          <span class="hidden xl:inline text-xs font-medium tracking-wide">Motion</span>
+        </button>
+
+        <!-- Divider -->
+        <span class="hidden sm:block h-4 w-px bg-white/40" aria-hidden="true"></span>
+
+        <!-- Language switch -->
+        <label for="language-switch" class="sr-only">Change language</label>
+        <select id="language-switch" class="h-8 rounded-full border-0 bg-white/95 text-gray-800 text-xs px-3 pr-7 focus:ring-2 focus:ring-white/60 dark:bg-gray-800 dark:text-text-dark">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी</option>
+          <option value="mr">मराठी</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main navigation bar -->
+  <div class="bg-surface-light dark:bg-surface-dark">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center py-2 gap-4 lg:gap-8">
+        <!-- Left Logo (kept) -->
+        <div class="flex items-center space-x-4 shrink-0">
+          <img alt="Somaiya Vidyavihar logo" class="h-14 sm:h-16" src="./assets/svu_logo.svg"/>
+          <div class="hidden lg:block">
+            <!-- <h1 class="text-lg font-bold text-primary leading-tight">SOMAIYA VIDYAVIHAR</h1>
+            <p class="text-xs text-subtle-light dark:text-subtle-dark tracking-wide">Library Online Catalogue</p> -->
+          </div>
+        </div>
+        <!-- Primary Navigation -->
+        <nav aria-label="Primary" class="flex-1">
+          <ul class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm sm:text-base" role="menubar">
+            <li role="none">
+              <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="homepage.html">
+                <span class="material-icons text-base sm:text-lg" aria-hidden="true">home</span>
+                <span>Home</span>
+              </a>
+            </li>
+            <li role="none">
+              <a role="menuitem" class="flex items-center gap-1 text-primary font-medium focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="account.html">
+                <span class="material-icons text-base sm:text-lg" aria-hidden="true">person</span>
+                <span>My Account</span>
+              </a>
+            </li>
+            <li role="none">
+              <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="ask-librarian.html">
+                <span class="material-icons text-base sm:text-lg" aria-hidden="true">help_outline</span>
+                <span>Ask a Librarian</span>
+              </a>
+            </li>
+            <li role="none">
+              <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="faq.html">
+                <span class="material-icons text-base sm:text-lg" aria-hidden="true">info</span>
+                <span>Help (FAQ)</span>
+              </a>
+            </li>
+            <li role="none">
+              <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="catalogue.html">
+                <span class="material-icons text-base sm:text-lg" aria-hidden="true">search</span>
+                <span>Catalogue Search</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- Right Logo (kept) -->
+        <img alt="Trust logo" class="h-12 sm:h-14 hidden md:block" src="./assets/svu_trust.svg"/>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main-content" class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="flex items-center justify-between mb-4">
+    <h2 class="text-2xl font-semibold flex items-center text-text-light dark:text-text-dark">
+      <span class="material-icons mr-2">account_circle</span>
+      My Account
+    </h2>
+    <button class="text-sm text-primary hover:underline">Change Password</button>
+  </div>
+
+  <div class="bg-surface-light dark:bg-surface-dark p-4 rounded-lg shadow-md mb-6">
+    <div class="flex items-start space-x-4">
+      <img alt="User profile picture" class="h-16 w-16 rounded-full border-2 border-primary flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCl1FmtW9ZtueMuHyxK2HkGo8VPptvfv7aDN4HrsufO3yXYgCFVwW14lSLhVHwdDbyI5Ko4SEc9WPMH8sp34L91hGKpIKWcliJdPJGz7cZQdFr9gRcD3yzunjxMGiAt6xbPWvmHORfHW1Z9yG9D2ZwOsrNpPbWb30VwATlkBaITNWQi5LUxDO6fEhlYxtEKFCQXwhZfNujtCEpgkzwzIXWXVEIek9cGYdWnG8rwTM1kGhS91indxBjGeTQTaPhR0cF1FX4F8fqhYQ"/>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-bold text-text-light dark:text-text-dark truncate">Welcome! 1620221621 HARKRISHNAN GOPAL</h3>
+          <a class="text-xs text-primary hover:underline flex-shrink-0 ml-4" href="#">Edit Profile</a>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-1 mt-2 text-xs text-subtle-light dark:text-subtle-dark">
+          <div><span class="font-semibold">Member Type:</span> STUDENT</div>
+          <div><span class="font-semibold">Program:</span> B.TECH COMP</div>
+          <div><span class="font-semibold">Class:</span> BTCOMP4</div>
+          <div><span class="font-semibold">Semester:</span> VII</div>
+          <div><span class="font-semibold">Status:</span> <span class="text-green-600 dark:text-green-400 font-medium">ACTIVE</span></div>
+          <div><span class="font-semibold">Validity:</span> 23/5/2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-surface-light dark:bg-surface-dark p-3 rounded-lg shadow-md mb-4">
+    <h3 class="text-sm font-bold mb-2 flex items-center text-text-light dark:text-text-dark">
+      <span class="material-icons text-yellow-500 mr-1 text-lg">military_tech</span>
+      Library Achievements
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+      <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg shadow-sm flex items-center space-x-2">
+        <span class="material-icons text-xl text-green-500">emoji_events</span>
+        <div>
+          <p class="text-xs font-semibold text-text-light dark:text-text-dark">On-Time Returner</p>
+          <p class="text-xs text-subtle-light dark:text-subtle-dark">5 times earned!</p>
+        </div>
+      </div>
+      <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg shadow-sm flex items-center space-x-2">
+        <span class="material-icons text-xl text-blue-500">local_fire_department</span>
+        <div>
+          <p class="text-xs font-semibold text-text-light dark:text-text-dark">Borrowing Streak</p>
+          <p class="text-xs text-subtle-light dark:text-subtle-dark">3-month streak!</p>
+        </div>
+      </div>
+      <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg shadow-sm flex items-center space-x-2">
+        <span class="material-icons text-xl text-purple-500">workspace_premium</span>
+        <div>
+          <p class="text-xs font-semibold text-text-light dark:text-text-dark">Bookworm Badge</p>
+          <p class="text-xs text-subtle-light dark:text-subtle-dark">15 books this year!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-surface-light dark:bg-surface-dark p-6 rounded-lg shadow-md">
+    <div class="border-b border-gray-200 dark:border-gray-700 mb-4">
+      <nav aria-label="Tabs" class="-mb-px flex space-x-4 overflow-x-auto">
+        <a class="tab-link whitespace-nowrap py-2 px-1 border-b-2 font-medium text-xs border-primary text-primary" href="#" data-tab="borrowed-books">
+          Borrowed Books
+        </a>
+        <a class="tab-link whitespace-nowrap py-2 px-1 border-b-2 font-medium text-xs border-transparent text-subtle-light dark:text-subtle-dark hover:text-text-light dark:hover:text-text-dark hover:border-gray-300 dark:hover:border-gray-600" href="#" data-tab="requests">
+          Requests
+        </a>
+        <a class="tab-link whitespace-nowrap py-2 px-1 border-b-2 font-medium text-xs border-transparent text-subtle-light dark:text-subtle-dark hover:text-text-light dark:hover:text-text-dark hover:border-gray-300 dark:hover:border-gray-600" href="#" data-tab="policy">
+          Policy
+        </a>
+        <a class="tab-link whitespace-nowrap py-2 px-1 border-b-2 font-medium text-xs border-transparent text-subtle-light dark:text-subtle-dark hover:text-text-light dark:hover:text-text-dark hover:border-gray-300 dark:hover:border-gray-600" href="#" data-tab="reservation-details">
+          Reservation Details
+        </a>
+        <a class="tab-link whitespace-nowrap py-2 px-1 border-b-2 font-medium text-xs border-transparent text-subtle-light dark:text-subtle-dark hover:text-text-light dark:hover:text-text-dark hover:border-gray-300 dark:hover:border-gray-600" href="#" data-tab="deposit-fine">
+          Deposit Vs. Fine
+        </a>
+      </nav>
+    </div>
+
+    <!-- Borrowed Books Tab -->
+    <div id="borrowed-books" class="tab-content">
+      <h3 class="text-xl font-semibold mb-4 text-text-light dark:text-text-dark">Your Current Reads</h3>
+      <div class="bg-yellow-100 dark:bg-yellow-900/50 border-l-4 border-yellow-500 text-yellow-800 dark:text-yellow-200 p-4 rounded-md mb-6 relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-2 text-yellow-400 text-5xl opacity-20">
+          <span class="material-icons">event</span>
+        </div>
+        <div class="flex items-center">
+          <div class="py-1"><span class="material-icons text-yellow-600 mr-3">campaign</span></div>
+          <div>
+            <p class="font-bold">Heads Up!</p>
+            <p class="text-sm">One of your books is due in <span class="font-semibold text-yellow-900 dark:text-yellow-100">just 3 days!</span> Don't miss the deadline!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-gray-50 dark:bg-gray-700 rounded-lg shadow-md overflow-hidden border-2 border-yellow-500 transform hover:scale-105 transition-transform duration-300">
+          <div class="p-6">
+            <div class="flex items-start space-x-4">
+              <div class="w-1/3">
+                <img alt="Book cover for Applied Machine Learning" class="w-full h-auto object-cover rounded-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnKbt2gBQCbxIx8sNV-pwm7s5nx43g5m7UOCSNT9fw23bI5Tlv2UbH7miw3hri_p_3qwbP_OxtSVj0bXHfVS8HcOsHiMLaXz7cWgEbl0Lkx8vaXR9xRzDyAVgHmK0KYx_1-b-CYncbLuKmHsb3iDVkfKEvZEO0frIk5ZWxzZDexTLXtJ6L0oeuXyHYGlPTlxf88zXaSEdEvFb-dFKVvee378t8YZI61uk_APWoJDFFglPQuEK3-KvyuBtf2uAW2d0HEwkzNUIDvw"/>
+              </div>
+              <div class="w-2/3">
+                <p class="bg-yellow-200 text-yellow-800 text-xs font-bold mr-2 px-2.5 py-0.5 rounded-full inline-block mb-2">DUE SOON!</p>
+                <h4 class="text-lg font-bold text-gray-900 dark:text-white">APPLIED MACHINE LEARNING</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">by GOPAL M.</p>
+              </div>
+            </div>
+            <div class="mt-4 border-t border-gray-200 dark:border-gray-600 pt-4">
+              <div class="flex justify-between items-center mb-4">
+                <div class="text-left">
+                  <p class="text-sm text-gray-500 dark:text-gray-400">Due Date</p>
+                  <p class="text-md font-semibold text-gray-800 dark:text-gray-200">06/10/2025</p>
+                </div>
+                <div class="text-sm text-yellow-600 dark:text-yellow-400 font-medium flex items-center">
+                  <span class="material-icons text-base mr-1">alarm</span>
+                  3 Days Left!
+                </div>
+              </div>
+              <button class="w-full bg-primary text-white font-bold py-3 px-4 rounded-lg hover:bg-red-700 transition duration-300 flex items-center justify-center space-x-2 shadow-lg">
+                <span class="material-icons">autorenew</span>
+                <span>Renew Adventure!</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-gray-700 rounded-lg shadow-md overflow-hidden border-2 border-green-500 transform hover:scale-105 transition-transform duration-300">
+          <div class="p-6">
+            <div class="flex items-start space-x-4">
+              <div class="w-1/3">
+                <img alt="Book cover" class="w-full h-auto object-cover rounded-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3V5rHX1sIHSSNmWQagk-PpItmVfK1ElJwkDMqT3oOhqkxxtD6wIYjK_u4xVlkRLfGUsx62kVk9zZSuV_R537iBAiOolJ_rhH3ADAFwqcNc3rcpXSPUXZ_Pcw074vi3zpxPhSaHDSAMw4wy_A0hJPMIvEoM41LBLKsnYuu_u8DO3YwqMNGfVwY7KezFutkEw5qYA7F4hg9uiExc0_mihxxnk6khaJBZf4r1fgEHtQyCh6FGaz3GgzLWPz7V8PM3Js9HX9i7KsqDg"/>
+              </div>
+              <div class="w-2/3">
+                <p class="bg-green-200 text-green-800 text-xs font-bold mr-2 px-2.5 py-0.5 rounded-full inline-block mb-2">ACTIVE READ</p>
+                <h4 class="text-lg font-bold text-gray-900 dark:text-white">INTRODUCTION TO ALGORITHMS</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">by Thomas H. Cormen</p>
+              </div>
+            </div>
+            <div class="mt-4 border-t border-gray-200 dark:border-gray-600 pt-4">
+              <div class="flex justify-between items-center mb-4">
+                <div class="text-left">
+                  <p class="text-sm text-gray-500 dark:text-gray-400">Due Date</p>
+                  <p class="text-md font-semibold text-gray-800 dark:text-gray-200">11/25/2025</p>
+                </div>
+              </div>
+              <button class="w-full bg-primary text-white font-bold py-3 px-4 rounded-lg hover:bg-red-700 transition duration-300 flex items-center justify-center space-x-2 shadow-lg">
+                <span class="material-icons">autorenew</span>
+                <span>Renew Adventure!</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-gray-700 rounded-lg shadow-md overflow-hidden border-2 border-red-500 transform hover:scale-105 transition-transform duration-300">
+          <div class="p-6">
+            <div class="flex items-start space-x-4">
+              <div class="w-1/3">
+                <img alt="Book cover" class="w-full h-auto object-cover rounded-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDiCrEMBcrsGFlQxL3q4re4UuAvpG9xFPjpGNVBRcZxNtg5BFUc3RogXFlgMc2Sjxh6nZ3As2Sz2YmHldFo6cFcTd3fveQdh8QCGyjElQxGac-6M2eMZ93lgDbOFLIolvQmHEbnox49fEl2TsIKKKG2cgptpIy_I7uaQkcxuuVnLDFPOvEag47wdXT85DSDm2BJxl-hdN7fwSFCYZo6YvG49PlHyATcjLj9TGcHtPAi-WC962_VyfmoSzotvN1Tn_U5ym0aJ37Uw"/>
+              </div>
+              <div class="w-2/3">
+                <p class="bg-red-200 text-red-800 text-xs font-bold mr-2 px-2.5 py-0.5 rounded-full inline-block mb-2">OVERDUE!</p>
+                <h4 class="text-lg font-bold text-gray-900 dark:text-white">DATA STRUCTURES & ALGORITHMS</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">by Alfred Aho</p>
+              </div>
+            </div>
+            <div class="mt-4 border-t border-gray-200 dark:border-gray-600 pt-4">
+              <div class="flex justify-between items-center mb-4">
+                <div class="text-left">
+                  <p class="text-sm text-gray-500 dark:text-gray-400">Due Date</p>
+                  <p class="text-md font-semibold text-red-600 dark:text-red-400">09/01/2025</p>
+                </div>
+                <div class="text-sm text-red-600 dark:text-red-400 font-medium flex items-center">
+                  <span class="material-icons text-base mr-1">gpp_bad</span>
+                  Overdue!
+                </div>
+              </div>
+              <button class="w-full bg-gray-400 text-white font-bold py-3 px-4 rounded-lg cursor-not-allowed flex items-center justify-center space-x-2 shadow-lg" disabled="">
+                <span class="material-icons">lock</span>
+                <span>Renewal Blocked</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Requests Tab -->
+    <div id="requests" class="tab-content hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Request Form -->
+        <div>
+          <h3 class="text-lg font-semibold mb-3 text-text-light dark:text-text-dark flex items-center">
+            <span class="material-icons mr-2 text-primary">add_circle</span>
+            Submit Book Request
+          </h3>
+          <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 p-3 rounded-lg mb-4">
+            <div class="flex items-start space-x-2">
+              <span class="material-icons text-blue-600 dark:text-blue-400 text-sm mt-0.5">info</span>
+              <div>
+                <p class="text-xs text-blue-700 dark:text-blue-300">
+                  Can't find a book in our catalogue? Request it here and we'll try to acquire it for the library.
+                </p>
+              </div>
+            </div>
+          </div>
+          <form class="space-y-3">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div>
+                <label for="book-title" class="block text-xs font-medium text-text-light dark:text-text-dark mb-1">
+                  <span class="material-icons text-xs mr-1">book</span>Book Title *
+                </label>
+                <input type="text" id="book-title" name="book-title" required placeholder="Enter book title" class="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark focus:ring-2 focus:ring-primary focus:border-primary">
+              </div>
+              
+              <div>
+                <label for="author" class="block text-xs font-medium text-text-light dark:text-text-dark mb-1">
+                  <span class="material-icons text-xs mr-1">person</span>Author
+                </label>
+                <input type="text" id="author" name="author" placeholder="Author name" class="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark focus:ring-2 focus:ring-primary focus:border-primary">
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div>
+                <label for="isbn" class="block text-xs font-medium text-text-light dark:text-text-dark mb-1">
+                  <span class="material-icons text-xs mr-1">numbers</span>ISBN
+                </label>
+                <input type="text" id="isbn" name="isbn" placeholder="ISBN number" class="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark focus:ring-2 focus:ring-primary focus:border-primary">
+              </div>
+              
+              <div>
+                <label for="publisher" class="block text-xs font-medium text-text-light dark:text-text-dark mb-1">
+                  <span class="material-icons text-xs mr-1">business</span>Publisher
+                </label>
+                <input type="text" id="publisher" name="publisher" placeholder="Publisher name" class="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark focus:ring-2 focus:ring-primary focus:border-primary">
+              </div>
+            </div>
+            
+            <div>
+              <label for="request-reason" class="block text-xs font-medium text-text-light dark:text-text-dark mb-1">
+                <span class="material-icons text-xs mr-1">category</span>Why do you need this book? *
+              </label>
+              <select id="request-reason" name="request-reason" required class="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark focus:ring-2 focus:ring-primary focus:border-primary">
+                <option value="">Choose your reason...</option>
+                <option value="coursework">📚 Required for coursework</option>
+                <option value="research">🔬 Research purposes</option>
+                <option value="thesis">📝 Thesis/Project work</option>
+                <option value="personal">📖 Personal reading</option>
+                <option value="other">❓ Other reason</option>
+              </select>
+            </div>
+            
+            <div>
+              <label for="additional-info" class="block text-xs font-medium text-text-light dark:text-text-dark mb-1">
+                <span class="material-icons text-xs mr-1">note_add</span>Additional Details (Optional)
+              </label>
+              <textarea id="additional-info" name="additional-info" rows="2" class="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Any specific edition, urgency, or other details..."></textarea>
+            </div>
+            
+            <button type="submit" class="w-full bg-primary text-white font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition-colors text-sm flex items-center justify-center space-x-2">
+              <span class="material-icons text-sm">send</span>
+              <span>Submit Request</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Current Holds & Requests -->
+        <div>
+          <h3 class="text-lg font-semibold mb-3 text-text-light dark:text-text-dark flex items-center">
+            <span class="material-icons mr-2 text-primary">bookmark</span>
+            Your Holds & Requests (2)
+          </h3>
+          
+          <div class="space-y-3">
+            <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-3 bg-green-50 dark:bg-green-900/10">
+              <div class="flex items-start justify-between">
+                <div class="flex-1">
+                  <h4 class="text-sm font-medium text-text-light dark:text-text-dark">Artificial Intelligence: A Modern Approach</h4>
+                  <p class="text-xs text-subtle-light dark:text-subtle-dark">by Stuart Russell & Peter Norvig</p>
+                  <div class="flex items-center mt-1">
+                    <span class="material-icons text-green-600 text-sm mr-1">check_circle</span>
+                    <p class="text-xs text-green-600 dark:text-green-400 font-medium">Ready for pickup!</p>
+                  </div>
+                </div>
+                <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-2 py-1 rounded text-xs font-medium">
+                  Available
+                </span>
+              </div>
+            </div>
+
+            <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-3 bg-yellow-50 dark:bg-yellow-900/10">
+              <div class="flex items-start justify-between">
+                <div class="flex-1">
+                  <h4 class="text-sm font-medium text-text-light dark:text-text-dark">Machine Learning Yearning</h4>
+                  <p class="text-xs text-subtle-light dark:text-subtle-dark">by Andrew Ng</p>
+                  <div class="flex items-center mt-1">
+                    <span class="material-icons text-yellow-600 text-sm mr-1">hourglass_empty</span>
+                    <p class="text-xs text-subtle-light dark:text-subtle-dark">Position in queue: 3</p>
+                  </div>
+                </div>
+                <span class="bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 px-2 py-1 rounded text-xs font-medium">
+                  Waiting
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+            <div class="flex items-center space-x-2">
+              <span class="material-icons text-gray-500 text-sm">lightbulb</span>
+              <p class="text-xs text-subtle-light dark:text-subtle-dark">
+                <strong>Tip:</strong> You'll get an email when your requested books are available for pickup.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Policy Tab -->
+    <div id="policy" class="tab-content hidden">
+      <h3 class="text-xl font-semibold mb-4 text-text-light dark:text-text-dark">Library Policy</h3>
+      <div class="prose dark:prose-invert max-w-none">
+        <p class="text-subtle-light dark:text-subtle-dark mb-4">Please review our library policies and borrowing guidelines:</p>
+        
+        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+          <h4 class="font-semibold text-text-light dark:text-text-dark mb-2">Borrowing Limits</h4>
+          <ul class="text-sm text-subtle-light dark:text-subtle-dark space-y-1">
+            <li>• Students: 5 books maximum</li>
+            <li>• Faculty: 10 books maximum</li>
+            <li>• Loan period: 2 weeks (renewable)</li>
+          </ul>
+        </div>
+        
+        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mt-4">
+          <h4 class="font-semibold text-text-light dark:text-text-dark mb-2">Fines & Penalties</h4>
+          <ul class="text-sm text-subtle-light dark:text-subtle-dark space-y-1">
+            <li>• Overdue fine: ₹2 per day</li>
+            <li>• Lost book: Full replacement cost + processing fee</li>
+            <li>• Damaged book: Repair cost or replacement</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reservation Details Tab -->
+    <div id="reservation-details" class="tab-content hidden">
+      <h3 class="text-xl font-semibold mb-4 text-text-light dark:text-text-dark">Reservation Details</h3>
+      <p class="text-subtle-light dark:text-subtle-dark mb-4">You currently have no active reservations.</p>
+      
+      <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 p-4 rounded-lg">
+        <div class="flex items-start space-x-3">
+          <span class="material-icons text-blue-600 dark:text-blue-400 mt-0.5">info</span>
+          <div>
+            <h4 class="font-medium text-blue-800 dark:text-blue-200 mb-1">How Reservations Work</h4>
+            <p class="text-sm text-blue-700 dark:text-blue-300">
+              You can reserve books that are currently checked out. You'll be notified when they become available.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deposit Vs. Fine Deduction Tab -->
+    <div id="deposit-fine" class="tab-content hidden">
+      <h3 class="text-xl font-semibold mb-4 text-text-light dark:text-text-dark">Deposit Vs. Fine Deduction</h3>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+          <h4 class="font-semibold text-text-light dark:text-text-dark mb-2">Current Deposit</h4>
+          <p class="text-2xl font-bold text-green-600 dark:text-green-400">₹500</p>
+          <p class="text-sm text-subtle-light dark:text-subtle-dark">Security deposit on file</p>
+        </div>
+        
+        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+          <h4 class="font-semibold text-text-light dark:text-text-dark mb-2">Outstanding Fines</h4>
+          <p class="text-2xl font-bold text-red-600 dark:text-red-400">₹14</p>
+          <p class="text-sm text-subtle-light dark:text-subtle-dark">To be deducted from deposit</p>
+        </div>
+      </div>
+      
+      <div class="mt-6">
+        <h4 class="font-semibold text-text-light dark:text-text-dark mb-2">Recent Transactions</h4>
+        <div class="space-y-2">
+          <div class="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-800 rounded">
+            <span class="text-sm text-text-light dark:text-text-dark">Overdue fine - Oct 1, 2024</span>
+            <span class="text-sm text-red-600 dark:text-red-400">-₹14</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="bg-surface-light dark:bg-surface-dark border-t border-gray-200 dark:border-gray-700 mt-12 py-6">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-subtle-light dark:text-subtle-dark text-sm">
+<p>© 2024 Somaiya Vidyavihar. All rights reserved.</p>
+<div class="mt-2">
+<a class="hover:underline" href="#">Legal Notice</a>
+<span class="mx-2">|</span>
+<a class="hover:underline" href="#">Usage Policy</a>
+<span class="mx-2">|</span>
+<a class="hover:underline" href="#">Accessibility Statement</a>
+</div>
+</div>
+</footer>
+</div>
+
+<script>
+    // Accessibility & Preference Utilities
+    const root = document.documentElement;
+    const storageKey = (k) => `somaiya_pref_${k}`;
+
+    // Dark / Contrast Mode Toggle
+    const contrastToggle = document.getElementById('contrast-toggle');
+    const savedTheme = localStorage.getItem(storageKey('theme'));
+    if (savedTheme === 'dark') root.classList.add('dark');
+    if (contrastToggle) {
+      contrastToggle.setAttribute('aria-pressed', root.classList.contains('dark'));
+      contrastToggle.addEventListener('click', () => {
+        const isDark = root.classList.toggle('dark');
+        localStorage.setItem(storageKey('theme'), isDark ? 'dark' : 'light');
+        contrastToggle.setAttribute('aria-pressed', isDark);
+      });
+    }
+
+    // Font Size Controls
+    const incBtn = document.getElementById('font-increase');
+    const decBtn = document.getElementById('font-decrease');
+    const fontIndicator = document.getElementById('font-scale-indicator');
+    const baseSize = 1; // rem
+    let currentScale = parseFloat(localStorage.getItem(storageKey('fontScale'))) || 1;
+    const applyFontScale = () => {
+      document.body.style.fontSize = `${baseSize * currentScale}rem`;
+      if (fontIndicator) fontIndicator.textContent = `${Math.round(currentScale * 100)}%`;
+    };
+    applyFontScale();
+    const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
+    if (incBtn && decBtn) {
+      incBtn.addEventListener('click', () => {
+        currentScale = clamp((currentScale + 0.1), 0.8, 1.6);
+        localStorage.setItem(storageKey('fontScale'), currentScale.toFixed(2));
+        applyFontScale();
+      });
+      decBtn.addEventListener('click', () => {
+        currentScale = clamp((currentScale - 0.1), 0.8, 1.6);
+        localStorage.setItem(storageKey('fontScale'), currentScale.toFixed(2));
+        applyFontScale();
+      });
+    }
+
+    // Reduced Motion Toggle
+    const motionToggle = document.getElementById('motion-toggle');
+    const savedMotion = localStorage.getItem(storageKey('reducedMotion')) === 'true';
+    if (savedMotion) root.classList.add('reduce-motion');
+    if (motionToggle) {
+      motionToggle.setAttribute('aria-pressed', savedMotion);
+      motionToggle.addEventListener('click', () => {
+        const newState = !root.classList.contains('reduce-motion');
+        root.classList.toggle('reduce-motion');
+        localStorage.setItem(storageKey('reducedMotion'), newState);
+        motionToggle.setAttribute('aria-pressed', newState);
+      });
+    }
+
+    // Optional: respond to prefers-reduced-motion if no explicit preference stored
+    if (!localStorage.getItem(storageKey('reducedMotion'))) {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        root.classList.add('reduce-motion');
+        if (motionToggle) motionToggle.setAttribute('aria-pressed', true);
+      }
+    }
+
+    // Basic language switch placeholder (non-functional demo)
+    const langSwitch = document.getElementById('language-switch');
+    langSwitch?.addEventListener('change', (e) => {
+      // Future: implement localization logic
+      console.log('Language changed to', e.target.value);
+    });
+
+    // Tab functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabLinks = document.querySelectorAll('.tab-link');
+      const tabContents = document.querySelectorAll('.tab-content');
+
+      tabLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // Remove active class from all tabs
+          tabLinks.forEach(l => {
+            l.classList.remove('border-primary', 'text-primary');
+            l.classList.add('border-transparent', 'text-subtle-light', 'dark:text-subtle-dark');
+          });
+          
+          // Add active class to clicked tab
+          this.classList.remove('border-transparent', 'text-subtle-light', 'dark:text-subtle-dark');
+          this.classList.add('border-primary', 'text-primary');
+          
+          // Hide all tab contents
+          tabContents.forEach(content => {
+            content.classList.add('hidden');
+          });
+          
+          // Show selected tab content
+          const targetTab = this.getAttribute('data-tab');
+          const targetContent = document.getElementById(targetTab);
+          if (targetContent) {
+            targetContent.classList.remove('hidden');
+          }
+        });
+      });
+    });
+  </script>
+</body></html>
