@@ -48,8 +48,8 @@
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-primary text-white px-4 py-2 rounded-md z-50">Skip to main content</a>
 <div id="root">
 <header class="relative shadow-md">
-  <!-- Top accessibility bar with diagonal cut -->
-  <div class="relative h-9">
+  <!-- Top accessibility bar with diagonal cut (hidden on mobile) -->
+  <div class="relative h-9 hidden md:block">
     <div class="absolute top-0 left-0 w-full h-9 clip-path-diagonal z-0"></div>
     <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 h-full">
       <div class="flex items-center justify-end h-full gap-1 sm:gap-1 text-white">
@@ -100,51 +100,198 @@
   <div class="bg-surface-light dark:bg-surface-dark">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center py-2 gap-4 lg:gap-8">
-        <!-- Left Logo (kept) -->
+        <!-- Left Logo -->
         <div class="flex items-center space-x-4 shrink-0">
-          <img alt="Somaiya Vidyavihar logo" class="h-14 sm:h-16" src="./assets/svu_logo.svg"/>
+          <img alt="Somaiya Vidyavihar logo" class="h-12 sm:h-14 md:h-16" src="./assets/svu_logo.svg"/>
           <div class="hidden lg:block">
             <!-- <h1 class="text-lg font-bold text-primary leading-tight">SOMAIYA VIDYAVIHAR</h1>
             <p class="text-xs text-subtle-light dark:text-subtle-dark tracking-wide">Library Online Catalogue</p> -->
           </div>
         </div>
-        <!-- Primary Navigation -->
-        <nav aria-label="Primary" class="flex-1">
-          <ul class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm sm:text-base" role="menubar">
+
+        <!-- Mobile Navigation Controls -->
+        <div class="flex items-center gap-2 ml-auto md:hidden">
+          <!-- Mobile Accessibility Button -->
+          <button id="mobile-accessibility-toggle" aria-label="Open accessibility options" class="p-2 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-primary">
+            <span class="material-icons text-lg text-gray-600 dark:text-gray-300">accessibility</span>
+          </button>
+          
+          <!-- Mobile Menu Toggle -->
+          <button id="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false" class="p-2 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-primary">
+            <span class="material-icons text-lg text-gray-600 dark:text-gray-300">menu</span>
+          </button>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav aria-label="Primary" class="flex-1 hidden md:block">
+          <ul class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm lg:text-base" role="menubar">
             <li role="none">
               <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="homepage.html">
-                <span class="material-icons text-base sm:text-lg" aria-hidden="true">home</span>
+                <span class="material-icons text-base lg:text-lg" aria-hidden="true">home</span>
                 <span>Home</span>
               </a>
             </li>
             <li role="none">
               <a role="menuitem" class="flex items-center gap-1 text-primary font-medium focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="account.html">
-                <span class="material-icons text-base sm:text-lg" aria-hidden="true">person</span>
+                <span class="material-icons text-base lg:text-lg" aria-hidden="true">person</span>
                 <span>My Account</span>
               </a>
             </li>
             <li role="none">
               <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="ask-librarian.html">
-                <span class="material-icons text-base sm:text-lg" aria-hidden="true">help_outline</span>
+                <span class="material-icons text-base lg:text-lg" aria-hidden="true">help_outline</span>
                 <span>Ask a Librarian</span>
               </a>
             </li>
             <li role="none">
               <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="faq.html">
-                <span class="material-icons text-base sm:text-lg" aria-hidden="true">info</span>
+                <span class="material-icons text-base lg:text-lg" aria-hidden="true">info</span>
                 <span>Help (FAQ)</span>
               </a>
             </li>
             <li role="none">
               <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="catalogue.html">
-                <span class="material-icons text-base sm:text-lg" aria-hidden="true">search</span>
+                <span class="material-icons text-base lg:text-lg" aria-hidden="true">search</span>
                 <span>Catalogue Search</span>
               </a>
             </li>
           </ul>
         </nav>
-        <!-- Right Logo (kept) -->
-        <img alt="Trust logo" class="h-12 sm:h-14 hidden md:block" src="./assets/svu_trust.svg"/>
+
+        <!-- Right Logo (Desktop only) -->
+        <img alt="Trust logo" class="h-12 sm:h-14 hidden lg:block" src="./assets/svu_trust.svg"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation Menu (Hidden by default) -->
+  <div id="mobile-menu" class="fixed inset-0 z-50 hidden md:hidden">
+    <!-- Backdrop -->
+    <div class="fixed inset-0 bg-black bg-opacity-50" id="mobile-menu-backdrop"></div>
+    
+    <!-- Menu Panel -->
+    <div class="fixed inset-y-0 right-0 w-80 max-w-full bg-surface-light dark:bg-surface-dark shadow-xl transform transition-transform">
+      <!-- Menu Header -->
+      <div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+        <h2 class="text-lg font-semibold text-text-light dark:text-text-dark">Navigation</h2>
+        <button id="mobile-menu-close" aria-label="Close navigation menu" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
+          <span class="material-icons text-lg text-gray-600 dark:text-gray-300">close</span>
+        </button>
+      </div>
+      
+      <!-- Menu Content -->
+      <div class="flex-1 overflow-y-auto p-4">
+        <nav aria-label="Mobile Navigation">
+          <ul class="space-y-2">
+            <li>
+              <a class="flex items-center gap-3 p-3 rounded-lg text-subtle-light dark:text-subtle-dark hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary" href="homepage.html">
+                <span class="material-icons text-xl" aria-hidden="true">home</span>
+                <span class="font-medium">Home</span>
+              </a>
+            </li>
+            <li>
+              <a class="flex items-center gap-3 p-3 rounded-lg text-primary bg-red-50 dark:bg-red-900/20 font-medium focus:outline-none focus:ring-2 focus:ring-primary" href="account.html">
+                <span class="material-icons text-xl" aria-hidden="true">person</span>
+                <span>My Account</span>
+              </a>
+            </li>
+            <li>
+              <a class="flex items-center gap-3 p-3 rounded-lg text-subtle-light dark:text-subtle-dark hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary" href="ask-librarian.html">
+                <span class="material-icons text-xl" aria-hidden="true">help_outline</span>
+                <span class="font-medium">Ask a Librarian</span>
+              </a>
+            </li>
+            <li>
+              <a class="flex items-center gap-3 p-3 rounded-lg text-subtle-light dark:text-subtle-dark hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary" href="faq.html">
+                <span class="material-icons text-xl" aria-hidden="true">info</span>
+                <span class="font-medium">Help (FAQ)</span>
+              </a>
+            </li>
+            <li>
+              <a class="flex items-center gap-3 p-3 rounded-lg text-subtle-light dark:text-subtle-dark hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary" href="catalogue.html">
+                <span class="material-icons text-xl" aria-hidden="true">search</span>
+                <span class="font-medium">Catalogue Search</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Accessibility Menu (Hidden by default) -->
+  <div id="mobile-accessibility-menu" class="fixed inset-0 z-50 hidden md:hidden">
+    <!-- Backdrop -->
+    <div class="fixed inset-0 bg-black bg-opacity-50" id="accessibility-menu-backdrop"></div>
+    
+    <!-- Menu Panel -->
+    <div class="fixed inset-y-0 right-0 w-80 max-w-full bg-surface-light dark:bg-surface-dark shadow-xl transform transition-transform">
+      <!-- Menu Header -->
+      <div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+        <h2 class="text-lg font-semibold text-text-light dark:text-text-dark flex items-center gap-2">
+          <span class="material-icons text-primary">accessibility</span>
+          Accessibility
+        </h2>
+        <button id="accessibility-menu-close" aria-label="Close accessibility menu" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
+          <span class="material-icons text-lg text-gray-600 dark:text-gray-300">close</span>
+        </button>
+      </div>
+      
+      <!-- Menu Content -->
+      <div class="flex-1 overflow-y-auto p-4 space-y-4">
+        <!-- Theme Toggle -->
+        <div class="p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+          <h3 class="text-sm font-semibold text-text-light dark:text-text-dark mb-2 flex items-center gap-2">
+            <span class="material-icons text-base">contrast</span>
+            Theme
+          </h3>
+          <button id="mobile-contrast-toggle" aria-label="Toggle dark or light theme" aria-pressed="false" class="w-full flex items-center justify-between p-3 rounded-lg bg-white dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-primary">
+            <span class="text-sm font-medium text-text-light dark:text-text-dark">Dark Mode</span>
+            <span class="material-icons text-text-light dark:text-text-dark">toggle_off</span>
+          </button>
+        </div>
+
+        <!-- Font Size Controls -->
+        <div class="p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+          <h3 class="text-sm font-semibold text-text-light dark:text-text-dark mb-2 flex items-center gap-2">
+            <span class="material-icons text-base">text_fields</span>
+            Font Size
+          </h3>
+          <div class="flex items-center justify-between">
+            <button id="mobile-font-decrease" aria-label="Decrease font size" class="flex items-center justify-center w-10 h-10 rounded-lg bg-white dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-primary">
+              <span class="text-sm font-semibold text-text-light dark:text-text-dark">-A</span>
+            </button>
+            <div aria-live="polite" id="mobile-font-scale-indicator" class="text-sm font-medium text-text-light dark:text-text-dark">100%</div>
+            <button id="mobile-font-increase" aria-label="Increase font size" class="flex items-center justify-center w-10 h-10 rounded-lg bg-white dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-primary">
+              <span class="text-sm font-semibold text-text-light dark:text-text-dark">+A</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Motion Toggle -->
+        <div class="p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+          <h3 class="text-sm font-semibold text-text-light dark:text-text-dark mb-2 flex items-center gap-2">
+            <span class="material-icons text-base">motion_photos_off</span>
+            Motion
+          </h3>
+          <button id="mobile-motion-toggle" aria-label="Toggle reduced motion" aria-pressed="false" class="w-full flex items-center justify-between p-3 rounded-lg bg-white dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-primary">
+            <span class="text-sm font-medium text-text-light dark:text-text-dark">Reduce Motion</span>
+            <span class="material-icons text-text-light dark:text-text-dark">toggle_off</span>
+          </button>
+        </div>
+
+        <!-- Language Switch -->
+        <div class="p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+          <h3 class="text-sm font-semibold text-text-light dark:text-text-dark mb-2 flex items-center gap-2">
+            <span class="material-icons text-base">language</span>
+            Language
+          </h3>
+          <select id="mobile-language-switch" class="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-text-light dark:text-text-dark focus:ring-2 focus:ring-primary focus:border-primary">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+            <option value="mr">मराठी</option>
+          </select>
+        </div>
       </div>
     </div>
   </div>
@@ -1212,5 +1359,159 @@
           break;
       }
     }
+
+    // Mobile menu functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileMenuClose = document.getElementById('mobile-menu-close');
+      const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
+
+      const accessibilityToggle = document.getElementById('mobile-accessibility-toggle');
+      const accessibilityMenu = document.getElementById('mobile-accessibility-menu');
+      const accessibilityClose = document.getElementById('accessibility-menu-close');
+      const accessibilityBackdrop = document.getElementById('accessibility-menu-backdrop');
+
+      // Mobile navigation menu
+      if (mobileMenuToggle && mobileMenu) {
+        const openMobileMenu = () => {
+          mobileMenu.classList.remove('hidden');
+          mobileMenuToggle.setAttribute('aria-expanded', 'true');
+          document.body.style.overflow = 'hidden';
+        };
+
+        const closeMobileMenu = () => {
+          mobileMenu.classList.add('hidden');
+          mobileMenuToggle.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        };
+
+        mobileMenuToggle.addEventListener('click', openMobileMenu);
+        mobileMenuClose?.addEventListener('click', closeMobileMenu);
+        mobileMenuBackdrop?.addEventListener('click', closeMobileMenu);
+
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+            closeMobileMenu();
+          }
+        });
+      }
+
+      // Mobile accessibility menu
+      if (accessibilityToggle && accessibilityMenu) {
+        const openAccessibilityMenu = () => {
+          accessibilityMenu.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        };
+
+        const closeAccessibilityMenu = () => {
+          accessibilityMenu.classList.add('hidden');
+          document.body.style.overflow = '';
+        };
+
+        accessibilityToggle.addEventListener('click', openAccessibilityMenu);
+        accessibilityClose?.addEventListener('click', closeAccessibilityMenu);
+        accessibilityBackdrop?.addEventListener('click', closeAccessibilityMenu);
+
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && !accessibilityMenu.classList.contains('hidden')) {
+            closeAccessibilityMenu();
+          }
+        });
+      }
+
+      // Mobile accessibility controls sync with desktop
+      const mobileContrastToggle = document.getElementById('mobile-contrast-toggle');
+      const mobileFontIncrease = document.getElementById('mobile-font-increase');
+      const mobileFontDecrease = document.getElementById('mobile-font-decrease');
+      const mobileMotionToggle = document.getElementById('mobile-motion-toggle');
+      const mobileLanguageSwitch = document.getElementById('mobile-language-switch');
+      const mobileFontIndicator = document.getElementById('mobile-font-scale-indicator');
+
+      // Sync mobile controls with desktop
+      if (mobileContrastToggle) {
+        mobileContrastToggle.addEventListener('click', () => {
+          const isDark = root.classList.toggle('dark');
+          localStorage.setItem(storageKey('theme'), isDark ? 'dark' : 'light');
+          
+          // Update button states
+          const toggleIcon = mobileContrastToggle.querySelector('.material-icons');
+          toggleIcon.textContent = isDark ? 'toggle_on' : 'toggle_off';
+          mobileContrastToggle.setAttribute('aria-pressed', isDark);
+          
+          // Sync with desktop toggle
+          if (contrastToggle) {
+            contrastToggle.setAttribute('aria-pressed', isDark);
+          }
+        });
+
+        // Initialize mobile toggle state
+        const isDark = root.classList.contains('dark');
+        const toggleIcon = mobileContrastToggle.querySelector('.material-icons');
+        toggleIcon.textContent = isDark ? 'toggle_on' : 'toggle_off';
+        mobileContrastToggle.setAttribute('aria-pressed', isDark);
+      }
+
+      if (mobileFontIncrease && mobileFontDecrease) {
+        const updateMobileFontIndicator = () => {
+          if (mobileFontIndicator) {
+            mobileFontIndicator.textContent = `${Math.round(currentScale * 100)}%`;
+          }
+        };
+
+        mobileFontIncrease.addEventListener('click', () => {
+          currentScale = clamp((currentScale + 0.1), 0.8, 1.6);
+          localStorage.setItem(storageKey('fontScale'), currentScale.toFixed(2));
+          applyFontScale();
+          updateMobileFontIndicator();
+        });
+
+        mobileFontDecrease.addEventListener('click', () => {
+          currentScale = clamp((currentScale - 0.1), 0.8, 1.6);
+          localStorage.setItem(storageKey('fontScale'), currentScale.toFixed(2));
+          applyFontScale();
+          updateMobileFontIndicator();
+        });
+
+        // Initialize mobile font indicator
+        updateMobileFontIndicator();
+      }
+
+      if (mobileMotionToggle) {
+        mobileMotionToggle.addEventListener('click', () => {
+          const newState = !root.classList.contains('reduce-motion');
+          root.classList.toggle('reduce-motion');
+          localStorage.setItem(storageKey('reducedMotion'), newState);
+          
+          // Update button state
+          const toggleIcon = mobileMotionToggle.querySelector('.material-icons');
+          toggleIcon.textContent = newState ? 'toggle_on' : 'toggle_off';
+          mobileMotionToggle.setAttribute('aria-pressed', newState);
+          
+          // Sync with desktop toggle
+          if (motionToggle) {
+            motionToggle.setAttribute('aria-pressed', newState);
+          }
+        });
+
+        // Initialize mobile motion toggle state
+        const savedMotion = localStorage.getItem(storageKey('reducedMotion')) === 'true';
+        const toggleIcon = mobileMotionToggle.querySelector('.material-icons');
+        toggleIcon.textContent = savedMotion ? 'toggle_on' : 'toggle_off';
+        mobileMotionToggle.setAttribute('aria-pressed', savedMotion);
+      }
+
+      if (mobileLanguageSwitch) {
+        mobileLanguageSwitch.addEventListener('change', (e) => {
+          console.log('Mobile language changed to', e.target.value);
+          // Sync with desktop select if it exists
+          if (langSwitch) {
+            langSwitch.value = e.target.value;
+          }
+        });
+      }
+    });
   </script>
 </body></html>
