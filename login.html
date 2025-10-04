@@ -38,64 +38,118 @@
     body {
       font-family: 'Inter', sans-serif;
     }
+    .clip-path-diagonal {
+      clip-path: polygon(60% 0, 100% 0, 100% 100%, 68% 100%);
+      background-color: #b91c1c;
+    }
   </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-primary text-white px-4 py-2 rounded-md z-50">Skip to main content</a>
 <div id="root">
-<header class="bg-surface-light dark:bg-surface-dark shadow-md">
-<div class="container mx-auto px-4 sm:px-6 lg:px-8">
-<div class="flex items-center py-4 gap-4 lg:gap-8">
-  <!-- Left Logo -->
-  <div class="flex items-center space-x-4 shrink-0">
-    <img alt="Somaiya Vidyavihar logo" class="h-14 sm:h-16" src="./assets/svu_logo.svg"/>
-    <div class="hidden lg:block">
-      <!-- <h1 class="text-lg font-bold text-primary leading-tight">SOMAIYA VIDYAVIHAR</h1>
-      <p class="text-xs text-subtle-light dark:text-subtle-dark tracking-wide">Library Online Catalogue</p> -->
+<header class="relative shadow-md">
+  <!-- Top accessibility bar with diagonal cut -->
+  <div class="relative h-9">
+    <div class="absolute top-0 left-0 w-full h-9 clip-path-diagonal z-0"></div>
+    <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 h-full">
+      <div class="flex items-center justify-end h-full gap-1 sm:gap-1 text-white">
+        <!-- Theme toggle -->
+        <button id="contrast-toggle" aria-label="Toggle dark or light theme" aria-pressed="false" class="flex items-center gap-1 px-3 h-8 rounded-full bg-white/90 text-gray-800 hover:bg-white focus:outline-none focus:ring-2 focus:ring-white/60 dark:bg-gray-800 dark:text-text-dark dark:hover:bg-gray-700">
+          <span class="material-icons text-base" aria-hidden="true">contrast</span>
+          <span class="hidden xl:inline text-xs font-medium tracking-wide">Theme</span>
+        </button>
+
+        <!-- Divider -->
+        <span class="hidden sm:block h-4 w-px bg-white/40" aria-hidden="true"></span>
+
+        <!-- Font size controls -->
+        <div class="flex items-center gap-1 sm:gap-2">
+          <button id="font-decrease" aria-label="Decrease font size" class="min-w-[2rem] h-8 px-2 flex items-center justify-center rounded-full bg-white/90 text-gray-800 hover:bg-white focus:outline-none focus:ring-2 focus:ring-white/60 dark:bg-gray-800 dark:text-text-dark dark:hover:bg-gray-700">
+            <span class="text-xs font-semibold tracking-wide">-A</span>
+          </button>
+          <div aria-live="polite" id="font-scale-indicator" class="text-[11px] font-medium opacity-90 select-none w-12 text-center text-white">100%</div>
+          <button id="font-increase" aria-label="Increase font size" class="min-w-[2rem] h-8 px-2 flex items-center justify-center rounded-full bg-white/90 text-gray-800 hover:bg-white focus:outline-none focus:ring-2 focus:ring-white/60 dark:bg-gray-800 dark:text-text-dark dark:hover:bg-gray-700">
+            <span class="text-xs font-semibold tracking-wide">+A</span>
+          </button>
+        </div>
+
+        <!-- Divider -->
+        <span class="hidden sm:block h-4 w-px bg-white/40" aria-hidden="true"></span>
+
+        <!-- Motion toggle -->
+        <button id="motion-toggle" aria-label="Toggle reduced motion" aria-pressed="false" class="flex items-center gap-1 px-3 h-8 rounded-full bg-white/90 text-gray-800 hover:bg-white focus:outline-none focus:ring-2 focus:ring-white/60 dark:bg-gray-800 dark:text-text-dark dark:hover:bg-gray-700">
+          <span class="material-icons text-base" aria-hidden="true">motion_photos_off</span>
+          <span class="hidden xl:inline text-xs font-medium tracking-wide">Motion</span>
+        </button>
+
+        <!-- Divider -->
+        <span class="hidden sm:block h-4 w-px bg-white/40" aria-hidden="true"></span>
+
+        <!-- Language switch -->
+        <label for="language-switch" class="sr-only">Change language</label>
+        <select id="language-switch" class="h-8 rounded-full border-0 bg-white/95 text-gray-800 text-xs px-3 pr-7 focus:ring-2 focus:ring-white/60 dark:bg-gray-800 dark:text-text-dark">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी</option>
+          <option value="mr">मराठी</option>
+        </select>
+      </div>
     </div>
   </div>
-  <!-- Primary Navigation -->
-  <nav aria-label="Primary" class="flex-1">
-    <ul class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm sm:text-base" role="menubar">
-      <li role="none">
-        <a role="menuitem" class="flex items-center gap-1 text-primary font-medium focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
-          <span class="material-icons text-base sm:text-lg" aria-hidden="true">home</span>
-          <span>Home</span>
-        </a>
-      </li>
-      <li role="none">
-        <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
-          <span class="material-icons text-base sm:text-lg" aria-hidden="true">person</span>
-          <span>My Account</span>
-        </a>
-      </li>
-      <li role="none">
-        <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
-          <span class="material-icons text-base sm:text-lg" aria-hidden="true">help_outline</span>
-          <span>Ask a Librarian</span>
-        </a>
-      </li>
-      <li role="none">
-        <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
-          <span class="material-icons text-base sm:text-lg" aria-hidden="true">info</span>
-          <span>Help (FAQ)</span>
-        </a>
-      </li>
-      <li role="none">
-        <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
-          <span class="material-icons text-base sm:text-lg" aria-hidden="true">search</span>
-          <span>Catalogue Search</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <!-- Accessibility / Utilities (condensed) -->
-  <div class="relative flex items-center gap-3">
-    <button id="accessibility-toggle" aria-haspopup="dialog" aria-expanded="false" aria-controls="accessibility-panel" class="flex items-center gap-1 px-3 h-10 rounded-full bg-gray-100 dark:bg-gray-800 text-subtle-light dark:text-subtle-dark hover:text-text-light dark:hover:text-text-dark hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
-      <span class="material-icons" aria-hidden="true">tune</span>
-      <span class="hidden xl:inline text-xs font-medium tracking-wide">Accessibility</span>
-    </button>
-    <img alt="Trust logo" class="h-12 sm:h-14 hidden md:block" src="./assets/svu_trust.svg"/>
+
+  <!-- Main navigation bar -->
+  <div class="bg-surface-light dark:bg-surface-dark">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center py-2 gap-4 lg:gap-8">
+        <!-- Left Logo (kept) -->
+        <div class="flex items-center space-x-4 shrink-0">
+          <img alt="Somaiya Vidyavihar logo" class="h-14 sm:h-16" src="./assets/svu_logo.svg"/>
+          <div class="hidden lg:block">
+            <!-- <h1 class="text-lg font-bold text-primary leading-tight">SOMAIYA VIDYAVIHAR</h1>
+            <p class="text-xs text-subtle-light dark:text-subtle-dark tracking-wide">Library Online Catalogue</p> -->
+          </div>
+        </div>
+        <!-- Primary Navigation -->
+        <nav aria-label="Primary" class="flex-1">
+          <ul class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm sm:text-base" role="menubar">
+            <li role="none">
+              <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="homepage.html">
+                <span class="material-icons text-base sm:text-lg" aria-hidden="true">home</span>
+                <span>Home</span>
+              </a>
+            </li>
+            <li role="none">
+              <a role="menuitem" class="flex items-center gap-1 text-primary font-medium focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="login.html">
+                <span class="material-icons text-base sm:text-lg" aria-hidden="true">person</span>
+                <span>My Account</span>
+              </a>
+            </li>
+            <li role="none">
+              <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="ask-librarian.html">
+                <span class="material-icons text-base sm:text-lg" aria-hidden="true">help_outline</span>
+                <span>Ask a Librarian</span>
+              </a>
+            </li>
+            <li role="none">
+              <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="faq.html">
+                <span class="material-icons text-base sm:text-lg" aria-hidden="true">info</span>
+                <span>Help (FAQ)</span>
+              </a>
+            </li>
+            <li role="none">
+              <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="catalogue.html">
+                <span class="material-icons text-base sm:text-lg" aria-hidden="true">search</span>
+                <span>Catalogue Search</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- Right Logo (kept) -->
+        <img alt="Trust logo" class="h-12 sm:h-14 hidden md:block" src="./assets/svu_trust.svg"/>
+      </div>
+    </div>
+  </div>
+</header>
+
     <div id="accessibility-panel" role="dialog" aria-label="Accessibility settings" class="hidden absolute right-0 top-full mt-2 w-72 max-w-[90vw] bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 shadow-lg rounded-lg p-4 z-40">
       <div class="flex items-center justify-between mb-2">
         <h2 class="text-sm font-semibold tracking-wide text-text-light dark:text-text-dark">Accessibility</h2>
@@ -146,60 +200,60 @@
 </header>
 <main id="main-content" class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
 <div class="flex items-center justify-center min-h-[calc(100vh-200px)]">
-<div class="w-full max-w-md space-y-8 bg-surface-light dark:bg-surface-dark p-10 rounded-lg shadow-lg">
+<div class="w-full max-w-md space-y-6 bg-surface-light dark:bg-surface-dark p-6 rounded-lg shadow-lg">
 <div>
-<h2 class="mt-6 text-center text-3xl font-extrabold text-text-light dark:text-text-dark">
+<h2 class="mt-4 text-center text-2xl font-extrabold text-text-light dark:text-text-dark">
                     Library Login
                 </h2>
 </div>
-<form action="#" class="mt-8 space-y-6" method="POST">
+<form action="#" class="mt-6 space-y-4" method="POST">
 <input name="remember" type="hidden" value="true"/>
 <div class="rounded-md shadow-sm -space-y-px">
-<div class="mb-4">
-<label class="block text-sm font-medium text-subtle-light dark:text-subtle-dark mb-2" for="svvnetid">Student ID / Staff ID</label>
-<input autocomplete="username" class="appearance-none rounded-md relative block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-text-light dark:text-text-dark bg-background-light dark:bg-background-dark focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-base" id="svvnetid" name="svvnetid" placeholder="Enter your ID" required="" type="text"/>
+<div class="mb-3">
+<label class="block text-xs font-medium text-subtle-light dark:text-subtle-dark mb-1" for="svvnetid">Student ID / Staff ID</label>
+<input autocomplete="username" class="appearance-none rounded-md relative block w-full px-3 py-2.5 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-text-light dark:text-text-dark bg-background-light dark:bg-background-dark focus:outline-none focus:ring-primary focus:border-primary focus:z-10 text-sm" id="svvnetid" name="svvnetid" placeholder="Enter your ID" required="" type="text"/>
 </div>
-<div class="mb-4 relative">
-<label class="block text-sm font-medium text-subtle-light dark:text-subtle-dark mb-2" for="password">Password</label>
-<input autocomplete="current-password" class="appearance-none rounded-md relative block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-text-light dark:text-text-dark bg-background-light dark:bg-background-dark focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-base" id="password" name="password" placeholder="Enter your password" required="" type="password"/>
-<button class="absolute inset-y-0 right-0 top-7 pr-3 flex items-center text-sm leading-5" id="togglePassword" type="button">
-<span class="material-icons text-subtle-light dark:text-subtle-dark">visibility_off</span>
+<div class="mb-3 relative">
+<label class="block text-xs font-medium text-subtle-light dark:text-subtle-dark mb-1" for="password">Password</label>
+<input autocomplete="current-password" class="appearance-none rounded-md relative block w-full px-3 py-2.5 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-text-light dark:text-text-dark bg-background-light dark:bg-background-dark focus:outline-none focus:ring-primary focus:border-primary focus:z-10 text-sm" id="password" name="password" placeholder="Enter your password" required="" type="password"/>
+<button class="absolute inset-y-0 right-0 top-5 pr-3 flex items-center text-sm leading-5" id="togglePassword" type="button">
+<span class="material-icons text-subtle-light dark:text-subtle-dark text-lg">visibility_off</span>
 </button>
 </div>
 </div>
 <div class="flex items-center justify-end">
-<div class="text-sm">
-<a class="font-medium text-primary hover:text-red-700 dark:hover:text-red-400 text-base" href="#">
+<div class="text-xs">
+<a class="font-medium text-primary hover:text-red-700 dark:hover:text-red-400 text-sm" href="#">
                             Forgot your password?
                         </a>
 </div>
 </div>
 <div>
-<button class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-lg font-medium rounded-md text-white bg-primary hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary" type="submit">
+<button class="group relative w-full flex justify-center py-2.5 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary" type="submit">
                         Login
                     </button>
 </div>
 </form>
-<div class="relative my-6">
+<div class="relative my-4">
 <div class="absolute inset-0 flex items-center">
 <div class="w-full border-t border-gray-300 dark:border-gray-600"></div>
 </div>
-<div class="relative flex justify-center text-sm">
+<div class="relative flex justify-center text-xs">
 <span class="px-2 bg-surface-light dark:bg-surface-dark text-subtle-light dark:text-subtle-dark">Or continue with</span>
 </div>
 </div>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-<button class="w-full inline-flex justify-center py-3 px-4 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm bg-surface-light dark:bg-surface-dark text-sm font-medium text-text-light dark:text-text-dark hover:bg-gray-50 dark:hover:bg-gray-600" type="button">
-<img alt="Google logo" class="w-5 h-5 mr-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2H0FEcuZ9OzDVbLdH5gleipfFeukCPKx412WKtl0hukHdgVKJZSKW0kMR1mQ_0jgiLUofRwkrVIUXdpmp9P1DW7CFcb18XLS07kp1S_VEJ4f8N7gxmzzdmaXgzNYYu4y_iZCh9FMiy2InxGd13iHI8pdctvxUopUIHxiB0Fab-_74EtxsQrrtCbYuLW3ck5I6xF4pR4AYjyBIZmsuYdr8TFah1wjjHXYfBAEv9mb4KxVVFhN1zAHzl5HUs56mQ5OuiP0lb8liwQ"/>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<button class="w-full inline-flex justify-center py-2 px-3 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm bg-surface-light dark:bg-surface-dark text-xs font-medium text-text-light dark:text-text-dark hover:bg-gray-50 dark:hover:bg-gray-600" type="button">
+<img alt="Google logo" class="w-4 h-4 mr-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2H0FEcuZ9OzDVbLdH5gleipfFeukCPKx412WKtl0hukHdgVKJZSKW0kMR1mQ_0jgiLUofRwkrVIUXdpmp9P1DW7CFcb18XLS07kp1S_VEJ4f8N7gxmzzdmaXgzNYYu4y_iZCh9FMiy2InxGd13iHI8pdctvxUopUIHxiB0Fab-_74EtxsQrrtCbYuLW3ck5I6xF4pR4AYjyBIZmsuYdr8TFah1wjjHXYfBAEv9mb4KxVVFhN1zAHzl5HUs56mQ5OuiP0lb8liwQ"/>
                     Google
                 </button>
-<button class="w-full inline-flex justify-center py-3 px-4 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm bg-surface-light dark:bg-surface-dark text-sm font-medium text-text-light dark:text-text-dark hover:bg-gray-50 dark:hover:bg-gray-600" type="button">
-<img alt="Microsoft logo" class="w-5 h-5 mr-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCStNmEl3PNDw5ZYMKzuVoGbMSth9TklDhpB5mpGl449Gd0tM_G19V-es4MYTIyEb6iVljyE9DIkhhoAZ7cs_UGDrLWP7wd-qyifb_1M32uBkwjnay0RTzVrX2hzUzHQDTFCuGA0x9O-DInGQy7MSQ8I2A3mWZAiRtIFSCtfcu8pVii2i-D9Je4JR-qXXmkuSfmmLOWybPR9LqDyp1GwVt-aZj1ZQu_KzafhlNAC9m4znUQrJDfUF7gABqqI_DB78dEG7k28LLe0w"/>
+<button class="w-full inline-flex justify-center py-2 px-3 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm bg-surface-light dark:bg-surface-dark text-xs font-medium text-text-light dark:text-text-dark hover:bg-gray-50 dark:hover:bg-gray-600" type="button">
+<img alt="Microsoft logo" class="w-4 h-4 mr-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCStNmEl3PNDw5ZYMKzuVoGbMSth9TklDhpB5mpGl449Gd0tM_G19V-es4MYTIyEb6iVljyE9DIkhhoAZ7cs_UGDrLWP7wd-qyifb_1M32uBkwjnay0RTzVrX2hzUzHQDTFCuGA0x9O-DInGQy7MSQ8I2A3mWZAiRtIFSCtfcu8pVii2i-D9Je4JR-qXXmkuSfmmLOWybPR9LqDyp1GwVt-aZj1ZQu_KzafhlNAC9m4znUQrJDfUF7gABqqI_DB78dEG7k28LLe0w"/>
                     Microsoft
                 </button>
 </div>
-<div class="text-center mt-4">
-<button class="font-medium text-primary hover:text-red-700 dark:hover:text-red-400 text-base" type="button">
+<div class="text-center mt-3">
+<button class="font-medium text-primary hover:text-red-700 dark:hover:text-red-400 text-sm" type="button">
                     Use One-Time Password (OTP)
                 </button>
 </div>
@@ -325,9 +379,42 @@
 
     // Basic language switch placeholder (non-functional demo)
     const langSwitch = document.getElementById('language-switch');
-    langSwitch.addEventListener('change', (e) => {
+    langSwitch?.addEventListener('change', (e) => {
       // Future: implement localization logic
       console.log('Language changed to', e.target.value);
+    });
+
+    // Login functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const loginForm = document.querySelector('form');
+      const loginBtn = document.getElementById('loginBtn');
+      const googleBtn = document.querySelector('button:has(img[alt="Google logo"])');
+      const microsoftBtn = document.querySelector('button:has(img[alt="Microsoft logo"])');
+
+      // Regular login
+      if (loginForm) {
+        loginForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          // In a real app, you would validate credentials here
+          window.location.href = 'account.html';
+        });
+      }
+
+      // Google login
+      if (googleBtn) {
+        googleBtn.addEventListener('click', function() {
+          // In a real app, you would implement OAuth here
+          window.location.href = 'account.html';
+        });
+      }
+
+      // Microsoft login
+      if (microsoftBtn) {
+        microsoftBtn.addEventListener('click', function() {
+          // In a real app, you would implement OAuth here
+          window.location.href = 'account.html';
+        });
+      }
     });
   </script>
 

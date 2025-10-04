@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Library Online Catalogue - FAQ</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#A91D3A",
+            "background-light": "#F8F9FA",
+            "background-dark": "#121212",
+            "surface-light": "#FFFFFF",
+            "surface-dark": "#1E1E1E",
+            "text-light": "#212529",
+            "text-dark": "#E9ECEF",
+            "subtle-light": "#6C757D",
+            "subtle-dark": "#ADB5BD",
+            "accent-light": "#007BFF",
+            "accent-dark": "#00BFFF",
+          },
+          fontFamily: {
+            display: ["Inter", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.5rem",
+          },
+        },
+      },
+    };
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .clip-path-diagonal {
+      clip-path: polygon(60% 0, 100% 0, 100% 100%, 68% 100%);
+      background-color: #b91c1c;
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-primary text-white px-4 py-2 rounded-md z-50">Skip to main content</a>
+<div id="root">
+<header class="relative shadow-md">
+  <!-- Top accessibility bar with diagonal cut -->
+  <div class="relative h-9">
+    <div class="absolute top-0 left-0 w-full h-9 clip-path-diagonal z-0"></div>
+    <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 h-full">
+      <div class="flex items-center justify-end h-full gap-1 sm:gap-1 text-white">
+        <!-- Theme toggle -->
+        <button id="contrast-toggle" aria-label="Toggle dark or light theme" aria-pressed="false" class="flex items-center gap-1 px-3 h-8 rounded-full bg-white/90 text-gray-800 hover:bg-white focus:outline-none focus:ring-2 focus:ring-white/60 dark:bg-gray-800 dark:text-text-dark dark:hover:bg-gray-700">
+          <span class="material-icons text-base" aria-hidden="true">contrast</span>
+          <span class="hidden xl:inline text-xs font-medium tracking-wide">Theme</span>
+        </button>
+
+        <!-- Divider -->
+        <span class="hidden sm:block h-4 w-px bg-white/40" aria-hidden="true"></span>
+
+        <!-- Font size controls -->
+        <div class="flex items-center gap-1 sm:gap-2">
+          <button id="font-decrease" aria-label="Decrease font size" class="min-w-[2rem] h-8 px-2 flex items-center justify-center rounded-full bg-white/90 text-gray-800 hover:bg-white focus:outline-none focus:ring-2 focus:ring-white/60 dark:bg-gray-800 dark:text-text-dark dark:hover:bg-gray-700">
+            <span class="text-xs font-semibold tracking-wide">-A</span>
+          </button>
+          <div aria-live="polite" id="font-scale-indicator" class="text-[11px] font-medium opacity-90 select-none w-12 text-center text-white">100%</div>
+          <button id="font-increase" aria-label="Increase font size" class="min-w-[2rem] h-8 px-2 flex items-center justify-center rounded-full bg-white/90 text-gray-800 hover:bg-white focus:outline-none focus:ring-2 focus:ring-white/60 dark:bg-gray-800 dark:text-text-dark dark:hover:bg-gray-700">
+            <span class="text-xs font-semibold tracking-wide">+A</span>
+          </button>
+        </div>
+
+        <!-- Divider -->
+        <span class="hidden sm:block h-4 w-px bg-white/40" aria-hidden="true"></span>
+
+        <!-- Motion toggle -->
+        <button id="motion-toggle" aria-label="Toggle reduced motion" aria-pressed="false" class="flex items-center gap-1 px-3 h-8 rounded-full bg-white/90 text-gray-800 hover:bg-white focus:outline-none focus:ring-2 focus:ring-white/60 dark:bg-gray-800 dark:text-text-dark dark:hover:bg-gray-700">
+          <span class="material-icons text-base" aria-hidden="true">motion_photos_off</span>
+          <span class="hidden xl:inline text-xs font-medium tracking-wide">Motion</span>
+        </button>
+
+        <!-- Divider -->
+        <span class="hidden sm:block h-4 w-px bg-white/40" aria-hidden="true"></span>
+
+        <!-- Language switch -->
+        <label for="language-switch" class="sr-only">Change language</label>
+        <select id="language-switch" class="h-8 rounded-full border-0 bg-white/95 text-gray-800 text-xs px-3 pr-7 focus:ring-2 focus:ring-white/60 dark:bg-gray-800 dark:text-text-dark">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी</option>
+          <option value="mr">मराठी</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main navigation bar -->
+  <div class="bg-surface-light dark:bg-surface-dark">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center py-2 gap-4 lg:gap-8">
+        <!-- Left Logo (kept) -->
+        <div class="flex items-center space-x-4 shrink-0">
+          <img alt="Somaiya Vidyavihar logo" class="h-14 sm:h-16" src="./assets/svu_logo.svg"/>
+          <div class="hidden lg:block">
+            <!-- <h1 class="text-lg font-bold text-primary leading-tight">SOMAIYA VIDYAVIHAR</h1>
+            <p class="text-xs text-subtle-light dark:text-subtle-dark tracking-wide">Library Online Catalogue</p> -->
+          </div>
+        </div>
+        <!-- Primary Navigation -->
+        <nav aria-label="Primary" class="flex-1">
+          <ul class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm sm:text-base" role="menubar">
+            <li role="none">
+              <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="homepage.html">
+                <span class="material-icons text-base sm:text-lg" aria-hidden="true">home</span>
+                <span>Home</span>
+              </a>
+            </li>
+            <li role="none">
+              <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="login.html">
+                <span class="material-icons text-base sm:text-lg" aria-hidden="true">person</span>
+                <span>My Account</span>
+              </a>
+            </li>
+            <li role="none">
+              <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="ask-librarian.html">
+                <span class="material-icons text-base sm:text-lg" aria-hidden="true">help_outline</span>
+                <span>Ask a Librarian</span>
+              </a>
+            </li>
+            <li role="none">
+              <a role="menuitem" class="flex items-center gap-1 text-primary font-medium focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="faq.html">
+                <span class="material-icons text-base sm:text-lg" aria-hidden="true">info</span>
+                <span>Help (FAQ)</span>
+              </a>
+            </li>
+            <li role="none">
+              <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="catalogue.html">
+                <span class="material-icons text-base sm:text-lg" aria-hidden="true">search</span>
+                <span>Catalogue Search</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- Right Logo (kept) -->
+        <img alt="Trust logo" class="h-12 sm:h-14 hidden md:block" src="./assets/svu_trust.svg"/>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main-content" class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="max-w-4xl mx-auto">
+    <div class="bg-surface-light dark:bg-surface-dark p-6 rounded-lg shadow-lg">
+      <div class="text-center mb-6">
+        <h1 class="text-2xl font-bold text-text-light dark:text-text-dark mb-3">Frequently Asked Questions</h1>
+        <p class="text-base text-subtle-light dark:text-subtle-dark max-w-3xl mx-auto">
+          Find answers to common questions about our library services and resources.
+        </p>
+      </div>
+
+      <!-- Search FAQ -->
+      <div class="mb-6">
+        <div class="relative">
+          <input type="search" placeholder="Search FAQs..." class="w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-600 bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark focus:ring-2 focus:ring-primary focus:border-primary text-sm">
+          <span class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-subtle-light dark:text-subtle-dark text-lg">search</span>
+        </div>
+      </div>
+
+      <!-- FAQ Categories -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
+        <button class="category-btn bg-primary text-white p-2.5 rounded-lg font-medium text-sm" data-category="general">General</button>
+        <button class="category-btn bg-gray-200 dark:bg-gray-700 text-text-light dark:text-text-dark p-2.5 rounded-lg font-medium hover:bg-gray-300 dark:hover:bg-gray-600 text-sm" data-category="search">Search & Access</button>
+        <button class="category-btn bg-gray-200 dark:bg-gray-700 text-text-light dark:text-text-dark p-2.5 rounded-lg font-medium hover:bg-gray-300 dark:hover:bg-gray-600 text-sm" data-category="account">Account & Services</button>
+      </div>
+
+      <!-- FAQ Items -->
+      <div class="space-y-3">
+        <!-- General FAQs -->
+        <div class="faq-section" data-category="general">
+          <div class="faq-item border border-gray-200 dark:border-gray-700 rounded-lg">
+            <button class="faq-question w-full text-left p-3 hover:bg-gray-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary rounded-lg">
+              <div class="flex items-center justify-between">
+                <h3 class="text-base font-medium text-text-light dark:text-text-dark">What are the library hours?</h3>
+                <span class="material-icons text-subtle-light dark:text-subtle-dark text-lg">expand_more</span>
+              </div>
+            </button>
+            <div class="faq-answer hidden p-3 pt-0">
+              <p class="text-sm text-sm text-subtle-light dark:text-subtle-dark">
+                Our library is open Monday through Friday from 9:00 AM to 6:00 PM, and Saturday from 10:00 AM to 4:00 PM. We're closed on Sundays and public holidays. 24/7 access to our digital resources is available through the online portal.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item border border-gray-200 dark:border-gray-700 rounded-lg">
+            <button class="faq-question w-full text-left p-3 hover:bg-gray-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary rounded-lg">
+              <div class="flex items-center justify-between">
+                <h3 class="text-base font-medium text-text-light dark:text-text-dark">How do I get a library card?</h3>
+                <span class="material-icons text-subtle-light dark:text-subtle-dark text-lg">expand_more</span>
+              </div>
+            </button>
+            <div class="faq-answer hidden p-3 pt-0">
+              <p class="text-sm text-subtle-light dark:text-subtle-dark">
+                Students and faculty automatically receive library privileges with their Somaiya ID. External users can apply for a library card by visiting the circulation desk with valid ID and address proof. Some restrictions may apply to external borrowing.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item border border-gray-200 dark:border-gray-700 rounded-lg">
+            <button class="faq-question w-full text-left p-3 hover:bg-gray-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary rounded-lg">
+              <div class="flex items-center justify-between">
+                <h3 class="text-base font-medium text-text-light dark:text-text-dark">What can I borrow and for how long?</h3>
+                <span class="material-icons text-sm text-subtle-light dark:text-subtle-dark">expand_more</span>
+              </div>
+            </button>
+            <div class="faq-answer hidden p-3 pt-0">
+              <p class="text-sm text-subtle-light dark:text-subtle-dark">
+                Students can borrow up to 5 books for 2 weeks, faculty can borrow up to 10 books for 4 weeks. DVDs and multimedia materials are available for 1 week. Reference materials and journals cannot be borrowed but can be used within the library.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Search & Access FAQs -->
+        <div class="faq-section hidden" data-category="search">
+          <div class="faq-item border border-gray-200 dark:border-gray-700 rounded-lg">
+            <button class="faq-question w-full text-left p-3 hover:bg-gray-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary rounded-lg">
+              <div class="flex items-center justify-between">
+                <h3 class="text-base font-medium text-text-light dark:text-text-dark">How do I search for books and resources?</h3>
+                <span class="material-icons text-sm text-subtle-light dark:text-subtle-dark">expand_more</span>
+              </div>
+            </button>
+            <div class="faq-answer hidden p-3 pt-0">
+              <p class="text-sm text-subtle-light dark:text-subtle-dark">
+                Use our online catalogue to search by title, author, subject, or keyword. You can also use advanced search filters to narrow your results. For research assistance, contact our reference librarians who can help you find specialized resources.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item border border-gray-200 dark:border-gray-700 rounded-lg">
+            <button class="faq-question w-full text-left p-3 hover:bg-gray-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary rounded-lg">
+              <div class="flex items-center justify-between">
+                <h3 class="text-base font-medium text-text-light dark:text-text-dark">How do I access online databases?</h3>
+                <span class="material-icons text-sm text-subtle-light dark:text-subtle-dark">expand_more</span>
+              </div>
+            </button>
+            <div class="faq-answer hidden p-3 pt-0">
+              <p class="text-sm text-subtle-light dark:text-subtle-dark">
+                Online databases are accessible through our website when connected to the campus network. Off-campus access requires login with your student/faculty credentials. Contact the IT help desk if you experience access issues.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Account & Services FAQs -->
+        <div class="faq-section hidden" data-category="account">
+          <div class="faq-item border border-gray-200 dark:border-gray-700 rounded-lg">
+            <button class="faq-question w-full text-left p-3 hover:bg-gray-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary rounded-lg">
+              <div class="flex items-center justify-between">
+                <h3 class="text-base font-medium text-text-light dark:text-text-dark">How do I renew my borrowed books?</h3>
+                <span class="material-icons text-sm text-subtle-light dark:text-subtle-dark">expand_more</span>
+              </div>
+            </button>
+            <div class="faq-answer hidden p-3 pt-0">
+              <p class="text-sm text-subtle-light dark:text-subtle-dark">
+                You can renew books online through your account, by phone, or at the circulation desk. Renewals are subject to availability and no holds by other users. Books can typically be renewed once for the same loan period.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item border border-gray-200 dark:border-gray-700 rounded-lg">
+            <button class="faq-question w-full text-left p-3 hover:bg-gray-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary rounded-lg">
+              <div class="flex items-center justify-between">
+                <h3 class="text-base font-medium text-text-light dark:text-text-dark">What happens if I return books late?</h3>
+                <span class="material-icons text-sm text-subtle-light dark:text-subtle-dark">expand_more</span>
+              </div>
+            </button>
+            <div class="faq-answer hidden p-3 pt-0">
+              <p class="text-sm text-subtle-light dark:text-subtle-dark">
+                Late fees apply for overdue items: ₹2 per day for books, ₹10 per day for DVDs. Your borrowing privileges may be suspended if items are significantly overdue. Contact us if you're having trouble returning items on time.
+              </p>
+            </div>
+          </div>
+
+          <!-- OPAC System FAQs -->
+          <div class="faq-item border border-gray-200 dark:border-gray-700 rounded-lg">
+            <button class="faq-question w-full text-left p-3 hover:bg-gray-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary rounded-lg">
+              <div class="flex items-center justify-between">
+                <h3 class="text-base font-medium text-text-light dark:text-text-dark">Can I borrow books online through Somaiya Vidyavihar OPAC?</h3>
+                <span class="material-icons text-sm text-subtle-light dark:text-subtle-dark">expand_more</span>
+              </div>
+            </button>
+            <div class="faq-answer hidden p-3 pt-0">
+              <p class="text-sm text-subtle-light dark:text-subtle-dark">
+                OPAC does not allow online circulations by the members themselves at the moment. You have to obtain your books and other resources from the library itself.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item border border-gray-200 dark:border-gray-700 rounded-lg">
+            <button class="faq-question w-full text-left p-3 hover:bg-gray-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary rounded-lg">
+              <div class="flex items-center justify-between">
+                <h3 class="text-base font-medium text-text-light dark:text-text-dark">Can I do reservations online? How do I do that?</h3>
+                <span class="material-icons text-sm text-subtle-light dark:text-subtle-dark">expand_more</span>
+              </div>
+            </button>
+            <div class="faq-answer hidden p-3 pt-0">
+              <div class="text-subtle-light dark:text-subtle-dark space-y-3">
+                <p>
+                  Reservations can be made online on resources that are not currently available in the library you are looking into. To do that:
+                </p>
+                <ol class="list-decimal list-inside space-y-2 ml-4">
+                  <li>Click on My Account link available in the OPAC Home page</li>
+                  <li>If you are logging in first time, system will prompt you to change the password</li>
+                  <li>Use your Member ID as Username and password to login</li>
+                  <li>Select your library name from the list and complete the Change Password transaction</li>
+                  <li>My Account Home page will appear - search the required book</li>
+                  <li>If a required book is not currently available in the library, Reserve option will get enabled</li>
+                  <li>Click Reserve link to reserve the book/title. System will generate Reservation number</li>
+                  <li>As soon as reserved title gets returned, you will be intimated through an automatic email</li>
+                </ol>
+                <p>Or get in touch with librarian for assistance.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item border border-gray-200 dark:border-gray-700 rounded-lg">
+            <button class="faq-question w-full text-left p-3 hover:bg-gray-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary rounded-lg">
+              <div class="flex items-center justify-between">
+                <h3 class="text-base font-medium text-text-light dark:text-text-dark">Can I search books/resources without login?</h3>
+                <span class="material-icons text-sm text-subtle-light dark:text-subtle-dark">expand_more</span>
+              </div>
+            </button>
+            <div class="faq-answer hidden p-3 pt-0">
+              <p class="text-sm text-subtle-light dark:text-subtle-dark">
+                Yes, you may search books/resources without logging in.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item border border-gray-200 dark:border-gray-700 rounded-lg">
+            <button class="faq-question w-full text-left p-3 hover:bg-gray-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary rounded-lg">
+              <div class="flex items-center justify-between">
+                <h3 class="text-base font-medium text-text-light dark:text-text-dark">I want to search resources that are available within my library only. How do I go about that?</h3>
+                <span class="material-icons text-sm text-subtle-light dark:text-subtle-dark">expand_more</span>
+              </div>
+            </button>
+            <div class="faq-answer hidden p-3 pt-0">
+              <p class="text-sm text-subtle-light dark:text-subtle-dark">
+                In OPAC home page search for required books, then search result will display available books in all libraries of Vidyavihar. On the left side of the page click on your library name to refine your search from one library.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item border border-gray-200 dark:border-gray-700 rounded-lg">
+            <button class="faq-question w-full text-left p-3 hover:bg-gray-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary rounded-lg">
+              <div class="flex items-center justify-between">
+                <h3 class="text-base font-medium text-text-light dark:text-text-dark">How can I know what are the books issued to me?</h3>
+                <span class="material-icons text-sm text-subtle-light dark:text-subtle-dark">expand_more</span>
+              </div>
+            </button>
+            <div class="faq-answer hidden p-3 pt-0">
+              <p class="text-sm text-subtle-light dark:text-subtle-dark">
+                By logging in My Account option available in OPAC home page.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item border border-gray-200 dark:border-gray-700 rounded-lg">
+            <button class="faq-question w-full text-left p-3 hover:bg-gray-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary rounded-lg">
+              <div class="flex items-center justify-between">
+                <h3 class="text-base font-medium text-text-light dark:text-text-dark">What are services offered in OPAC?</h3>
+                <span class="material-icons text-sm text-subtle-light dark:text-subtle-dark">expand_more</span>
+              </div>
+            </button>
+            <div class="faq-answer hidden p-3 pt-0">
+              <p class="text-sm text-subtle-light dark:text-subtle-dark">
+                Basic Search, Advanced Search, Catalogue Search, Ask A Librarian, My Account
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item border border-gray-200 dark:border-gray-700 rounded-lg">
+            <button class="faq-question w-full text-left p-3 hover:bg-gray-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary rounded-lg">
+              <div class="flex items-center justify-between">
+                <h3 class="text-base font-medium text-text-light dark:text-text-dark">How can I know what are the library policies?</h3>
+                <span class="material-icons text-sm text-subtle-light dark:text-subtle-dark">expand_more</span>
+              </div>
+            </button>
+            <div class="faq-answer hidden p-3 pt-0">
+              <p class="text-sm text-subtle-light dark:text-subtle-dark">
+                By logging in My Account, available in OPAC home page.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item border border-gray-200 dark:border-gray-700 rounded-lg">
+            <button class="faq-question w-full text-left p-3 hover:bg-gray-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary rounded-lg">
+              <div class="flex items-center justify-between">
+                <h3 class="text-base font-medium text-text-light dark:text-text-dark">What information or services available in My Account?</h3>
+                <span class="material-icons text-sm text-subtle-light dark:text-subtle-dark">expand_more</span>
+              </div>
+            </button>
+            <div class="faq-answer hidden p-3 pt-0">
+              <p class="text-sm text-subtle-light dark:text-subtle-dark">
+                My Account consists of your personal information about your Course & Class studying, Policy allotted to you, List of books issued to you, and facility to reserve the books in case not available.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Still Need Help? -->
+      <div class="mt-8 text-center">
+        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+          <h2 class="text-lg font-semibold text-text-light dark:text-text-dark mb-3">Still Need Help?</h2>
+          <p class="text-sm text-subtle-light dark:text-subtle-dark mb-3">
+            Can't find the answer you're looking for? Our librarians are here to help!
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="ask-librarian.html" class="bg-primary text-white px-5 py-2 rounded-lg hover:bg-red-700 transition-colors text-sm">
+              Ask a Librarian
+            </a>
+            <a href="mailto:library@somaiya.edu" class="border border-primary text-primary px-5 py-2 rounded-lg hover:bg-primary hover:text-white transition-colors text-sm">
+              Email Us
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="bg-surface-light dark:bg-surface-dark border-t border-gray-200 dark:border-gray-700 mt-12 py-6">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-subtle-light dark:text-subtle-dark text-sm">
+<p>© 2024 Somaiya Vidyavihar. All rights reserved.</p>
+<div class="mt-2">
+<a class="hover:underline" href="#">Legal Notice</a>
+<span class="mx-2">|</span>
+<a class="hover:underline" href="#">Usage Policy</a>
+<span class="mx-2">|</span>
+<a class="hover:underline" href="#">Accessibility Statement</a>
+</div>
+</div>
+</footer>
+</div>
+
+<script>
+    // Accessibility & Preference Utilities
+    const root = document.documentElement;
+    const storageKey = (k) => `somaiya_pref_${k}`;
+
+    // Dark / Contrast Mode Toggle
+    const contrastToggle = document.getElementById('contrast-toggle');
+    const savedTheme = localStorage.getItem(storageKey('theme'));
+    if (savedTheme === 'dark') root.classList.add('dark');
+    if (contrastToggle) {
+      contrastToggle.setAttribute('aria-pressed', root.classList.contains('dark'));
+      contrastToggle.addEventListener('click', () => {
+        const isDark = root.classList.toggle('dark');
+        localStorage.setItem(storageKey('theme'), isDark ? 'dark' : 'light');
+        contrastToggle.setAttribute('aria-pressed', isDark);
+      });
+    }
+
+    // Font Size Controls
+    const incBtn = document.getElementById('font-increase');
+    const decBtn = document.getElementById('font-decrease');
+    const fontIndicator = document.getElementById('font-scale-indicator');
+    const baseSize = 1; // rem
+    let currentScale = parseFloat(localStorage.getItem(storageKey('fontScale'))) || 1;
+    const applyFontScale = () => {
+      document.body.style.fontSize = `${baseSize * currentScale}rem`;
+      if (fontIndicator) fontIndicator.textContent = `${Math.round(currentScale * 100)}%`;
+    };
+    applyFontScale();
+    const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
+    if (incBtn && decBtn) {
+      incBtn.addEventListener('click', () => {
+        currentScale = clamp((currentScale + 0.1), 0.8, 1.6);
+        localStorage.setItem(storageKey('fontScale'), currentScale.toFixed(2));
+        applyFontScale();
+      });
+      decBtn.addEventListener('click', () => {
+        currentScale = clamp((currentScale - 0.1), 0.8, 1.6);
+        localStorage.setItem(storageKey('fontScale'), currentScale.toFixed(2));
+        applyFontScale();
+      });
+    }
+
+    // Reduced Motion Toggle
+    const motionToggle = document.getElementById('motion-toggle');
+    const savedMotion = localStorage.getItem(storageKey('reducedMotion')) === 'true';
+    if (savedMotion) root.classList.add('reduce-motion');
+    if (motionToggle) {
+      motionToggle.setAttribute('aria-pressed', savedMotion);
+      motionToggle.addEventListener('click', () => {
+        const newState = !root.classList.contains('reduce-motion');
+        root.classList.toggle('reduce-motion');
+        localStorage.setItem(storageKey('reducedMotion'), newState);
+        motionToggle.setAttribute('aria-pressed', newState);
+      });
+    }
+
+    // Optional: respond to prefers-reduced-motion if no explicit preference stored
+    if (!localStorage.getItem(storageKey('reducedMotion'))) {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        root.classList.add('reduce-motion');
+        if (motionToggle) motionToggle.setAttribute('aria-pressed', true);
+      }
+    }
+
+    // Basic language switch placeholder (non-functional demo)
+    const langSwitch = document.getElementById('language-switch');
+    langSwitch?.addEventListener('change', (e) => {
+      // Future: implement localization logic
+      console.log('Language changed to', e.target.value);
+    });
+
+    // FAQ Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // FAQ accordion
+      const faqQuestions = document.querySelectorAll('.faq-question');
+      faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+          const answer = question.nextElementSibling;
+          const icon = question.querySelector('.material-icons');
+          
+          if (answer.classList.contains('hidden')) {
+            answer.classList.remove('hidden');
+            icon.textContent = 'expand_less';
+          } else {
+            answer.classList.add('hidden');
+            icon.textContent = 'expand_more';
+          }
+        });
+      });
+
+      // Category filtering
+      const categoryBtns = document.querySelectorAll('.category-btn');
+      const faqSections = document.querySelectorAll('.faq-section');
+      
+      categoryBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const category = btn.dataset.category;
+          
+          // Update button styles
+          categoryBtns.forEach(b => {
+            b.classList.remove('bg-primary', 'text-white');
+            b.classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-text-light', 'dark:text-text-dark');
+          });
+          btn.classList.add('bg-primary', 'text-white');
+          btn.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-text-light', 'dark:text-text-dark');
+          
+          // Show/hide sections
+          faqSections.forEach(section => {
+            if (section.dataset.category === category) {
+              section.classList.remove('hidden');
+            } else {
+              section.classList.add('hidden');
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body></html>

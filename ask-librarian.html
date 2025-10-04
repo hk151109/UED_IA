@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Library Online Catalogue - Ask a Librarian</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#A91D3A",
+            "background-light": "#F8F9FA",
+            "background-dark": "#121212",
+            "surface-light": "#FFFFFF",
+            "surface-dark": "#1E1E1E",
+            "text-light": "#212529",
+            "text-dark": "#E9ECEF",
+            "subtle-light": "#6C757D",
+            "subtle-dark": "#ADB5BD",
+            "accent-light": "#007BFF",
+            "accent-dark": "#00BFFF",
+          },
+          fontFamily: {
+            display: ["Inter", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.5rem",
+          },
+        },
+      },
+    };
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .clip-path-diagonal {
+      clip-path: polygon(60% 0, 100% 0, 100% 100%, 68% 100%);
+      background-color: #b91c1c;
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-primary text-white px-4 py-2 rounded-md z-50">Skip to main content</a>
+<div id="root">
+<header class="relative shadow-md">
+  <!-- Top accessibility bar with diagonal cut -->
+  <div class="relative h-9">
+    <div class="absolute top-0 left-0 w-full h-9 clip-path-diagonal z-0"></div>
+    <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 h-full">
+      <div class="flex items-center justify-end h-full gap-1 sm:gap-1 text-white">
+        <!-- Theme toggle -->
+        <button id="contrast-toggle" aria-label="Toggle dark or light theme" aria-pressed="false" class="flex items-center gap-1 px-3 h-8 rounded-full bg-white/90 text-gray-800 hover:bg-white focus:outline-none focus:ring-2 focus:ring-white/60 dark:bg-gray-800 dark:text-text-dark dark:hover:bg-gray-700">
+          <span class="material-icons text-base" aria-hidden="true">contrast</span>
+          <span class="hidden xl:inline text-xs font-medium tracking-wide">Theme</span>
+        </button>
+
+        <!-- Divider -->
+        <span class="hidden sm:block h-4 w-px bg-white/40" aria-hidden="true"></span>
+
+        <!-- Font size controls -->
+        <div class="flex items-center gap-1 sm:gap-2">
+          <button id="font-decrease" aria-label="Decrease font size" class="min-w-[2rem] h-8 px-2 flex items-center justify-center rounded-full bg-white/90 text-gray-800 hover:bg-white focus:outline-none focus:ring-2 focus:ring-white/60 dark:bg-gray-800 dark:text-text-dark dark:hover:bg-gray-700">
+            <span class="text-xs font-semibold tracking-wide">-A</span>
+          </button>
+          <div aria-live="polite" id="font-scale-indicator" class="text-[11px] font-medium opacity-90 select-none w-12 text-center text-white">100%</div>
+          <button id="font-increase" aria-label="Increase font size" class="min-w-[2rem] h-8 px-2 flex items-center justify-center rounded-full bg-white/90 text-gray-800 hover:bg-white focus:outline-none focus:ring-2 focus:ring-white/60 dark:bg-gray-800 dark:text-text-dark dark:hover:bg-gray-700">
+            <span class="text-xs font-semibold tracking-wide">+A</span>
+          </button>
+        </div>
+
+        <!-- Divider -->
+        <span class="hidden sm:block h-4 w-px bg-white/40" aria-hidden="true"></span>
+
+        <!-- Motion toggle -->
+        <button id="motion-toggle" aria-label="Toggle reduced motion" aria-pressed="false" class="flex items-center gap-1 px-3 h-8 rounded-full bg-white/90 text-gray-800 hover:bg-white focus:outline-none focus:ring-2 focus:ring-white/60 dark:bg-gray-800 dark:text-text-dark dark:hover:bg-gray-700">
+          <span class="material-icons text-base" aria-hidden="true">motion_photos_off</span>
+          <span class="hidden xl:inline text-xs font-medium tracking-wide">Motion</span>
+        </button>
+
+        <!-- Divider -->
+        <span class="hidden sm:block h-4 w-px bg-white/40" aria-hidden="true"></span>
+
+        <!-- Language switch -->
+        <label for="language-switch" class="sr-only">Change language</label>
+        <select id="language-switch" class="h-8 rounded-full border-0 bg-white/95 text-gray-800 text-xs px-3 pr-7 focus:ring-2 focus:ring-white/60 dark:bg-gray-800 dark:text-text-dark">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी</option>
+          <option value="mr">मराठी</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main navigation bar -->
+  <div class="bg-surface-light dark:bg-surface-dark">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center py-2 gap-4 lg:gap-8">
+        <!-- Left Logo (kept) -->
+        <div class="flex items-center space-x-4 shrink-0">
+          <img alt="Somaiya Vidyavihar logo" class="h-14 sm:h-16" src="./assets/svu_logo.svg"/>
+          <div class="hidden lg:block">
+            <!-- <h1 class="text-lg font-bold text-primary leading-tight">SOMAIYA VIDYAVIHAR</h1>
+            <p class="text-xs text-subtle-light dark:text-subtle-dark tracking-wide">Library Online Catalogue</p> -->
+          </div>
+        </div>
+        <!-- Primary Navigation -->
+        <nav aria-label="Primary" class="flex-1">
+          <ul class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm sm:text-base" role="menubar">
+            <li role="none">
+              <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="homepage.html">
+                <span class="material-icons text-base sm:text-lg" aria-hidden="true">home</span>
+                <span>Home</span>
+              </a>
+            </li>
+            <li role="none">
+              <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="login.html">
+                <span class="material-icons text-base sm:text-lg" aria-hidden="true">person</span>
+                <span>My Account</span>
+              </a>
+            </li>
+            <li role="none">
+              <a role="menuitem" class="flex items-center gap-1 text-primary font-medium focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="ask-librarian.html">
+                <span class="material-icons text-base sm:text-lg" aria-hidden="true">help_outline</span>
+                <span>Ask a Librarian</span>
+              </a>
+            </li>
+            <li role="none">
+              <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="faq.html">
+                <span class="material-icons text-base sm:text-lg" aria-hidden="true">info</span>
+                <span>Help (FAQ)</span>
+              </a>
+            </li>
+            <li role="none">
+              <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="catalogue.html">
+                <span class="material-icons text-base sm:text-lg" aria-hidden="true">search</span>
+                <span>Catalogue Search</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- Right Logo (kept) -->
+        <img alt="Trust logo" class="h-12 sm:h-14 hidden md:block" src="./assets/svu_trust.svg"/>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main-content" class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="max-w-4xl mx-auto">
+    <div class="bg-surface-light dark:bg-surface-dark p-6 rounded-lg shadow-lg">
+      <div class="text-center mb-6">
+        <h1 class="text-2xl font-bold text-text-light dark:text-text-dark mb-3">Ask a Librarian</h1>
+        <p class="text-base text-subtle-light dark:text-subtle-dark max-w-3xl mx-auto">
+          Need help finding resources or have questions about library services? Our expert librarians are here to assist you.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <!-- Contact Methods -->
+        <div class="space-y-4">
+          <h2 class="text-lg font-semibold text-text-light dark:text-text-dark mb-3">Get in Touch</h2>
+          
+          <div class="space-y-3">
+            <div class="flex items-start space-x-3">
+              <span class="material-icons text-primary mt-1 text-lg">email</span>
+              <div>
+                <h3 class="text-sm font-medium text-text-light dark:text-text-dark">Email</h3>
+                <p class="text-sm text-subtle-light dark:text-subtle-dark">library@somaiya.edu</p>
+                <p class="text-xs text-subtle-light dark:text-subtle-dark">Response within 24 hours</p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-3">
+              <span class="material-icons text-primary mt-1 text-lg">phone</span>
+              <div>
+                <h3 class="text-sm font-medium text-text-light dark:text-text-dark">Phone</h3>
+                <p class="text-sm text-subtle-light dark:text-subtle-dark">+91 22 6728 3000</p>
+                <p class="text-xs text-subtle-light dark:text-subtle-dark">Mon-Fri: 9:00 AM - 6:00 PM</p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-3">
+              <span class="material-icons text-primary mt-1 text-lg">location_on</span>
+              <div>
+                <h3 class="text-sm font-medium text-text-light dark:text-text-dark">Visit Us</h3>
+                <p class="text-sm text-subtle-light dark:text-subtle-dark">Somaiya Vidyavihar<br>Vidyavihar East, Mumbai - 400077</p>
+                <p class="text-xs text-subtle-light dark:text-subtle-dark">Reference Desk - Ground Floor</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Contact Form -->
+        <div>
+          <h2 class="text-lg font-semibold text-text-light dark:text-text-dark mb-3">Send us a Message</h2>
+          <form class="space-y-3">
+            <div>
+              <label for="name" class="block text-xs font-medium text-text-light dark:text-text-dark mb-1">Name</label>
+              <input type="text" id="name" name="name" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark focus:ring-2 focus:ring-primary focus:border-primary text-sm">
+            </div>
+            
+            <div>
+              <label for="email" class="block text-xs font-medium text-text-light dark:text-text-dark mb-1">Email</label>
+              <input type="email" id="email" name="email" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark focus:ring-2 focus:ring-primary focus:border-primary text-sm">
+            </div>
+            
+            <div>
+              <label for="subject" class="block text-xs font-medium text-text-light dark:text-text-dark mb-1">Subject</label>
+              <select id="subject" name="subject" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark focus:ring-2 focus:ring-primary focus:border-primary text-sm">
+                <option>Research Assistance</option>
+                <option>Database Access</option>
+                <option>Book Request</option>
+                <option>Technical Support</option>
+                <option>Other</option>
+              </select>
+            </div>
+            
+            <div>
+              <label for="message" class="block text-xs font-medium text-text-light dark:text-text-dark mb-1">Message</label>
+              <textarea id="message" name="message" rows="3" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark focus:ring-2 focus:ring-primary focus:border-primary text-sm" placeholder="How can we help you?"></textarea>
+            </div>
+            
+            <button type="submit" class="w-full bg-primary text-white font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition-colors text-sm">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Location and Map -->
+      <div class="border-t border-gray-200 dark:border-gray-700 pt-6 mb-6">
+        <h2 class="text-lg font-semibold text-text-light dark:text-text-dark mb-3">Find Us</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Map -->
+          <div class="order-2 lg:order-1">
+            <div class="relative w-full h-64 lg:h-80 rounded-lg overflow-hidden shadow-md">
+              <iframe 
+                title="Somaiya Vidyavihar Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.761918441936!2d72.89753296466442!3d19.074202587088944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c627923df00d%3A0x4c2b4fb28923f63d!2sSomaiya+Vidyavihar%2C+Group+of+Somaiya+Institutions%2C+Vidyanagar%2C+Vidya+Vihar+East%2C+Vidyavihar%2C+Mumbai%2C+Maharashtra+400077!5e0!3m2!1sen!2sin!4v1544180864917"
+                width="100%"
+                height="100%"
+                frameborder="0"
+                style="border:0"
+                allowfullscreen=""
+                class="w-full h-full"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+          
+          <!-- Map Info -->
+          <div class="order-1 lg:order-2">
+            <div class="space-y-4">
+              <div class="flex items-start space-x-3">
+                <span class="material-icons text-primary mt-1 text-lg">place</span>
+                <div>
+                  <h3 class="text-sm font-medium text-text-light dark:text-text-dark mb-1">Address</h3>
+                  <p class="text-sm text-subtle-light dark:text-subtle-dark">
+                    Somaiya Vidyavihar, Group of Somaiya Institutions<br>
+                    Vidyanagar, Vidya Vihar East<br>
+                    Vidyavihar, Mumbai, Maharashtra 400077
+                  </p>
+                </div>
+              </div>
+              
+              <div class="flex items-start space-x-3">
+                <span class="material-icons text-primary mt-1 text-lg">directions</span>
+                <div>
+                  <h3 class="text-sm font-medium text-text-light dark:text-text-dark mb-1">Directions</h3>
+                  <p class="text-sm text-subtle-light dark:text-subtle-dark mb-2">
+                    Nearest Railway Station: Vidyavihar (Central Line)<br>
+                    Walking distance: ~5 minutes
+                  </p>
+                  <a 
+                    href="https://www.google.com/maps/dir/?api=1&destination=Somaiya+Vidyavihar,+Group+of+Somaiya+Institutions,+Vidyanagar,+Vidya+Vihar+East,+Vidyavihar,+Mumbai,+Maharashtra+400077"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1 bg-primary text-white px-3 py-1.5 rounded-md hover:bg-red-700 transition-colors text-sm"
+                  >
+                    <span class="material-icons text-sm">directions</span>
+                    Get Directions
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Quick Links -->
+      <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
+        <h2 class="text-lg font-semibold text-text-light dark:text-text-dark mb-3">Quick Help</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <a href="faq.html" class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+            <span class="material-icons text-primary mb-1 text-lg">help</span>
+            <h3 class="text-sm font-medium text-text-light dark:text-text-dark">FAQ</h3>
+            <p class="text-xs text-subtle-light dark:text-subtle-dark">Common questions and answers</p>
+          </a>
+          
+          <a href="catalogue.html" class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+            <span class="material-icons text-primary mb-1 text-lg">search</span>
+            <h3 class="text-sm font-medium text-text-light dark:text-text-dark">Search Catalogue</h3>
+            <p class="text-xs text-subtle-light dark:text-subtle-dark">Find books, articles, and more</p>
+          </a>
+          
+          <a href="homepage.html" class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+            <span class="material-icons text-primary mb-1 text-lg">home</span>
+            <h3 class="text-sm font-medium text-text-light dark:text-text-dark">Library Home</h3>
+            <p class="text-xs text-subtle-light dark:text-subtle-dark">Return to main page</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="bg-surface-light dark:bg-surface-dark border-t border-gray-200 dark:border-gray-700 mt-12 py-6">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-subtle-light dark:text-subtle-dark text-sm">
+<p>© 2024 Somaiya Vidyavihar. All rights reserved.</p>
+<div class="mt-2">
+<a class="hover:underline" href="#">Legal Notice</a>
+<span class="mx-2">|</span>
+<a class="hover:underline" href="#">Usage Policy</a>
+<span class="mx-2">|</span>
+<a class="hover:underline" href="#">Accessibility Statement</a>
+</div>
+</div>
+</footer>
+</div>
+
+<script>
+    // Accessibility & Preference Utilities
+    const root = document.documentElement;
+    const storageKey = (k) => `somaiya_pref_${k}`;
+
+    // Dark / Contrast Mode Toggle
+    const contrastToggle = document.getElementById('contrast-toggle');
+    const savedTheme = localStorage.getItem(storageKey('theme'));
+    if (savedTheme === 'dark') root.classList.add('dark');
+    if (contrastToggle) {
+      contrastToggle.setAttribute('aria-pressed', root.classList.contains('dark'));
+      contrastToggle.addEventListener('click', () => {
+        const isDark = root.classList.toggle('dark');
+        localStorage.setItem(storageKey('theme'), isDark ? 'dark' : 'light');
+        contrastToggle.setAttribute('aria-pressed', isDark);
+      });
+    }
+
+    // Font Size Controls
+    const incBtn = document.getElementById('font-increase');
+    const decBtn = document.getElementById('font-decrease');
+    const fontIndicator = document.getElementById('font-scale-indicator');
+    const baseSize = 1; // rem
+    let currentScale = parseFloat(localStorage.getItem(storageKey('fontScale'))) || 1;
+    const applyFontScale = () => {
+      document.body.style.fontSize = `${baseSize * currentScale}rem`;
+      if (fontIndicator) fontIndicator.textContent = `${Math.round(currentScale * 100)}%`;
+    };
+    applyFontScale();
+    const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
+    if (incBtn && decBtn) {
+      incBtn.addEventListener('click', () => {
+        currentScale = clamp((currentScale + 0.1), 0.8, 1.6);
+        localStorage.setItem(storageKey('fontScale'), currentScale.toFixed(2));
+        applyFontScale();
+      });
+      decBtn.addEventListener('click', () => {
+        currentScale = clamp((currentScale - 0.1), 0.8, 1.6);
+        localStorage.setItem(storageKey('fontScale'), currentScale.toFixed(2));
+        applyFontScale();
+      });
+    }
+
+    // Reduced Motion Toggle
+    const motionToggle = document.getElementById('motion-toggle');
+    const savedMotion = localStorage.getItem(storageKey('reducedMotion')) === 'true';
+    if (savedMotion) root.classList.add('reduce-motion');
+    if (motionToggle) {
+      motionToggle.setAttribute('aria-pressed', savedMotion);
+      motionToggle.addEventListener('click', () => {
+        const newState = !root.classList.contains('reduce-motion');
+        root.classList.toggle('reduce-motion');
+        localStorage.setItem(storageKey('reducedMotion'), newState);
+        motionToggle.setAttribute('aria-pressed', newState);
+      });
+    }
+
+    // Optional: respond to prefers-reduced-motion if no explicit preference stored
+    if (!localStorage.getItem(storageKey('reducedMotion'))) {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        root.classList.add('reduce-motion');
+        if (motionToggle) motionToggle.setAttribute('aria-pressed', true);
+      }
+    }
+
+    // Basic language switch placeholder (non-functional demo)
+    const langSwitch = document.getElementById('language-switch');
+    langSwitch?.addEventListener('change', (e) => {
+      // Future: implement localization logic
+      console.log('Language changed to', e.target.value);
+    });
+  </script>
+</body></html>
