@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Library Online Catalogue</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#A91D3A",
+            "background-light": "#F8F9FA",
+            "background-dark": "#121212",
+            "surface-light": "#FFFFFF",
+            "surface-dark": "#1E1E1E",
+            "text-light": "#212529",
+            "text-dark": "#E9ECEF",
+            "subtle-light": "#6C757D",
+            "subtle-dark": "#ADB5BD",
+            "accent-light": "#007BFF",
+            "accent-dark": "#00BFFF",
+          },
+          fontFamily: {
+            display: ["Inter", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.5rem",
+          },
+        },
+      },
+    };
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-primary text-white px-4 py-2 rounded-md z-50">Skip to main content</a>
+<div id="root">
+<header class="bg-surface-light dark:bg-surface-dark shadow-md">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center py-4 gap-4 lg:gap-8">
+  <!-- Left Logo -->
+  <div class="flex items-center space-x-4 shrink-0">
+    <img alt="Somaiya Vidyavihar logo" class="h-14 sm:h-16" src="./assets/svu_logo.svg"/>
+    <div class="hidden lg:block">
+      <!-- <h1 class="text-lg font-bold text-primary leading-tight">SOMAIYA VIDYAVIHAR</h1>
+      <p class="text-xs text-subtle-light dark:text-subtle-dark tracking-wide">Library Online Catalogue</p> -->
+    </div>
+  </div>
+  <!-- Primary Navigation -->
+  <nav aria-label="Primary" class="flex-1">
+    <ul class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm sm:text-base" role="menubar">
+      <li role="none">
+        <a role="menuitem" class="flex items-center gap-1 text-primary font-medium focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
+          <span class="material-icons text-base sm:text-lg" aria-hidden="true">home</span>
+          <span>Home</span>
+        </a>
+      </li>
+      <li role="none">
+        <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
+          <span class="material-icons text-base sm:text-lg" aria-hidden="true">person</span>
+          <span>My Account</span>
+        </a>
+      </li>
+      <li role="none">
+        <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
+          <span class="material-icons text-base sm:text-lg" aria-hidden="true">help_outline</span>
+          <span>Ask a Librarian</span>
+        </a>
+      </li>
+      <li role="none">
+        <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
+          <span class="material-icons text-base sm:text-lg" aria-hidden="true">info</span>
+          <span>Help (FAQ)</span>
+        </a>
+      </li>
+      <li role="none">
+        <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
+          <span class="material-icons text-base sm:text-lg" aria-hidden="true">search</span>
+          <span>Catalogue Search</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- Accessibility / Utilities (condensed) -->
+  <div class="relative flex items-center gap-3">
+    <button id="accessibility-toggle" aria-haspopup="dialog" aria-expanded="false" aria-controls="accessibility-panel" class="flex items-center gap-1 px-3 h-10 rounded-full bg-gray-100 dark:bg-gray-800 text-subtle-light dark:text-subtle-dark hover:text-text-light dark:hover:text-text-dark hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
+      <span class="material-icons" aria-hidden="true">tune</span>
+      <span class="hidden xl:inline text-xs font-medium tracking-wide">Accessibility</span>
+    </button>
+    <img alt="Trust logo" class="h-12 sm:h-14 hidden md:block" src="./assets/svu_trust.svg"/>
+    <div id="accessibility-panel" role="dialog" aria-label="Accessibility settings" class="hidden absolute right-0 top-full mt-2 w-72 max-w-[90vw] bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 shadow-lg rounded-lg p-4 z-40">
+      <div class="flex items-center justify-between mb-2">
+        <h2 class="text-sm font-semibold tracking-wide text-text-light dark:text-text-dark">Accessibility</h2>
+        <button id="accessibility-close" aria-label="Close accessibility panel" class="p-1 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
+          <span class="material-icons text-base" aria-hidden="true">close</span>
+        </button>
+      </div>
+      <div class="space-y-4 text-sm">
+        <div>
+          <p class="font-medium mb-1">Theme</p>
+          <button id="contrast-toggle" aria-pressed="false" class="flex items-center gap-2 w-full justify-start px-3 py-2 rounded-md bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
+            <span class="material-icons text-base" aria-hidden="true">contrast</span>
+            <span>Toggle Dark / Light</span>
+          </button>
+        </div>
+        <div>
+          <p class="font-medium mb-1">Text Size</p>
+          <div class="flex items-center gap-2">
+            <button id="font-decrease" aria-label="Decrease font size" class="w-9 h-9 flex items-center justify-center rounded-md bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
+              <span class="material-icons text-base" aria-hidden="true">remove</span>
+            </button>
+            <div aria-live="polite" id="font-scale-indicator" class="text-xs text-subtle-light dark:text-subtle-dark select-none w-14 text-center">100%</div>
+            <button id="font-increase" aria-label="Increase font size" class="w-9 h-9 flex items-center justify-center rounded-md bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
+              <span class="material-icons text-base" aria-hidden="true">add</span>
+            </button>
+          </div>
+        </div>
+        <div>
+          <p class="font-medium mb-1">Motion</p>
+          <button id="motion-toggle" aria-pressed="false" class="flex items-center gap-2 w-full justify-start px-3 py-2 rounded-md bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
+            <span class="material-icons text-base" aria-hidden="true">motion_photos_off</span>
+            <span>Reduce Motion</span>
+          </button>
+        </div>
+        <div>
+          <p class="font-medium mb-1">Language</p>
+          <select id="language-switch" aria-label="Change language" class="w-full rounded-md border-gray-300 dark:border-gray-600 bg-surface-light dark:bg-surface-dark text-text-light dark:text-text-dark focus:ring-primary focus:border-primary text-sm">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+            <option value="mr">मराठी</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</header>
+<main id="main-content" class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="bg-surface-light dark:bg-surface-dark p-8 rounded-lg shadow-lg text-center">
+<h2 class="text-3xl font-bold text-text-light dark:text-text-dark mb-4">Welcome to Your Library</h2>
+<p class="text-lg text-subtle-light dark:text-subtle-dark max-w-3xl mx-auto mb-8">
+          Find books, articles, journals, and more. Our collections support your research and learning journey.
+        </p>
+<div class="max-w-4xl mx-auto">
+<div class="relative">
+<input class="w-full pl-12 pr-32 py-4 rounded-full text-lg border-2 border-gray-300 dark:border-gray-600 bg-background-light dark:bg-background-dark focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Search books, journals, theses..." type="search"/>
+<span class="material-icons absolute left-4 top-1/2 -translate-y-1/2 text-subtle-light dark:text-subtle-dark">search</span>
+<button class="absolute right-2 top-1/2 -translate-y-1/2 bg-primary text-white font-semibold py-3 px-8 rounded-full text-lg hover:bg-red-700 transition-colors">
+              Search
+            </button>
+</div>
+<div class="flex items-center justify-center mt-4 space-x-2">
+<span class="material-icons text-accent-light dark:text-accent-dark">lightbulb</span>
+<p class="text-sm text-subtle-light dark:text-subtle-dark">New user? <a class="text-accent-light dark:text-accent-dark hover:underline font-medium" href="#">Learn how to search</a></p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+<a class="bg-surface-light dark:bg-surface-dark p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow flex items-center space-x-4" href="#">
+<span class="material-icons text-4xl text-primary">book</span>
+<div>
+<h3 class="text-xl font-semibold text-text-light dark:text-text-dark">Borrow a Book</h3>
+<p class="text-subtle-light dark:text-subtle-dark">Find and check out books.</p>
+</div>
+</a>
+<a class="bg-surface-light dark:bg-surface-dark p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow flex items-center space-x-4" href="#">
+<span class="material-icons text-4xl text-primary">autorenew</span>
+<div>
+<h3 class="text-xl font-semibold text-text-light dark:text-text-dark">Renew Items</h3>
+<p class="text-subtle-light dark:text-subtle-dark">Extend your borrowing period.</p>
+</div>
+</a>
+<a class="bg-surface-light dark:bg-surface-dark p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow flex items-center space-x-4" href="#">
+<span class="material-icons text-4xl text-primary">contact_support</span>
+<div>
+<h3 class="text-xl font-semibold text-text-light dark:text-text-dark">Contact a Librarian</h3>
+<p class="text-subtle-light dark:text-subtle-dark">Get expert help with your search.</p>
+</div>
+</a>
+</div>
+<section class="mt-12">
+<h2 class="text-2xl font-bold mb-6 flex items-center">
+<span class="material-icons mr-2 text-primary">new_releases</span>
+            Latest Books
+        </h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<div class="bg-surface-light dark:bg-surface-dark rounded-lg overflow-hidden shadow-md group">
+<img alt="Abstract book cover with geometric shapes" class="w-full h-48 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwBCbDXQTMayilTaWNvpVtW6pYo0KE0okG2XfM87J7lmNjJR2MWMhAbhp-6m02PMMrGPXJAj8UbnfDM7pBn5CvnXtXHwobSfSR6qItaEEsVuMquCCPtevC3VfCp5MdPdQlBfUJcB8o9pGTQT37KQK6Lwg9ulz9YLvEA8BEEdcOXjVywZ4sGk82SSyS0PeMnehmGMoSRIqctvyRZA5syfPRp7YVc0T5e4QTuNSUZG9zxmh2fhwKF_IBffAfvtmuGwIl3luraKKuwQ"/>
+<div class="p-4">
+<h3 class="font-semibold text-lg text-text-light dark:text-text-dark">Abstracts Of The United Nations Day Of Vesak 2025 Conference</h3>
+<p class="text-sm text-subtle-light dark:text-subtle-dark">by Thich, Thich Duc</p>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark rounded-lg overflow-hidden shadow-md group">
+<img alt="Book cover for Great Freedom Fighters" class="w-full h-48 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWrlY3rBuK5lNPBQE4vTJDQvcC_Z6NN0xBFUQPNOgd1hbLljsBAdNFOU6VpmEqOqgeKgZ_eY0ePJG2gFqOMf-gnhTYuW7DHl_6-JzBPvhiGNq7aUjDUn3ieaNl5U1cFwhSAeR2lPE6XB5pMB98O9_UgN-czJ9zp8pFW0caMPaess7VRaY5-fHL6XwMsMFUoKg7e7m6xmSDVOMyOnMmrgKy_Ias_DI_VXGu9EANQcAb3ThM5rEGP2eG-cxO93ba5dEg7xAzku6iAw"/>
+<div class="p-4">
+<h3 class="font-semibold text-lg text-text-light dark:text-text-dark">Great Freedom Fighters (5 in 1)</h3>
+<p class="text-sm text-subtle-light dark:text-subtle-dark">by Ack</p>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark rounded-lg overflow-hidden shadow-md group">
+<img alt="Book cover for I Saw You In The Bathtub" class="w-full h-48 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOEBcAieQymWlG1uI9Ik6QbJa6mlG1nCUZqLLWfbf-F42L_MGQxaC44adxIpMZPwB6GD71hPF55l8ZOMI1Xzbp4zZwIkqI9kv2A5yBbvfwVpsjgJXg6SU0jPX45ScFoR7IQfI2xNhILfZo-ZKN4un3ACz-y38BfLU-X9A8OioQcczXMUkvYFf-vzE7rr0HpPTjV8mcRumx5nNotwojnftKOLrUNGOyRHvPW23dfnLqGLUi14siVoOeb8BHUANzwDw-bLLD7Y9KbQ"/>
+<div class="p-4">
+<h3 class="font-semibold text-lg text-text-light dark:text-text-dark">I Saw You In The Bathtub And Other Folk Rhymes Level 1</h3>
+<p class="text-sm text-subtle-light dark:text-subtle-dark">by Schwartz, Alvin</p>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark rounded-lg overflow-hidden shadow-md group">
+<img alt="Book cover for An Introduction to Patents and IP" class="w-full h-48 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAudhYtubNlDj5GZNFhvt0k22dopDqt9nZAR46VkkfZ3A_MO9EMWtp0lf9H7SrmU-4uddk5cMcsJZeENdoByFF42qRzria8RU3_5FxroEiPSkoWkm2nPANR7svvudgH2A0PnSy7P3P3-mQq1JEfDw5WAULbtHhUAL5NpC729gog0qBA9SlHcRNJou3PK_N5nnB6peBCsG-yHIwX5-5E-duQRHj3ZD1IDkJvuqbfcmDuFut9bq5WUqrOn0wXsFNrFlVqFUDkGZyoxg"/>
+<div class="p-4">
+<h3 class="font-semibold text-lg text-text-light dark:text-text-dark">An Introduction To Patents And IPR For Engineers And Technologists</h3>
+<p class="text-sm text-subtle-light dark:text-subtle-dark">by Damodaran, M.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="mt-12 bg-surface-light dark:bg-surface-dark p-8 rounded-lg shadow-lg">
+<h2 class="text-2xl font-bold mb-4">What am I searching?</h2>
+<div class="prose dark:prose-invert max-w-none text-text-light dark:text-text-dark">
+<p>When you use the search bar above, you are searching across the Somaiya Library's entire collection. This includes:</p>
+<ul>
+<li><strong>Books:</strong> Physical books available in our libraries and our extensive collection of e-books.</li>
+<li><strong>Journals and Articles:</strong> Scholarly articles from a wide range of academic journals.</li>
+<li><strong>Theses and Dissertations:</strong> Research work from our students and faculty.</li>
+<li><strong>Audio/Video:</strong> Multimedia resources including documentaries and lectures.</li>
+</ul>
+<p>This "Discovery Service" helps you find relevant resources quickly, no matter the format.</p>
+</div>
+</section>
+</main>
+<footer class="bg-surface-light dark:bg-surface-dark border-t border-gray-200 dark:border-gray-700 mt-12 py-6">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-subtle-light dark:text-subtle-dark text-sm">
+<p>© 2024 Somaiya Vidyavihar. All rights reserved.</p>
+<div class="mt-2">
+<a class="hover:underline" href="#">Legal Notice</a>
+<span class="mx-2">|</span>
+<a class="hover:underline" href="#">Usage Policy</a>
+<span class="mx-2">|</span>
+<a class="hover:underline" href="#">Accessibility Statement</a>
+</div>
+</div>
+</footer>
+</div>
+<script>
+    // Accessibility & Preference Utilities
+    const root = document.documentElement;
+    const storageKey = (k) => `somaiya_pref_${k}`;
+    const qs = (sel) => document.querySelector(sel);
+
+    // Accessibility panel
+    const accToggle = qs('#accessibility-toggle');
+    const accPanel = qs('#accessibility-panel');
+    const accClose = qs('#accessibility-close');
+    let accOpen = false;
+
+    const openPanel = () => {
+      if (accOpen) return; accOpen = true;
+      accPanel.classList.remove('hidden');
+      accToggle.setAttribute('aria-expanded', 'true');
+      // focus first interactive element inside panel
+      setTimeout(() => {
+        const first = accPanel.querySelector('button, select');
+        first && first.focus();
+      }, 0);
+      document.addEventListener('keydown', escHandler);
+      document.addEventListener('mousedown', outsideHandler);
+    };
+    const closePanel = () => {
+      if (!accOpen) return; accOpen = false;
+      accPanel.classList.add('hidden');
+      accToggle.setAttribute('aria-expanded', 'false');
+      accToggle.focus();
+      document.removeEventListener('keydown', escHandler);
+      document.removeEventListener('mousedown', outsideHandler);
+    };
+    const escHandler = (e) => { if (e.key === 'Escape') closePanel(); };
+    const outsideHandler = (e) => { if (!accPanel.contains(e.target) && !accToggle.contains(e.target)) closePanel(); };
+    accToggle?.addEventListener('click', () => accOpen ? closePanel() : openPanel());
+    accClose?.addEventListener('click', closePanel);
+
+    // Dark / Contrast Mode Toggle
+    const contrastToggle = document.getElementById('contrast-toggle');
+    const savedTheme = localStorage.getItem(storageKey('theme'));
+    if (savedTheme === 'dark') root.classList.add('dark');
+    contrastToggle.setAttribute('aria-pressed', root.classList.contains('dark'));
+    contrastToggle.addEventListener('click', () => {
+      const isDark = root.classList.toggle('dark');
+      localStorage.setItem(storageKey('theme'), isDark ? 'dark' : 'light');
+      contrastToggle.setAttribute('aria-pressed', isDark);
+    });
+
+    // Font Size Controls
+    const incBtn = document.getElementById('font-increase');
+    const decBtn = document.getElementById('font-decrease');
+    const fontIndicator = document.getElementById('font-scale-indicator');
+    const baseSize = 1; // rem
+    let currentScale = parseFloat(localStorage.getItem(storageKey('fontScale'))) || 1;
+    const applyFontScale = () => {
+      document.body.style.fontSize = `${baseSize * currentScale}rem`;
+      if (fontIndicator) fontIndicator.textContent = `${Math.round(currentScale * 100)}%`;
+    };
+    applyFontScale();
+    const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
+    incBtn.addEventListener('click', () => {
+      currentScale = clamp((currentScale + 0.1), 0.8, 1.6);
+      localStorage.setItem(storageKey('fontScale'), currentScale.toFixed(2));
+      applyFontScale();
+    });
+    decBtn.addEventListener('click', () => {
+      currentScale = clamp((currentScale - 0.1), 0.8, 1.6);
+      localStorage.setItem(storageKey('fontScale'), currentScale.toFixed(2));
+      applyFontScale();
+    });
+
+    // Reduced Motion Toggle
+    const motionToggle = document.getElementById('motion-toggle');
+    const savedMotion = localStorage.getItem(storageKey('reducedMotion')) === 'true';
+    if (savedMotion) root.classList.add('reduce-motion');
+    motionToggle.setAttribute('aria-pressed', savedMotion);
+    motionToggle.addEventListener('click', () => {
+      const newState = !root.classList.contains('reduce-motion');
+      root.classList.toggle('reduce-motion');
+      localStorage.setItem(storageKey('reducedMotion'), newState);
+      motionToggle.setAttribute('aria-pressed', newState);
+    });
+
+    // Optional: respond to prefers-reduced-motion if no explicit preference stored
+    if (!localStorage.getItem(storageKey('reducedMotion'))) {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        root.classList.add('reduce-motion');
+        motionToggle.setAttribute('aria-pressed', true);
+      }
+    }
+
+    // Basic language switch placeholder (non-functional demo)
+    const langSwitch = document.getElementById('language-switch');
+    langSwitch.addEventListener('change', (e) => {
+      // Future: implement localization logic
+      console.log('Language changed to', e.target.value);
+    });
+  </script>
+
+</body></html>

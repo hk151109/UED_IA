@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Library Online Catalogue - Search</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#A91D3A",
+            "background-light": "#F8F9FA",
+            "background-dark": "#121212",
+            "surface-light": "#FFFFFF",
+            "surface-dark": "#1E1E1E",
+            "text-light": "#212529",
+            "text-dark": "#E9ECEF",
+            "subtle-light": "#6C757D",
+            "subtle-dark": "#ADB5BD",
+            "accent-light": "#007BFF",
+            "accent-dark": "#00BFFF",
+          },
+          fontFamily: {
+            display: ["Inter", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.5rem",
+          },
+        },
+      },
+    };
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-primary text-white px-4 py-2 rounded-md z-50">Skip to main content</a>
+<div id="root">
+<header class="bg-surface-light dark:bg-surface-dark shadow-md">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center py-4 gap-4 lg:gap-8">
+  <!-- Left Logo -->
+  <div class="flex items-center space-x-4 shrink-0">
+    <img alt="Somaiya Vidyavihar logo" class="h-14 sm:h-16" src="./assets/svu_logo.svg"/>
+    <div class="hidden lg:block">
+      <!-- <h1 class="text-lg font-bold text-primary leading-tight">SOMAIYA VIDYAVIHAR</h1>
+      <p class="text-xs text-subtle-light dark:text-subtle-dark tracking-wide">Library Online Catalogue</p> -->
+    </div>
+  </div>
+  <!-- Primary Navigation -->
+  <nav aria-label="Primary" class="flex-1">
+    <ul class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm sm:text-base" role="menubar">
+      <li role="none">
+        <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
+          <span class="material-icons text-base sm:text-lg" aria-hidden="true">home</span>
+          <span>Home</span>
+        </a>
+      </li>
+      <li role="none">
+        <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
+          <span class="material-icons text-base sm:text-lg" aria-hidden="true">person</span>
+          <span>My Account</span>
+        </a>
+      </li>
+      <li role="none">
+        <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
+          <span class="material-icons text-base sm:text-lg" aria-hidden="true">help_outline</span>
+          <span>Ask a Librarian</span>
+        </a>
+      </li>
+      <li role="none">
+        <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
+          <span class="material-icons text-base sm:text-lg" aria-hidden="true">info</span>
+          <span>Help (FAQ)</span>
+        </a>
+      </li>
+      <li role="none">
+        <a role="menuitem" class="flex items-center gap-1 text-primary font-medium focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
+          <span class="material-icons text-base sm:text-lg" aria-hidden="true">search</span>
+          <span>Catalogue Search</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- Accessibility / Utilities (condensed) -->
+  <div class="relative flex items-center gap-3">
+    <button id="accessibility-toggle" aria-haspopup="dialog" aria-expanded="false" aria-controls="accessibility-panel" class="flex items-center gap-1 px-3 h-10 rounded-full bg-gray-100 dark:bg-gray-800 text-subtle-light dark:text-subtle-dark hover:text-text-light dark:hover:text-text-dark hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
+      <span class="material-icons" aria-hidden="true">tune</span>
+      <span class="hidden xl:inline text-xs font-medium tracking-wide">Accessibility</span>
+    </button>
+    <img alt="Trust logo" class="h-12 sm:h-14 hidden md:block" src="./assets/svu_trust.svg"/>
+    <div id="accessibility-panel" role="dialog" aria-label="Accessibility settings" class="hidden absolute right-0 top-full mt-2 w-72 max-w-[90vw] bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 shadow-lg rounded-lg p-4 z-40">
+      <div class="flex items-center justify-between mb-2">
+        <h2 class="text-sm font-semibold tracking-wide text-text-light dark:text-text-dark">Accessibility</h2>
+        <button id="accessibility-close" aria-label="Close accessibility panel" class="p-1 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
+          <span class="material-icons text-base" aria-hidden="true">close</span>
+        </button>
+      </div>
+      <div class="space-y-4 text-sm">
+        <div>
+          <p class="font-medium mb-1">Theme</p>
+          <button id="contrast-toggle" aria-pressed="false" class="flex items-center gap-2 w-full justify-start px-3 py-2 rounded-md bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
+            <span class="material-icons text-base" aria-hidden="true">contrast</span>
+            <span>Toggle Dark / Light</span>
+          </button>
+        </div>
+        <div>
+          <p class="font-medium mb-1">Text Size</p>
+          <div class="flex items-center gap-2">
+            <button id="font-decrease" aria-label="Decrease font size" class="w-9 h-9 flex items-center justify-center rounded-md bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
+              <span class="material-icons text-base" aria-hidden="true">remove</span>
+            </button>
+            <div aria-live="polite" id="font-scale-indicator" class="text-xs text-subtle-light dark:text-subtle-dark select-none w-14 text-center">100%</div>
+            <button id="font-increase" aria-label="Increase font size" class="w-9 h-9 flex items-center justify-center rounded-md bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
+              <span class="material-icons text-base" aria-hidden="true">add</span>
+            </button>
+          </div>
+        </div>
+        <div>
+          <p class="font-medium mb-1">Motion</p>
+          <button id="motion-toggle" aria-pressed="false" class="flex items-center gap-2 w-full justify-start px-3 py-2 rounded-md bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
+            <span class="material-icons text-base" aria-hidden="true">motion_photos_off</span>
+            <span>Reduce Motion</span>
+          </button>
+        </div>
+        <div>
+          <p class="font-medium mb-1">Language</p>
+          <select id="language-switch" aria-label="Change language" class="w-full rounded-md border-gray-300 dark:border-gray-600 bg-surface-light dark:bg-surface-dark text-text-light dark:text-text-dark focus:ring-primary focus:border-primary text-sm">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+            <option value="mr">मराठी</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</header>
+<main id="main-content" class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+<aside class="lg:col-span-1">
+<div class="bg-surface-light dark:bg-surface-dark p-6 rounded-lg shadow-lg">
+<h2 class="text-xl font-bold mb-6 text-text-light dark:text-text-dark">Refine Your Search</h2>
+<div class="space-y-4">
+<!-- Branch Filter -->
+<details class="group" open="">
+<summary class="flex justify-between items-center cursor-pointer list-none">
+<span class="font-semibold text-text-light dark:text-text-dark">Branch</span>
+<span class="material-icons transition-transform duration-200 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-3 space-y-2 max-h-48 overflow-y-auto">
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>- Nil - (1)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Accounting (298)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Accounting & Finance (498)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Adhyatmak Sahitya (7)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Advertising (189)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Agama Kosh (11)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Agama Shastraabadesh (2)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Agriculture (9)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Agriculture And Related Technologies (3)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Ahimsa (78)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Ahimsa And Related Literature (13)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Aluminium Industry In India (6)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Ambedkar And Buddhism (58)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>American Fiction In English (1)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>American Literature In English (1)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Anaesthesia (74)</span>
+</label>
+</div>
+</details>
+<div class="border-t border-gray-300 dark:border-gray-600"></div>
+
+<!-- Material Type Filter -->
+<details class="group" open="">
+<summary class="flex justify-between items-center cursor-pointer list-none">
+<span class="font-semibold text-text-light dark:text-text-dark">Material Type</span>
+<span class="material-icons transition-transform duration-200 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-3 space-y-2">
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Agriculture Study (38)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Astm (4)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Biography / Autography (203)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Book (15483)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Book Bank (657)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Book Bank Books (729)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Bookbank (2)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Books (1186)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Books (General) (40)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Bound Volume (64)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>British Standard (1)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Cassette (364)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Cassettes (344)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Cd/textbook (1)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Cd Rom (72)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>CJS Book (9)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Cd/Dvd (613)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>College Book Bank (113)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Conference Publication (1)</span>
+</label>
+</div>
+</details>
+<div class="border-t border-gray-300 dark:border-gray-600"></div>
+
+<!-- Location Filter -->  
+<details class="group" open="">
+<summary class="flex justify-between items-center cursor-pointer list-none">
+<span class="font-semibold text-text-light dark:text-text-dark">Location</span>
+<span class="material-icons transition-transform duration-200 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-3 space-y-2 max-h-48 overflow-y-auto">
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Arts & Commerce College (74963)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Bharatiya Sanskriti Peetham (13406)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Centre for Buddhist Studies (9163)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Centre for Studies in Jainism (3769)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>E.G.L (6532)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>KJSCE Library (15474)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>KJSCED Library (8236)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>KJSIDS (27862)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>KJSIM Library (18326)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>KJSIT (7188)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Medical College (8990)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>N.L.C (2210)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Nursing Library (2699)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Physiotherapy (1653)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Polytechnic (8489)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Polytechnic (Non-Added) (1462)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Polytechnic (Part-Time Diploma) (603)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Polytechnic (YCMOU) (160)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>S K Somaiya College (1147)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>SKSC (9525)</span>
+</label>
+</div>
+</details>
+<div class="border-t border-gray-300 dark:border-gray-600"></div>
+
+<!-- Language Filter -->
+<details class="group">
+<summary class="flex justify-between items-center cursor-pointer list-none">
+<span class="font-semibold text-text-light dark:text-text-dark">Language</span>
+<span class="material-icons transition-transform duration-200 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-3 space-y-2 max-h-48 overflow-y-auto">
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Arabic (45)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Arabic-English (18)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Arabic-Marathi (2)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Assamese (26)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Bengali (2)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Burmese (148)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Chinese (76)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>Chinese-English (48)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>English (200382)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>English-Arabic (5)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>English-Cambodian (3)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>English-Chinese (37)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>English-Gujarati (49)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>English-Hindi (488)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>English-Marathi (67)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>English-Sanskrit (1422)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>English-Thai (8)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>English-Tibetan (22)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>English-Urdu (10)</span>
+</label>
+<label class="flex items-center space-x-2 text-subtle-light dark:text-subtle-dark">
+<input class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" type="checkbox"/>
+<span>French (259)</span>
+</label>
+</div>
+</details>
+</div>
+</div>
+</aside>
+<div class="lg:col-span-3">
+<div class="bg-surface-light dark:bg-surface-dark p-6 rounded-lg shadow-lg mb-8">
+<h2 class="text-xl font-bold mb-4 text-text-light dark:text-text-dark">Search Catalogue</h2>
+<div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+<div class="flex-grow">
+<label class="sr-only" for="search">Search</label>
+<input class="w-full rounded-md border-gray-300 dark:border-gray-600 bg-background-light dark:bg-background-dark focus:ring-primary focus:border-primary" id="search" placeholder="e.g. 'The Great Gatsby', 'F. Scott Fitzgerald'" type="text"/>
+</div>
+<button class="bg-primary text-white font-bold py-2 px-6 rounded-md flex items-center justify-center space-x-2 hover:bg-red-700 transition-colors duration-200">
+<span class="material-icons">search</span>
+<span>Search</span>
+</button>
+</div>
+</div>
+<div class="text-center py-16 hidden">
+<div class="bg-surface-light dark:bg-surface-dark p-8 rounded-lg shadow-md inline-block">
+<span class="material-icons text-6xl text-primary mb-4">search_off</span>
+<h3 class="text-2xl font-bold text-text-light dark:text-text-dark">No results found</h3>
+<p class="text-subtle-light dark:text-subtle-dark mt-2">Try adjusting your search or filters.</p>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-4">
+<p class="text-subtle-light dark:text-subtle-dark">Showing 1-3 of 3 results</p>
+<div>
+<label class="sr-only" for="sort">Sort by</label>
+<select class="rounded-md border-gray-300 dark:border-gray-600 bg-background-light dark:bg-background-dark focus:ring-primary focus:border-primary" id="sort">
+<option>Relevance</option>
+<option>Date (Newest)</option>
+<option>Date (Oldest)</option>
+<option>Title (A-Z)</option>
+</select>
+</div>
+</div>
+<div class="space-y-6">
+<div class="bg-surface-light dark:bg-surface-dark p-4 rounded-lg shadow-lg flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+<img alt="Book cover for Abstracts Of The United Nations Day Of Vesak 2025" class="w-24 h-36 object-cover rounded-md flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPm0yFYqwBEq8_5o_gpOxcDljra20d9_KNCZR8xPl-rSQo80585mLfIJFSg4kwtovmK2du0LKgB5bekmVMpMrSv1rS2EOu-zGO0lvt0_Kf88eFLALMtUWmiQH6F3DBl_ho9jMZs-OsQGlKt0SGDuRyK-8jsZ4scMNEnUdG54zgADz4oJQebUQz446o4dLLxdLcSSxjjocW3WlNmzFplb-_ZLiT3HV9JIS6CVnviGrw4foFyQ5aSwHFg2mwRYWzkj-WFQ420ZOOqw"/>
+<div class="flex-grow">
+<h3 class="text-lg font-bold text-primary">Abstracts Of The United Nations Day Of Vesak 2025 conference by... Then, Thich Duc</h3>
+<p class="text-subtle-light dark:text-subtle-dark">by Thich Duc Then</p>
+<p class="mt-2 text-sm text-text-light dark:text-text-dark">Available at: KJSCE Library</p>
+</div>
+<div class="flex-shrink-0 flex flex-col items-start sm:items-end justify-between">
+<span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">Available</span>
+<button class="bg-primary text-white font-bold py-2 px-4 rounded-md mt-2 sm:mt-0 hover:bg-red-700 transition-colors duration-200">Borrow</button>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-4 rounded-lg shadow-lg flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+<img alt="Book cover for The Great And The Evil Party" class="w-24 h-36 object-cover rounded-md flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-l2MLlTZI7Iece035WoQJjnc41buQuAcvSFWm9GYLPznshLEFwHjsG-MWhuzZKiu9g9qsfI7Dxq-f_yv1CAI0bJgID1u8YuqG9AO4Ihbj4qE_zTGQVr06IJRz56eUECl4lm3_sOBXhu5P0dtTgV1AYu6WpvLTcyCcs6wFO-BkS3WRDY2u3lc7ecG1l2GDsC54_YZDApe7WD30Yboek76pwrRjOBCJwme_rVHMQ-qB_Hz1C844cE1Nz_HhEcRcs4wIy7xfjNE77Q"/>
+<div class="flex-grow">
+<h3 class="text-lg font-bold text-primary">The Great And The Evil Party Surprise by... Taryon, Skadia</h3>
+<p class="text-subtle-light dark:text-subtle-dark">by Skadia Taryon</p>
+<p class="mt-2 text-sm text-text-light dark:text-text-dark">Available at: Medical College</p>
+</div>
+<div class="flex-shrink-0 flex flex-col items-start sm:items-end justify-between">
+<span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Due in 3 days</span>
+<button class="bg-gray-400 text-white font-bold py-2 px-4 rounded-md mt-2 sm:mt-0 cursor-not-allowed">Renew</button>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-4 rounded-lg shadow-lg flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+<img alt="Book cover for An Introduction To Earth Science" class="w-24 h-36 object-cover rounded-md flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi7v1-YW3nGTeYco9fry801ggivv19l-XsHIx6s2ZPHr4yMlNqUNRBs9VyoWxn8pA7op0QIOaq8Gp2uuuCw-KbG4gWUN6YuFWfDrA7Xj7BFKWrfUE78GrnjhHVZkLX1WYaA8hZmwgxsHVBmi1IdfqFiNdBYQMx8q3CmxG0Ib1yPC41mcZ73NcDYbVgto1mJOnsaZ0zhJT5HomhTziM524yWU9vkyMd6z_sDjY--4UOZ5HjxKHUJo5AtiufVHtoYwIVxLqR4xlMxA"/>
+<div class="flex-grow">
+<h3 class="text-lg font-bold text-primary">An Introduction To Paleontology by... Dasgupta, Anjali</h3>
+<p class="text-subtle-light dark:text-subtle-dark">by Anjali Dasgupta</p>
+<p class="mt-2 text-sm text-text-light dark:text-text-dark">Available at: Arts &amp; Commerce College</p>
+</div>
+<div class="flex-shrink-0 flex flex-col items-start sm:items-end justify-between">
+<span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">Checked Out</span>
+<button class="bg-gray-400 text-white font-bold py-2 px-4 rounded-md mt-2 sm:mt-0 cursor-not-allowed">Borrow</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-surface-light dark:bg-surface-dark border-t border-gray-200 dark:border-gray-700 mt-12 py-6">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-subtle-light dark:text-subtle-dark text-sm">
+<p>© 2024 Somaiya Vidyavihar. All rights reserved.</p>
+<div class="mt-2">
+<a class="hover:underline" href="#">Legal Notice</a>
+<span class="mx-2">|</span>
+<a class="hover:underline" href="#">Usage Policy</a>
+<span class="mx-2">|</span>
+<a class="hover:underline" href="#">Accessibility Statement</a>
+</div>
+</div>
+</footer>
+</div>
+<script>
+    // Accessibility & Preference Utilities
+    const root = document.documentElement;
+    const storageKey = (k) => `somaiya_pref_${k}`;
+    const qs = (sel) => document.querySelector(sel);
+
+    // Accessibility panel
+    const accToggle = qs('#accessibility-toggle');
+    const accPanel = qs('#accessibility-panel');
+    const accClose = qs('#accessibility-close');
+    let accOpen = false;
+
+    const openPanel = () => {
+      if (accOpen) return; accOpen = true;
+      accPanel.classList.remove('hidden');
+      accToggle.setAttribute('aria-expanded', 'true');
+      // focus first interactive element inside panel
+      setTimeout(() => {
+        const first = accPanel.querySelector('button, select');
+        first && first.focus();
+      }, 0);
+      document.addEventListener('keydown', escHandler);
+      document.addEventListener('mousedown', outsideHandler);
+    };
+    const closePanel = () => {
+      if (!accOpen) return; accOpen = false;
+      accPanel.classList.add('hidden');
+      accToggle.setAttribute('aria-expanded', 'false');
+      accToggle.focus();
+      document.removeEventListener('keydown', escHandler);
+      document.removeEventListener('mousedown', outsideHandler);
+    };
+    const escHandler = (e) => { if (e.key === 'Escape') closePanel(); };
+    const outsideHandler = (e) => { if (!accPanel.contains(e.target) && !accToggle.contains(e.target)) closePanel(); };
+    accToggle?.addEventListener('click', () => accOpen ? closePanel() : openPanel());
+    accClose?.addEventListener('click', closePanel);
+
+    // Dark / Contrast Mode Toggle
+    const contrastToggle = document.getElementById('contrast-toggle');
+    const savedTheme = localStorage.getItem(storageKey('theme'));
+    if (savedTheme === 'dark') root.classList.add('dark');
+    contrastToggle.setAttribute('aria-pressed', root.classList.contains('dark'));
+    contrastToggle.addEventListener('click', () => {
+      const isDark = root.classList.toggle('dark');
+      localStorage.setItem(storageKey('theme'), isDark ? 'dark' : 'light');
+      contrastToggle.setAttribute('aria-pressed', isDark);
+    });
+
+    // Font Size Controls
+    const incBtn = document.getElementById('font-increase');
+    const decBtn = document.getElementById('font-decrease');
+    const fontIndicator = document.getElementById('font-scale-indicator');
+    const baseSize = 1; // rem
+    let currentScale = parseFloat(localStorage.getItem(storageKey('fontScale'))) || 1;
+    const applyFontScale = () => {
+      document.body.style.fontSize = `${baseSize * currentScale}rem`;
+      if (fontIndicator) fontIndicator.textContent = `${Math.round(currentScale * 100)}%`;
+    };
+    applyFontScale();
+    const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
+    incBtn.addEventListener('click', () => {
+      currentScale = clamp((currentScale + 0.1), 0.8, 1.6);
+      localStorage.setItem(storageKey('fontScale'), currentScale.toFixed(2));
+      applyFontScale();
+    });
+    decBtn.addEventListener('click', () => {
+      currentScale = clamp((currentScale - 0.1), 0.8, 1.6);
+      localStorage.setItem(storageKey('fontScale'), currentScale.toFixed(2));
+      applyFontScale();
+    });
+
+    // Reduced Motion Toggle
+    const motionToggle = document.getElementById('motion-toggle');
+    const savedMotion = localStorage.getItem(storageKey('reducedMotion')) === 'true';
+    if (savedMotion) root.classList.add('reduce-motion');
+    motionToggle.setAttribute('aria-pressed', savedMotion);
+    motionToggle.addEventListener('click', () => {
+      const newState = !root.classList.contains('reduce-motion');
+      root.classList.toggle('reduce-motion');
+      localStorage.setItem(storageKey('reducedMotion'), newState);
+      motionToggle.setAttribute('aria-pressed', newState);
+    });
+
+    // Optional: respond to prefers-reduced-motion if no explicit preference stored
+    if (!localStorage.getItem(storageKey('reducedMotion'))) {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        root.classList.add('reduce-motion');
+        motionToggle.setAttribute('aria-pressed', true);
+      }
+    }
+
+    // Basic language switch placeholder (non-functional demo)
+    const langSwitch = document.getElementById('language-switch');
+    langSwitch.addEventListener('change', (e) => {
+      // Future: implement localization logic
+      console.log('Language changed to', e.target.value);
+    });
+  </script>
+
+</body></html>

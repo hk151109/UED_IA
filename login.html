@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Library Online Catalogue - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#A91D3A",
+            "background-light": "#F8F9FA",
+            "background-dark": "#121212",
+            "surface-light": "#FFFFFF",
+            "surface-dark": "#1E1E1E",
+            "text-light": "#212529",
+            "text-dark": "#E9ECEF",
+            "subtle-light": "#6C757D",
+            "subtle-dark": "#ADB5BD",
+            "accent-light": "#007BFF",
+            "accent-dark": "#00BFFF",
+          },
+          fontFamily: {
+            display: ["Inter", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.5rem",
+          },
+        },
+      },
+    };
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-primary text-white px-4 py-2 rounded-md z-50">Skip to main content</a>
+<div id="root">
+<header class="bg-surface-light dark:bg-surface-dark shadow-md">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center py-4 gap-4 lg:gap-8">
+  <!-- Left Logo -->
+  <div class="flex items-center space-x-4 shrink-0">
+    <img alt="Somaiya Vidyavihar logo" class="h-14 sm:h-16" src="./assets/svu_logo.svg"/>
+    <div class="hidden lg:block">
+      <!-- <h1 class="text-lg font-bold text-primary leading-tight">SOMAIYA VIDYAVIHAR</h1>
+      <p class="text-xs text-subtle-light dark:text-subtle-dark tracking-wide">Library Online Catalogue</p> -->
+    </div>
+  </div>
+  <!-- Primary Navigation -->
+  <nav aria-label="Primary" class="flex-1">
+    <ul class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm sm:text-base" role="menubar">
+      <li role="none">
+        <a role="menuitem" class="flex items-center gap-1 text-primary font-medium focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
+          <span class="material-icons text-base sm:text-lg" aria-hidden="true">home</span>
+          <span>Home</span>
+        </a>
+      </li>
+      <li role="none">
+        <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
+          <span class="material-icons text-base sm:text-lg" aria-hidden="true">person</span>
+          <span>My Account</span>
+        </a>
+      </li>
+      <li role="none">
+        <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
+          <span class="material-icons text-base sm:text-lg" aria-hidden="true">help_outline</span>
+          <span>Ask a Librarian</span>
+        </a>
+      </li>
+      <li role="none">
+        <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
+          <span class="material-icons text-base sm:text-lg" aria-hidden="true">info</span>
+          <span>Help (FAQ)</span>
+        </a>
+      </li>
+      <li role="none">
+        <a role="menuitem" class="flex items-center gap-1 text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary px-2 py-1 rounded" href="#">
+          <span class="material-icons text-base sm:text-lg" aria-hidden="true">search</span>
+          <span>Catalogue Search</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- Accessibility / Utilities (condensed) -->
+  <div class="relative flex items-center gap-3">
+    <button id="accessibility-toggle" aria-haspopup="dialog" aria-expanded="false" aria-controls="accessibility-panel" class="flex items-center gap-1 px-3 h-10 rounded-full bg-gray-100 dark:bg-gray-800 text-subtle-light dark:text-subtle-dark hover:text-text-light dark:hover:text-text-dark hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
+      <span class="material-icons" aria-hidden="true">tune</span>
+      <span class="hidden xl:inline text-xs font-medium tracking-wide">Accessibility</span>
+    </button>
+    <img alt="Trust logo" class="h-12 sm:h-14 hidden md:block" src="./assets/svu_trust.svg"/>
+    <div id="accessibility-panel" role="dialog" aria-label="Accessibility settings" class="hidden absolute right-0 top-full mt-2 w-72 max-w-[90vw] bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 shadow-lg rounded-lg p-4 z-40">
+      <div class="flex items-center justify-between mb-2">
+        <h2 class="text-sm font-semibold tracking-wide text-text-light dark:text-text-dark">Accessibility</h2>
+        <button id="accessibility-close" aria-label="Close accessibility panel" class="p-1 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
+          <span class="material-icons text-base" aria-hidden="true">close</span>
+        </button>
+      </div>
+      <div class="space-y-4 text-sm">
+        <div>
+          <p class="font-medium mb-1">Theme</p>
+          <button id="contrast-toggle" aria-pressed="false" class="flex items-center gap-2 w-full justify-start px-3 py-2 rounded-md bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
+            <span class="material-icons text-base" aria-hidden="true">contrast</span>
+            <span>Toggle Dark / Light</span>
+          </button>
+        </div>
+        <div>
+          <p class="font-medium mb-1">Text Size</p>
+          <div class="flex items-center gap-2">
+            <button id="font-decrease" aria-label="Decrease font size" class="w-9 h-9 flex items-center justify-center rounded-md bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
+              <span class="material-icons text-base" aria-hidden="true">remove</span>
+            </button>
+            <div aria-live="polite" id="font-scale-indicator" class="text-xs text-subtle-light dark:text-subtle-dark select-none w-14 text-center">100%</div>
+            <button id="font-increase" aria-label="Increase font size" class="w-9 h-9 flex items-center justify-center rounded-md bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
+              <span class="material-icons text-base" aria-hidden="true">add</span>
+            </button>
+          </div>
+        </div>
+        <div>
+          <p class="font-medium mb-1">Motion</p>
+          <button id="motion-toggle" aria-pressed="false" class="flex items-center gap-2 w-full justify-start px-3 py-2 rounded-md bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
+            <span class="material-icons text-base" aria-hidden="true">motion_photos_off</span>
+            <span>Reduce Motion</span>
+          </button>
+        </div>
+        <div>
+          <p class="font-medium mb-1">Language</p>
+          <select id="language-switch" aria-label="Change language" class="w-full rounded-md border-gray-300 dark:border-gray-600 bg-surface-light dark:bg-surface-dark text-text-light dark:text-text-dark focus:ring-primary focus:border-primary text-sm">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+            <option value="mr">मराठी</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</header>
+<main id="main-content" class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="flex items-center justify-center min-h-[calc(100vh-200px)]">
+<div class="w-full max-w-md space-y-8 bg-surface-light dark:bg-surface-dark p-10 rounded-lg shadow-lg">
+<div>
+<h2 class="mt-6 text-center text-3xl font-extrabold text-text-light dark:text-text-dark">
+                    Library Login
+                </h2>
+</div>
+<form action="#" class="mt-8 space-y-6" method="POST">
+<input name="remember" type="hidden" value="true"/>
+<div class="rounded-md shadow-sm -space-y-px">
+<div class="mb-4">
+<label class="block text-sm font-medium text-subtle-light dark:text-subtle-dark mb-2" for="svvnetid">Student ID / Staff ID</label>
+<input autocomplete="username" class="appearance-none rounded-md relative block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-text-light dark:text-text-dark bg-background-light dark:bg-background-dark focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-base" id="svvnetid" name="svvnetid" placeholder="Enter your ID" required="" type="text"/>
+</div>
+<div class="mb-4 relative">
+<label class="block text-sm font-medium text-subtle-light dark:text-subtle-dark mb-2" for="password">Password</label>
+<input autocomplete="current-password" class="appearance-none rounded-md relative block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-text-light dark:text-text-dark bg-background-light dark:bg-background-dark focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-base" id="password" name="password" placeholder="Enter your password" required="" type="password"/>
+<button class="absolute inset-y-0 right-0 top-7 pr-3 flex items-center text-sm leading-5" id="togglePassword" type="button">
+<span class="material-icons text-subtle-light dark:text-subtle-dark">visibility_off</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-end">
+<div class="text-sm">
+<a class="font-medium text-primary hover:text-red-700 dark:hover:text-red-400 text-base" href="#">
+                            Forgot your password?
+                        </a>
+</div>
+</div>
+<div>
+<button class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-lg font-medium rounded-md text-white bg-primary hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary" type="submit">
+                        Login
+                    </button>
+</div>
+</form>
+<div class="relative my-6">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-gray-300 dark:border-gray-600"></div>
+</div>
+<div class="relative flex justify-center text-sm">
+<span class="px-2 bg-surface-light dark:bg-surface-dark text-subtle-light dark:text-subtle-dark">Or continue with</span>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<button class="w-full inline-flex justify-center py-3 px-4 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm bg-surface-light dark:bg-surface-dark text-sm font-medium text-text-light dark:text-text-dark hover:bg-gray-50 dark:hover:bg-gray-600" type="button">
+<img alt="Google logo" class="w-5 h-5 mr-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2H0FEcuZ9OzDVbLdH5gleipfFeukCPKx412WKtl0hukHdgVKJZSKW0kMR1mQ_0jgiLUofRwkrVIUXdpmp9P1DW7CFcb18XLS07kp1S_VEJ4f8N7gxmzzdmaXgzNYYu4y_iZCh9FMiy2InxGd13iHI8pdctvxUopUIHxiB0Fab-_74EtxsQrrtCbYuLW3ck5I6xF4pR4AYjyBIZmsuYdr8TFah1wjjHXYfBAEv9mb4KxVVFhN1zAHzl5HUs56mQ5OuiP0lb8liwQ"/>
+                    Google
+                </button>
+<button class="w-full inline-flex justify-center py-3 px-4 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm bg-surface-light dark:bg-surface-dark text-sm font-medium text-text-light dark:text-text-dark hover:bg-gray-50 dark:hover:bg-gray-600" type="button">
+<img alt="Microsoft logo" class="w-5 h-5 mr-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCStNmEl3PNDw5ZYMKzuVoGbMSth9TklDhpB5mpGl449Gd0tM_G19V-es4MYTIyEb6iVljyE9DIkhhoAZ7cs_UGDrLWP7wd-qyifb_1M32uBkwjnay0RTzVrX2hzUzHQDTFCuGA0x9O-DInGQy7MSQ8I2A3mWZAiRtIFSCtfcu8pVii2i-D9Je4JR-qXXmkuSfmmLOWybPR9LqDyp1GwVt-aZj1ZQu_KzafhlNAC9m4znUQrJDfUF7gABqqI_DB78dEG7k28LLe0w"/>
+                    Microsoft
+                </button>
+</div>
+<div class="text-center mt-4">
+<button class="font-medium text-primary hover:text-red-700 dark:hover:text-red-400 text-base" type="button">
+                    Use One-Time Password (OTP)
+                </button>
+</div>
+</div>
+</main>
+</div>
+</main>
+<footer class="bg-surface-light dark:bg-surface-dark border-t border-gray-200 dark:border-gray-700 mt-12 py-6">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-subtle-light dark:text-subtle-dark text-sm">
+<p>© 2024 Somaiya Vidyavihar. All rights reserved.</p>
+<div class="mt-2">
+<a class="hover:underline" href="#">Legal Notice</a>
+<span class="mx-2">|</span>
+<a class="hover:underline" href="#">Usage Policy</a>
+<span class="mx-2">|</span>
+<a class="hover:underline" href="#">Accessibility Statement</a>
+</div>
+</div>
+</footer>
+</div>
+<script>
+    // Password toggle functionality
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#password');
+    const toggleIcon = togglePassword.querySelector('span');
+    togglePassword.addEventListener('click', function (e) {
+        // toggle the type attribute
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        // toggle the icon
+        toggleIcon.textContent = type === 'password' ? 'visibility_off' : 'visibility';
+    });
+
+    // Accessibility & Preference Utilities
+    const root = document.documentElement;
+    const storageKey = (k) => `somaiya_pref_${k}`;
+    const qs = (sel) => document.querySelector(sel);
+
+    // Accessibility panel
+    const accToggle = qs('#accessibility-toggle');
+    const accPanel = qs('#accessibility-panel');
+    const accClose = qs('#accessibility-close');
+    let accOpen = false;
+
+    const openPanel = () => {
+      if (accOpen) return; accOpen = true;
+      accPanel.classList.remove('hidden');
+      accToggle.setAttribute('aria-expanded', 'true');
+      // focus first interactive element inside panel
+      setTimeout(() => {
+        const first = accPanel.querySelector('button, select');
+        first && first.focus();
+      }, 0);
+      document.addEventListener('keydown', escHandler);
+      document.addEventListener('mousedown', outsideHandler);
+    };
+    const closePanel = () => {
+      if (!accOpen) return; accOpen = false;
+      accPanel.classList.add('hidden');
+      accToggle.setAttribute('aria-expanded', 'false');
+      accToggle.focus();
+      document.removeEventListener('keydown', escHandler);
+      document.removeEventListener('mousedown', outsideHandler);
+    };
+    const escHandler = (e) => { if (e.key === 'Escape') closePanel(); };
+    const outsideHandler = (e) => { if (!accPanel.contains(e.target) && !accToggle.contains(e.target)) closePanel(); };
+    accToggle?.addEventListener('click', () => accOpen ? closePanel() : openPanel());
+    accClose?.addEventListener('click', closePanel);
+
+    // Dark / Contrast Mode Toggle
+    const contrastToggle = document.getElementById('contrast-toggle');
+    const savedTheme = localStorage.getItem(storageKey('theme'));
+    if (savedTheme === 'dark') root.classList.add('dark');
+    contrastToggle.setAttribute('aria-pressed', root.classList.contains('dark'));
+    contrastToggle.addEventListener('click', () => {
+      const isDark = root.classList.toggle('dark');
+      localStorage.setItem(storageKey('theme'), isDark ? 'dark' : 'light');
+      contrastToggle.setAttribute('aria-pressed', isDark);
+    });
+
+    // Font Size Controls
+    const incBtn = document.getElementById('font-increase');
+    const decBtn = document.getElementById('font-decrease');
+    const fontIndicator = document.getElementById('font-scale-indicator');
+    const baseSize = 1; // rem
+    let currentScale = parseFloat(localStorage.getItem(storageKey('fontScale'))) || 1;
+    const applyFontScale = () => {
+      document.body.style.fontSize = `${baseSize * currentScale}rem`;
+      if (fontIndicator) fontIndicator.textContent = `${Math.round(currentScale * 100)}%`;
+    };
+    applyFontScale();
+    const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
+    incBtn.addEventListener('click', () => {
+      currentScale = clamp((currentScale + 0.1), 0.8, 1.6);
+      localStorage.setItem(storageKey('fontScale'), currentScale.toFixed(2));
+      applyFontScale();
+    });
+    decBtn.addEventListener('click', () => {
+      currentScale = clamp((currentScale - 0.1), 0.8, 1.6);
+      localStorage.setItem(storageKey('fontScale'), currentScale.toFixed(2));
+      applyFontScale();
+    });
+
+    // Reduced Motion Toggle
+    const motionToggle = document.getElementById('motion-toggle');
+    const savedMotion = localStorage.getItem(storageKey('reducedMotion')) === 'true';
+    if (savedMotion) root.classList.add('reduce-motion');
+    motionToggle.setAttribute('aria-pressed', savedMotion);
+    motionToggle.addEventListener('click', () => {
+      const newState = !root.classList.contains('reduce-motion');
+      root.classList.toggle('reduce-motion');
+      localStorage.setItem(storageKey('reducedMotion'), newState);
+      motionToggle.setAttribute('aria-pressed', newState);
+    });
+
+    // Optional: respond to prefers-reduced-motion if no explicit preference stored
+    if (!localStorage.getItem(storageKey('reducedMotion'))) {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        root.classList.add('reduce-motion');
+        motionToggle.setAttribute('aria-pressed', true);
+      }
+    }
+
+    // Basic language switch placeholder (non-functional demo)
+    const langSwitch = document.getElementById('language-switch');
+    langSwitch.addEventListener('change', (e) => {
+      // Future: implement localization logic
+      console.log('Language changed to', e.target.value);
+    });
+  </script>
+
+</body>
+</html>
