@@ -473,43 +473,259 @@
 
     <!-- Policy Tab -->
     <div id="policy" class="tab-content hidden">
-      <h3 class="text-xl font-semibold mb-4 text-text-light dark:text-text-dark">Library Policy</h3>
-      <div class="prose dark:prose-invert max-w-none">
-        <p class="text-subtle-light dark:text-subtle-dark mb-4">Please review our library policies and borrowing guidelines:</p>
-        
-        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-          <h4 class="font-semibold text-text-light dark:text-text-dark mb-2">Borrowing Limits</h4>
-          <ul class="text-sm text-subtle-light dark:text-subtle-dark space-y-1">
-            <li>• Students: 5 books maximum</li>
-            <li>• Faculty: 10 books maximum</li>
-            <li>• Loan period: 2 weeks (renewable)</li>
-          </ul>
+      <h3 class="text-lg font-semibold mb-3 text-text-light dark:text-text-dark">Library Policy</h3>
+      
+      <!-- Policy Header -->
+      <div class="bg-primary/10 border-l-4 border-primary p-3 rounded-lg mb-4">
+        <div class="grid grid-cols-2 gap-4 text-sm">
+          <div>
+            <span class="font-semibold text-text-light dark:text-text-dark">Policy Name:</span>
+            <span class="text-subtle-light dark:text-subtle-dark ml-2">STUDENT UG</span>
+          </div>
+          <div>
+            <span class="font-semibold text-text-light dark:text-text-dark">Max Qty Issued:</span>
+            <span class="text-subtle-light dark:text-subtle-dark ml-2">16</span>
+          </div>
         </div>
-        
-        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mt-4">
-          <h4 class="font-semibold text-text-light dark:text-text-dark mb-2">Fines & Penalties</h4>
-          <ul class="text-sm text-subtle-light dark:text-subtle-dark space-y-1">
-            <li>• Overdue fine: ₹2 per day</li>
-            <li>• Lost book: Full replacement cost + processing fee</li>
-            <li>• Damaged book: Repair cost or replacement</li>
-          </ul>
+      </div>
+
+      <!-- Policy Table -->
+      <div class="overflow-x-auto">
+        <table class="w-full border border-gray-300 dark:border-gray-600 text-sm">
+          <thead>
+            <tr class="bg-primary text-white">
+              <th class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-left text-xs">Type</th>
+              <th class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-left text-xs">Max. Quantity</th>
+              <th class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-left text-xs">Max. Issue Days</th>
+              <th class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-left text-xs">Fine</th>
+              <th class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-left text-xs">Reservation Fine Flag</th>
+              <th class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-left text-xs">Fine Policy Method</th>
+              <th class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-left text-xs">Due Date Method</th>
+            </tr>
+          </thead>
+          <tbody class="text-xs">
+            <tr class="bg-gray-50 dark:bg-gray-800">
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 font-medium">BCL</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-center">1</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-center">14</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-center">No</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-center">No</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2">INCLUDE HOLIDAY/WEEKLY OFF</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2">POST PONE</td>
+            </tr>
+            <tr class="bg-white dark:bg-gray-700">
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 font-medium">BOOK BANK</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-center">10</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-center">292</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-center">Yes</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-center">No</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2">INCLUDE HOLIDAY/WEEKLY OFF</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2">POST PONE</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800">
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 font-medium">CD</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-center">1</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-center">1</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-center">Yes</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-center">No</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2">INCLUDE HOLIDAY/WEEKLY OFF</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2">POST PONE</td>
+            </tr>
+            <tr class="bg-white dark:bg-gray-700">
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 font-medium">DVD</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-center">1</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-center">1</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-center">Yes</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-center">No</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2">INCLUDE HOLIDAY/WEEKLY OFF</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2">POST PONE</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800">
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 font-medium">FLOPPY</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-center">1</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-center">1</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-center">Yes</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-center">No</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2">INCLUDE HOLIDAY/WEEKLY OFF</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2">POST PONE</td>
+            </tr>
+            <tr class="bg-white dark:bg-gray-700">
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 font-medium">REFERENCE BOOK</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-center">1</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-center">1</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-center">Yes</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-center">No</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2">INCLUDE HOLIDAY/WEEKLY OFF</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2">POST PONE</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800">
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 font-medium">TEXTBOOK</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-center">5</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-center">7</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-center">Yes</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2 text-center">Yes</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2">INCLUDE HOLIDAY/WEEKLY OFF</td>
+              <td class="border border-gray-300 dark:border-gray-600 px-2 py-2">POST PONE</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Policy Notes -->
+      <div class="mt-4 space-y-3">
+        <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 p-3 rounded-lg">
+          <div class="flex items-start space-x-2">
+            <span class="material-icons text-blue-600 dark:text-blue-400 text-sm mt-0.5">info</span>
+            <div>
+              <h4 class="font-medium text-blue-800 dark:text-blue-200 mb-1 text-sm">Important Notes</h4>
+              <ul class="text-xs text-blue-700 dark:text-blue-300 space-y-1">
+                <li>• Book Bank items have extended loan periods (292 days)</li>
+                <li>• Media items (CD/DVD/Floppy) have 1-day loan periods</li>
+                <li>• Reference books are for short-term use (1 day)</li>
+                <li>• Textbooks can be borrowed for 7 days with renewal options</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Reservation Details Tab -->
     <div id="reservation-details" class="tab-content hidden">
-      <h3 class="text-xl font-semibold mb-4 text-text-light dark:text-text-dark">Reservation Details</h3>
-      <p class="text-subtle-light dark:text-subtle-dark mb-4">You currently have no active reservations.</p>
-      
-      <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 p-4 rounded-lg">
-        <div class="flex items-start space-x-3">
-          <span class="material-icons text-blue-600 dark:text-blue-400 mt-0.5">info</span>
-          <div>
-            <h4 class="font-medium text-blue-800 dark:text-blue-200 mb-1">How Reservations Work</h4>
-            <p class="text-sm text-blue-700 dark:text-blue-300">
-              You can reserve books that are currently checked out. You'll be notified when they become available.
-            </p>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Make Reservation Form -->
+        <div>
+          <h3 class="text-lg font-semibold mb-3 text-text-light dark:text-text-dark flex items-center">
+            <span class="material-icons mr-2 text-primary">event_available</span>
+            Make a Reservation
+          </h3>
+          <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 p-3 rounded-lg mb-4">
+            <div class="flex items-start space-x-2">
+              <span class="material-icons text-blue-600 dark:text-blue-400 text-sm mt-0.5">info</span>
+              <div>
+                <p class="text-xs text-blue-700 dark:text-blue-300">
+                  Reserve books that are currently checked out. You'll be notified when they become available.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <form class="space-y-3">
+            <div>
+              <label for="search-book" class="block text-xs font-medium text-text-light dark:text-text-dark mb-1">
+                <span class="material-icons text-xs mr-1">search</span>Search for Book *
+              </label>
+              <div class="relative">
+                <input type="text" id="search-book" name="search-book" required placeholder="Enter book title, author, or ISBN" class="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark focus:ring-2 focus:ring-primary focus:border-primary pr-8">
+                <button type="button" class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary">
+                  <span class="material-icons text-sm">search</span>
+                </button>
+              </div>
+            </div>
+            
+            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+              <div class="flex items-start space-x-3">
+                <img alt="Book cover" class="w-12 h-16 object-cover rounded" src="https://via.placeholder.com/48x64/cccccc/666666?text=Book">
+                <div class="flex-1">
+                  <h4 class="text-sm font-medium text-text-light dark:text-text-dark">Selected Book</h4>
+                  <p class="text-xs text-subtle-light dark:text-subtle-dark">Search for a book to reserve</p>
+                  <div class="mt-1">
+                    <span class="bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 px-2 py-0.5 rounded text-xs">
+                      Currently Unavailable
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <label for="reservation-reason" class="block text-xs font-medium text-text-light dark:text-text-dark mb-1">
+                <span class="material-icons text-xs mr-1">help_outline</span>Reason for Reservation *
+              </label>
+              <select id="reservation-reason" name="reservation-reason" required class="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark focus:ring-2 focus:ring-primary focus:border-primary">
+                <option value="">Choose your reason...</option>
+                <option value="coursework">📚 Required for coursework</option>
+                <option value="research">🔬 Research project</option>
+                <option value="thesis">📝 Thesis/dissertation</option>
+                <option value="assignment">✏️ Assignment work</option>
+                <option value="exam">📖 Exam preparation</option>
+                <option value="personal">📚 Personal reading</option>
+              </select>
+            </div>
+            
+            <div>
+              <label for="priority-level" class="block text-xs font-medium text-text-light dark:text-text-dark mb-1">
+                <span class="material-icons text-xs mr-1">priority_high</span>Priority Level
+              </label>
+              <select id="priority-level" name="priority-level" class="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark focus:ring-2 focus:ring-primary focus:border-primary">
+                <option value="normal">🔵 Normal</option>
+                <option value="high">🟡 High (urgent need)</option>
+                <option value="critical">🔴 Critical (exam/deadline)</option>
+              </select>
+            </div>
+            
+            <div>
+              <label for="reservation-notes" class="block text-xs font-medium text-text-light dark:text-text-dark mb-1">
+                <span class="material-icons text-xs mr-1">note_add</span>Additional Notes (Optional)
+              </label>
+              <textarea id="reservation-notes" name="reservation-notes" rows="2" class="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Any specific requirements or deadline information..."></textarea>
+            </div>
+            
+            <button type="submit" class="w-full bg-primary text-white font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition-colors text-sm flex items-center justify-center space-x-2">
+              <span class="material-icons text-sm">event_available</span>
+              <span>Make Reservation</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Current Reservations -->
+        <div>
+          <h3 class="text-lg font-semibold mb-3 text-text-light dark:text-text-dark flex items-center">
+            <span class="material-icons mr-2 text-primary">schedule</span>
+            Your Reservations (1)
+          </h3>
+          
+          <div class="space-y-3">
+            <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-3 bg-yellow-50 dark:bg-yellow-900/10">
+              <div class="flex items-start justify-between">
+                <div class="flex-1">
+                  <h4 class="text-sm font-medium text-text-light dark:text-text-dark">Advanced Database Systems</h4>
+                  <p class="text-xs text-subtle-light dark:text-subtle-dark">by Ramez Elmasri & Shamkant Navathe</p>
+                  <div class="flex items-center mt-1 space-x-4">
+                    <div class="flex items-center">
+                      <span class="material-icons text-yellow-600 text-sm mr-1">schedule</span>
+                      <p class="text-xs text-subtle-light dark:text-subtle-dark">Reserved on: Oct 1, 2025</p>
+                    </div>
+                    <div class="flex items-center">
+                      <span class="material-icons text-blue-600 text-sm mr-1">queue</span>
+                      <p class="text-xs text-blue-600 dark:text-blue-400">Position: 2</p>
+                    </div>
+                  </div>
+                  <div class="mt-2">
+                    <p class="text-xs text-subtle-light dark:text-subtle-dark">Reason: <span class="font-medium">Research project</span></p>
+                    <p class="text-xs text-green-600 dark:text-green-400 font-medium">Expected availability: Oct 10, 2025</p>
+                  </div>
+                </div>
+                <div class="flex flex-col space-y-1">
+                  <span class="bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 px-2 py-1 rounded text-xs font-medium">
+                    Waiting
+                  </span>
+                  <button class="text-xs text-red-600 hover:text-red-800 underline">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+            <div class="flex items-center space-x-2">
+              <span class="material-icons text-gray-500 text-sm">notification_important</span>
+              <div>
+                <p class="text-xs text-subtle-light dark:text-subtle-dark">
+                  <strong>Notification Settings:</strong> You'll receive email alerts when your reservations are ready for pickup.
+                </p>
+                <button class="text-xs text-primary hover:underline mt-1">Update notification preferences</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -517,28 +733,341 @@
 
     <!-- Deposit Vs. Fine Deduction Tab -->
     <div id="deposit-fine" class="tab-content hidden">
-      <h3 class="text-xl font-semibold mb-4 text-text-light dark:text-text-dark">Deposit Vs. Fine Deduction</h3>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-          <h4 class="font-semibold text-text-light dark:text-text-dark mb-2">Current Deposit</h4>
-          <p class="text-2xl font-bold text-green-600 dark:text-green-400">₹500</p>
-          <p class="text-sm text-subtle-light dark:text-subtle-dark">Security deposit on file</p>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Account Summary -->
+        <div>
+          <h3 class="text-lg font-semibold mb-3 text-text-light dark:text-text-dark flex items-center">
+            <span class="material-icons mr-2 text-primary">account_balance_wallet</span>
+            Account Summary
+          </h3>
+          
+          <div class="space-y-3">
+            <div class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 p-3 rounded-lg">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h4 class="font-semibold text-green-800 dark:text-green-200 text-sm">Current Deposit</h4>
+                  <p class="text-xs text-green-700 dark:text-green-300">Security deposit on file</p>
+                </div>
+                <p class="text-xl font-bold text-green-600 dark:text-green-400">₹500.00</p>
+              </div>
+            </div>
+            
+            <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 p-3 rounded-lg">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h4 class="font-semibold text-red-800 dark:text-red-200 text-sm">Outstanding Fines</h4>
+                  <p class="text-xs text-red-700 dark:text-red-300">2 overdue items</p>
+                </div>
+                <p class="text-xl font-bold text-red-600 dark:text-red-400">₹25.00</p>
+              </div>
+            </div>
+            
+            <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 p-3 rounded-lg">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h4 class="font-semibold text-blue-800 dark:text-blue-200 text-sm">Net Balance</h4>
+                  <p class="text-xs text-blue-700 dark:text-blue-300">After fine deduction</p>
+                </div>
+                <p class="text-xl font-bold text-blue-600 dark:text-blue-400">₹475.00</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Fine Details -->
+          <div class="mt-4">
+            <h4 class="text-sm font-semibold mb-2 text-text-light dark:text-text-dark">Fine Breakdown</h4>
+            <div class="space-y-2">
+              <div class="flex justify-between items-center py-2 px-3 bg-gray-50 dark:bg-gray-800 rounded text-xs">
+                <span>Advanced Database Systems - 5 days overdue</span>
+                <span class="text-red-600 dark:text-red-400 font-medium">₹15.00</span>
+              </div>
+              <div class="flex justify-between items-center py-2 px-3 bg-gray-50 dark:bg-gray-800 rounded text-xs">
+                <span>Computer Networks - 2 days overdue</span>
+                <span class="text-red-600 dark:text-red-400 font-medium">₹10.00</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Recent Transactions -->
+          <div class="mt-4">
+            <h4 class="text-sm font-semibold mb-2 text-text-light dark:text-text-dark">Recent Transactions</h4>
+            <div class="space-y-1">
+              <div class="flex justify-between items-center py-1.5 px-2 bg-gray-50 dark:bg-gray-800 rounded text-xs">
+                <span>Overdue fine - Oct 1, 2024</span>
+                <span class="text-red-600 dark:text-red-400">-₹14.00</span>
+              </div>
+              <div class="flex justify-between items-center py-1.5 px-2 bg-gray-50 dark:bg-gray-800 rounded text-xs">
+                <span>Deposit added - Sep 15, 2024</span>
+                <span class="text-green-600 dark:text-green-400">+₹500.00</span>
+              </div>
+            </div>
+          </div>
         </div>
-        
-        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-          <h4 class="font-semibold text-text-light dark:text-text-dark mb-2">Outstanding Fines</h4>
-          <p class="text-2xl font-bold text-red-600 dark:text-red-400">₹14</p>
-          <p class="text-sm text-subtle-light dark:text-subtle-dark">To be deducted from deposit</p>
-        </div>
-      </div>
-      
-      <div class="mt-6">
-        <h4 class="font-semibold text-text-light dark:text-text-dark mb-2">Recent Transactions</h4>
-        <div class="space-y-2">
-          <div class="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-800 rounded">
-            <span class="text-sm text-text-light dark:text-text-dark">Overdue fine - Oct 1, 2024</span>
-            <span class="text-sm text-red-600 dark:text-red-400">-₹14</span>
+
+        <!-- Payment Form -->
+        <div>
+          <h3 class="text-lg font-semibold mb-3 text-text-light dark:text-text-dark flex items-center">
+            <span class="material-icons mr-2 text-primary">payment</span>
+            Payment Options
+          </h3>
+          
+          <!-- Payment Method Selector -->
+          <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg mb-4">
+            <h4 class="text-sm font-medium text-text-light dark:text-text-dark mb-2">Choose Payment Method:</h4>
+            <div class="space-y-2">
+              <label class="flex items-center space-x-2 cursor-pointer">
+                <input type="radio" name="payment-method" value="deposit-deduction" class="text-primary focus:ring-primary" checked onclick="showPaymentForm('deposit')">
+                <span class="text-sm">💳 Use Security Deposit (Recommended)</span>
+              </label>
+              <label class="flex items-center space-x-2 cursor-pointer">
+                <input type="radio" name="payment-method" value="online-payment" class="text-primary focus:ring-primary" onclick="showPaymentForm('online')">
+                <span class="text-sm">🌐 Online Payment</span>
+              </label>
+              <label class="flex items-center space-x-2 cursor-pointer">
+                <input type="radio" name="payment-method" value="upi-payment" class="text-primary focus:ring-primary" onclick="showPaymentForm('upi')">
+                <span class="text-sm">📱 UPI Payment (Scan QR Code)</span>
+              </label>
+            </div>
+          </div>
+          
+          <!-- Deposit Deduction Form (Default) -->
+          <form id="deposit-form" class="payment-form space-y-3">
+            <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 p-3 rounded-lg">
+              <div class="flex items-start space-x-2">
+                <span class="material-icons text-blue-600 dark:text-blue-400 text-sm mt-0.5">info</span>
+                <div>
+                  <p class="text-xs text-blue-700 dark:text-blue-300">
+                    Your fine amount (₹25.00) will be automatically deducted from your security deposit. This is the fastest and most convenient option.
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <label for="fine-amount" class="block text-xs font-medium text-text-light dark:text-text-dark mb-1">
+                Fine Amount to Pay *
+              </label>
+              <div class="relative">
+                <span class="absolute left-2 top-1/2 -translate-y-1/2 text-sm text-gray-500">₹</span>
+                <input type="number" id="fine-amount" name="fine-amount" value="25.00" min="0" max="25.00" step="0.01" required class="w-full pl-6 pr-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark focus:ring-2 focus:ring-primary focus:border-primary">
+              </div>
+              <p class="text-xs text-subtle-light dark:text-subtle-dark mt-1">Maximum: ₹25.00 (your total outstanding fine)</p>
+            </div>
+            
+            <div>
+              <label class="flex items-start space-x-2 cursor-pointer">
+                <input type="checkbox" required class="text-primary focus:ring-primary mt-0.5">
+                <span class="text-xs text-subtle-light dark:text-subtle-dark">I confirm that I want to deduct ₹25.00 from my security deposit to clear my outstanding fines.</span>
+              </label>
+            </div>
+            
+            <button type="submit" class="w-full bg-primary text-white font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition-colors text-sm flex items-center justify-center space-x-2">
+              <span class="material-icons text-sm">account_balance_wallet</span>
+              <span>Process Deposit Deduction</span>
+            </button>
+          </form>
+          
+          <!-- Online Payment Form (Hidden by default) -->
+          <form id="online-form" class="payment-form space-y-3 hidden">
+            <div>
+              <label for="payment-amount" class="block text-xs font-medium text-text-light dark:text-text-dark mb-1">
+                Payment Amount *
+              </label>
+              <div class="relative">
+                <span class="absolute left-2 top-1/2 -translate-y-1/2 text-sm text-gray-500">₹</span>
+                <input type="number" id="payment-amount" name="payment-amount" value="25.00" min="25.00" step="0.01" required class="w-full pl-6 pr-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark focus:ring-2 focus:ring-primary focus:border-primary">
+              </div>
+            </div>
+            
+            <div>
+              <label for="payment-gateway" class="block text-xs font-medium text-text-light dark:text-text-dark mb-1">
+                Payment Gateway *
+              </label>
+              <select id="payment-gateway" name="payment-gateway" required class="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark focus:ring-2 focus:ring-primary focus:border-primary">
+                <option value="">Choose payment method...</option>
+                <option value="razorpay">💳 Razorpay (Credit/Debit Cards, UPI, Net Banking)</option>
+                <option value="paytm">📱 Paytm Wallet</option>
+                <option value="googlepay">🔵 Google Pay</option>
+                <option value="phonepe">🟣 PhonePe</option>
+              </select>
+            </div>
+            
+            <div>
+              <label for="email-receipt" class="block text-xs font-medium text-text-light dark:text-text-dark mb-1">
+                Email for Receipt *
+              </label>
+              <input type="email" id="email-receipt" name="email-receipt" required placeholder="your.email@example.com" class="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark focus:ring-2 focus:ring-primary focus:border-primary">
+            </div>
+            
+            <button type="submit" class="w-full bg-green-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-green-700 transition-colors text-sm flex items-center justify-center space-x-2">
+              <span class="material-icons text-sm">payment</span>
+              <span>Proceed to Online Payment</span>
+            </button>
+          </form>
+          
+          <!-- UPI Payment (Hidden by default) -->
+          <div id="upi-form" class="payment-form space-y-3 hidden">
+            <div class="bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 p-3 rounded-lg">
+              <div class="flex items-start space-x-2">
+                <span class="material-icons text-purple-600 dark:text-purple-400 text-sm mt-0.5">qr_code</span>
+                <div>
+                  <h4 class="font-medium text-purple-800 dark:text-purple-200 text-sm mb-1">UPI Payment via QR Code</h4>
+                  <p class="text-xs text-purple-700 dark:text-purple-300 mb-2">
+                    Scan the QR code below with any UPI app to pay your library fine instantly.
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- QR Code Section -->
+            <div class="bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-600 rounded-lg p-4 text-center">
+              <div class="mb-3">
+                <h4 class="text-sm font-semibold text-text-light dark:text-text-dark mb-1">Pay ₹25.00</h4>
+                <p class="text-xs text-subtle-light dark:text-subtle-dark">Somaiya Library Fine Payment</p>
+              </div>
+              
+              <!-- QR Code Image -->
+              <div class="flex justify-center mb-3">
+                <div class="bg-white p-3 rounded-lg shadow-sm">
+                  <svg width="160" height="160" viewBox="0 0 160 160" class="border border-gray-200">
+                    <!-- QR Code Pattern - This is a simplified QR code representation -->
+                    <rect width="160" height="160" fill="white"/>
+                    <!-- Corner markers -->
+                    <rect x="0" y="0" width="20" height="20" fill="black"/>
+                    <rect x="140" y="0" width="20" height="20" fill="black"/>
+                    <rect x="0" y="140" width="20" height="20" fill="black"/>
+                    <rect x="5" y="5" width="10" height="10" fill="white"/>
+                    <rect x="145" y="5" width="10" height="10" fill="white"/>
+                    <rect x="5" y="145" width="10" height="10" fill="white"/>
+                    
+                    <!-- Data pattern -->
+                    <rect x="30" y="10" width="5" height="5" fill="black"/>
+                    <rect x="40" y="10" width="5" height="5" fill="black"/>
+                    <rect x="50" y="10" width="5" height="5" fill="black"/>
+                    <rect x="70" y="10" width="5" height="5" fill="black"/>
+                    <rect x="90" y="10" width="5" height="5" fill="black"/>
+                    <rect x="100" y="10" width="5" height="5" fill="black"/>
+                    <rect x="120" y="10" width="5" height="5" fill="black"/>
+                    
+                    <rect x="10" y="30" width="5" height="5" fill="black"/>
+                    <rect x="25" y="30" width="5" height="5" fill="black"/>
+                    <rect x="45" y="30" width="5" height="5" fill="black"/>
+                    <rect x="60" y="30" width="5" height="5" fill="black"/>
+                    <rect x="75" y="30" width="5" height="5" fill="black"/>
+                    <rect x="95" y="30" width="5" height="5" fill="black"/>
+                    <rect x="110" y="30" width="5" height="5" fill="black"/>
+                    <rect x="125" y="30" width="5" height="5" fill="black"/>
+                    <rect x="140" y="30" width="5" height="5" fill="black"/>
+                    
+                    <rect x="20" y="40" width="5" height="5" fill="black"/>
+                    <rect x="35" y="40" width="5" height="5" fill="black"/>
+                    <rect x="55" y="40" width="5" height="5" fill="black"/>
+                    <rect x="80" y="40" width="5" height="5" fill="black"/>
+                    <rect x="105" y="40" width="5" height="5" fill="black"/>
+                    <rect x="130" y="40" width="5" height="5" fill="black"/>
+                    
+                    <!-- Center pattern -->
+                    <rect x="70" y="70" width="20" height="20" fill="black"/>
+                    <rect x="75" y="75" width="10" height="10" fill="white"/>
+                    <rect x="78" y="78" width="4" height="4" fill="black"/>
+                    
+                    <!-- More data patterns -->
+                    <rect x="30" y="60" width="5" height="5" fill="black"/>
+                    <rect x="45" y="60" width="5" height="5" fill="black"/>
+                    <rect x="100" y="60" width="5" height="5" fill="black"/>
+                    <rect x="115" y="60" width="5" height="5" fill="black"/>
+                    
+                    <rect x="15" y="80" width="5" height="5" fill="black"/>
+                    <rect x="35" y="80" width="5" height="5" fill="black"/>
+                    <rect x="50" y="80" width="5" height="5" fill="black"/>
+                    <rect x="105" y="80" width="5" height="5" fill="black"/>
+                    <rect x="120" y="80" width="5" height="5" fill="black"/>
+                    <rect x="135" y="80" width="5" height="5" fill="black"/>
+                    
+                    <rect x="25" y="100" width="5" height="5" fill="black"/>
+                    <rect x="40" y="100" width="5" height="5" fill="black"/>
+                    <rect x="65" y="100" width="5" height="5" fill="black"/>
+                    <rect x="95" y="100" width="5" height="5" fill="black"/>
+                    <rect x="110" y="100" width="5" height="5" fill="black"/>
+                    
+                    <rect x="10" y="120" width="5" height="5" fill="black"/>
+                    <rect x="30" y="120" width="5" height="5" fill="black"/>
+                    <rect x="55" y="120" width="5" height="5" fill="black"/>
+                    <rect x="85" y="120" width="5" height="5" fill="black"/>
+                    <rect x="115" y="120" width="5" height="5" fill="black"/>
+                    <rect x="135" y="120" width="5" height="5" fill="black"/>
+                    
+                    <rect x="40" y="140" width="5" height="5" fill="black"/>
+                    <rect x="60" y="140" width="5" height="5" fill="black"/>
+                    <rect x="80" y="140" width="5" height="5" fill="black"/>
+                    <rect x="100" y="140" width="5" height="5" fill="black"/>
+                    <rect x="125" y="140" width="5" height="5" fill="black"/>
+                  </svg>
+                </div>
+              </div>
+              
+              <div class="space-y-2">
+                <p class="text-xs text-subtle-light dark:text-subtle-dark">
+                  <strong>UPI ID:</strong> somaiyalibrary@paytm
+                </p>
+                <p class="text-xs text-subtle-light dark:text-subtle-dark">
+                  <strong>Reference:</strong> FINE-2025-OCT-001
+                </p>
+              </div>
+            </div>
+            
+            <!-- Supported UPI Apps -->
+            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+              <h4 class="text-xs font-medium text-text-light dark:text-text-dark mb-2">Supported UPI Apps:</h4>
+              <div class="flex flex-wrap gap-2">
+                <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded text-xs">📱 PhonePe</span>
+                <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-2 py-1 rounded text-xs">💚 Google Pay</span>
+                <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-2 py-1 rounded text-xs">🟣 Paytm</span>
+                <span class="bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 px-2 py-1 rounded text-xs">🔶 Amazon Pay</span>
+                <span class="bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 px-2 py-1 rounded text-xs">🏦 BHIM</span>
+              </div>
+            </div>
+            
+            <!-- Payment Instructions -->
+            <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 p-3 rounded-lg">
+              <h4 class="text-xs font-semibold text-blue-800 dark:text-blue-200 mb-1">How to Pay:</h4>
+              <ol class="text-xs text-blue-700 dark:text-blue-300 space-y-1 list-decimal list-inside">
+                <li>Open any UPI app on your phone</li>
+                <li>Scan the QR code above</li>
+                <li>Verify the amount (₹25.00) and recipient</li>
+                <li>Complete the payment using your UPI PIN</li>
+                <li>Take a screenshot of the success message</li>
+              </ol>
+            </div>
+            
+            <!-- Payment Confirmation Form -->
+            <form class="space-y-3 border-t border-gray-200 dark:border-gray-600 pt-3">
+              <div>
+                <label for="transaction-id" class="block text-xs font-medium text-text-light dark:text-text-dark mb-1">
+                  Transaction ID (from UPI app) *
+                </label>
+                <input type="text" id="transaction-id" name="transaction-id" required placeholder="e.g., 123456789012" class="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark focus:ring-2 focus:ring-primary focus:border-primary">
+              </div>
+              
+              <div>
+                <label for="upi-ref" class="block text-xs font-medium text-text-light dark:text-text-dark mb-1">
+                  UPI Reference Number *
+                </label>
+                <input type="text" id="upi-ref" name="upi-ref" required placeholder="e.g., 430987654321" class="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark focus:ring-2 focus:ring-primary focus:border-primary">
+              </div>
+              
+              <div>
+                <label class="flex items-start space-x-2 cursor-pointer">
+                  <input type="checkbox" required class="text-primary focus:ring-primary mt-0.5">
+                  <span class="text-xs text-subtle-light dark:text-subtle-dark">I have completed the UPI payment and entered the correct transaction details above.</span>
+                </label>
+              </div>
+              
+              <button type="submit" class="w-full bg-purple-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-purple-700 transition-colors text-sm flex items-center justify-center space-x-2">
+                <span class="material-icons text-sm">verified</span>
+                <span>Verify UPI Payment</span>
+              </button>
+            </form>
           </div>
         </div>
       </div>
@@ -665,5 +1194,23 @@
         });
       });
     });
+
+    // Payment form switching functionality
+    function showPaymentForm(formType) {
+      const forms = document.querySelectorAll('.payment-form');
+      forms.forEach(form => form.classList.add('hidden'));
+      
+      switch(formType) {
+        case 'deposit':
+          document.getElementById('deposit-form').classList.remove('hidden');
+          break;
+        case 'online':
+          document.getElementById('online-form').classList.remove('hidden');
+          break;
+        case 'upi':
+          document.getElementById('upi-form').classList.remove('hidden');
+          break;
+      }
+    }
   </script>
 </body></html>
